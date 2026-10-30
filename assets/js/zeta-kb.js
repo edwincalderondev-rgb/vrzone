@@ -121,7 +121,7 @@
           '¡Un placer! Ojalá nos veamos pronto en otra realidad 👾'],
         chips: ['Quiero reservar', '¿Dónde quedan?'] },
       { id: 'adios', re: '\\b(chao|chau|adios|nos vemos|bye|hasta luego|hasta pronto|me voy)\\b', max: 7, cara: 'guino',
-        a: ['¡Nos vemos en otra realidad! 👋 Te espero por aquí.', '¡Chao{nombre}! Que la fuerza… digo, que el visor te acompañe 🥽', '¡Hasta pronto! Y recuerda: aquí la realidad es opcional 😎'] },
+        a: ['¡Nos vemos en otra realidad! 👋 Te espero por aquí.', '¡Chao{nombre}! Que la fuerza… digo, que el visor te acompañe 🥽', '¡Hasta pronto! Y recuerda: aquí se vive lo imposible 😎'] },
       { id: 'chiste', re: '\\b(chistes?|algo gracioso|hazme reir|cuentame algo gracioso|otro chiste)\\b', fuerte: true, cara: 'guino',
         a: ['Mi mamá me dijo que bajara de las nubes… así que me quité el visor de Epic Roller Coasters. 🎢',
           '¿Qué le dijo el gato de I Am Cat al vaso? Nada. Lo tumbó y se fue. 🐈',
