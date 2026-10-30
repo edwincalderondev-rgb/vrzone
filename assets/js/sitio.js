@@ -240,7 +240,6 @@
       f.src = 'https://www.youtube-nocookie.com/embed/' + v.dataset.video + '?autoplay=1&playsinline=1&rel=0&modestbranding=1';
       f.title = b.getAttribute('aria-label').replace('Reproducir video: ', '');
       f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-      f.allowFullscreen = true;
       f.referrerPolicy = 'strict-origin-when-cross-origin';
       b.replaceWith(f);
     }, { once: true });

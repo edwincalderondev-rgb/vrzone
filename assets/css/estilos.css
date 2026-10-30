@@ -226,6 +226,24 @@ body.lejos .holograma { opacity: 0; }
 .c-reir { --c: linear-gradient(140deg, #ffcf4d, #ff2fb4); --cs: rgba(255, 207, 77, .55); }
 .c-competir { --c: linear-gradient(140deg, #39f29e, #2b8cff); --cs: rgba(57, 242, 158, .5); }
 
+/* ---------- Banda de foto (emoción) ---------- */
+.banda { padding: 0 0 clamp(30px, 5vw, 60px); }
+.banda-foto {
+  position: relative; margin: 0 auto; width: min(100% - 40px, 1400px); aspect-ratio: 21 / 9; border-radius: var(--r-l); overflow: hidden;
+  border: 1px solid var(--borde-2); box-shadow: 0 40px 100px -40px rgba(157, 29, 255, .85); isolation: isolate;
+}
+.banda-foto img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform 1.6s cubic-bezier(.2, .8, .2, 1); }
+.banda-foto.visto img { transform: scale(1); }
+.banda-foto::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, rgba(6, 3, 13, .88), rgba(6, 3, 13, .25) 55%, transparent), linear-gradient(0deg, rgba(6, 3, 13, .55), transparent 45%);
+}
+.banda-foto figcaption { position: absolute; left: clamp(20px, 4vw, 60px); bottom: clamp(22px, 4vw, 56px); z-index: 1; max-width: 600px; }
+.banda-foto strong { display: block; font: 850 clamp(1.9rem, 4.4vw, 3.8rem)/1.02 var(--f-titulo); letter-spacing: -.03em; margin-top: 14px; }
+.banda-foto p { color: var(--texto-2); margin-top: 14px; max-width: 460px; }
+.ilustrativa { position: absolute; right: 14px; top: 14px; z-index: 1; font: 700 .66rem/1 var(--f-texto); letter-spacing: .02em; padding: .45em .7em; border-radius: 999px; background: rgba(6, 3, 13, .6); color: var(--texto-3); }
+.banda-foto + .contenedor { margin-top: 0; }
+
 /* ---------- Primera vez (pasos) ---------- */
 .pasos { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: paso; }
 .paso { padding: 28px 24px; }
@@ -626,6 +644,8 @@ body.lejos .fab-wa:hover { transform: scale(1.08) rotate(-6deg); }
   .mapa { min-height: 340px; }
   .fab-wa { width: 52px; height: 52px; left: 14px; bottom: 14px; }
   .resena:first-child blockquote { font-size: 1.12rem; }
+  .banda-foto { aspect-ratio: 4 / 5; width: calc(100% - 32px); }
+  .banda-foto::after { background: linear-gradient(0deg, rgba(6, 3, 13, .92), rgba(6, 3, 13, .2) 62%, transparent); }
   .flecha-abajo { display: none; }
 }
 
