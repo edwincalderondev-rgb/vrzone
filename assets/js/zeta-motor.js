@@ -163,7 +163,7 @@
     enlace: (t, href) => ({ t, href }),
     lista: items => '<ul>' + items.map(i => '<li>' + i + '</li>').join('') + '</ul>',
     tarjetas: juegos => '<div class="z-juegos">' + juegos.map(j =>
-      '<button type="button" class="z-juego" data-juego="' + j.id + '"><span class="z-e" aria-hidden="true">' + esc(j.e ? j.e.slice(0, 2) : '🎮') + '</span><span><b>' +
+      '<button type="button" class="z-juego" data-juego="' + j.id + '"><span class="z-e" aria-hidden="true">' + (j.img ? '<img src="assets/img/juegos/' + j.id + '.webp" alt="" loading="lazy">' : esc(j.e ? j.e.slice(0, 2) : '🎮')) + '</span><span><b>' +
       esc(j.n) + '</b><small>' + esc(j.nivel) + ' · ' + esc(j.dur) + (j.jmax > 1 ? ' · hasta ' + j.jmax + ' jugadores' : '') + '</small></span></button>').join('') + '</div>',
     saludo() { const h = VRZ.ahora().getUTCHours(); return h >= 5 && h < 12 ? 'Buenos días' : h < 19 && h >= 12 ? 'Buenas tardes' : 'Buenas noches'; },
     nombre: () => ctx.nombre,
@@ -387,7 +387,7 @@
       const intro = miedo ? H.vez('j-miedo', ['Uy, ese… 😱 Valiente quien lo pide.', 'Ese da miedo de verdad 👻. ¿Seguro?', '¡Ese es para gritar! 😨']) :
         H.vez('j-ok', ['¡Buena elección! 😎', '¡Sí lo tenemos! 🙌', 'Uff, ese es una joya 💎', '¡Ese me encanta! 🤩']);
       return {
-        html: intro + '<div class="z-ficha"><b>' + esc((j.e ? j.e.slice(0, 2) + ' ' : '') + j.n) + '</b><small>' + esc(j.g) + '</small>' +
+        html: intro + '<div class="z-ficha">' + (j.img ? '<img class="z-portada" src="assets/img/juegos/' + j.id + '.webp" alt="">' : '') + '<b>' + esc((j.e ? j.e.slice(0, 2) + ' ' : '') + j.n) + '</b><small>' + esc(j.g) + '</small>' +
           '<div class="z-datos"><span>Nivel: <b>' + esc(j.nivel) + '</b></span><span>Jugadores: <b>' + esc(j.j) + '</b></span><span>Duración: <b>' + esc(j.dur) + '</b></span></div>' +
           '<p>' + esc(corto(j.desc || j.ideal, 230)) + '</p><p><b>Ideal para:</b> ' + esc(corto(j.ideal, 150)) + '</p></div>',
         acciones: [{ t: 'Ver ficha completa', juego: j.id }, H.wa('¡Hola VR ZONE! 🎮 Quiero jugar ' + j.n + '. ¿Qué disponibilidad tienen?', 'Quiero jugar este')],

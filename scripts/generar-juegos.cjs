@@ -81,6 +81,13 @@ const sinTilde = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const limpiar = s => (s || '').replace(/​/g, '').replace(/\s*\n+\s*/g, ' ').replace(/\s{2,}/g, ' ').replace(/\s+([.,;:])/g, '$1').trim();
 const EMOJI = /(?:\p{Extended_Pictographic}|\p{Regional_Indicator})(?:[‍️⃣]|\p{Emoji_Modifier}|\p{Extended_Pictographic}|\p{Regional_Indicator})*/gu;
 
+// Carátula y tráiler de cada juego (scripts/juegos-medios.json, lo escribe notion-medios.cjs).
+const path = require('path');
+const MEDIOS = new Map();
+try { JSON.parse(fs.readFileSync(path.join(__dirname, 'juegos-medios.json'), 'utf8')).forEach(m => MEDIOS.set(m.id, m)); } catch (e) { /* sin medios */ }
+const ytId = u => { const m = String(u).match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([\w-]{11})/); return m ? m[1] : ''; };
+const mapaIds = {};
+
 const juegos = rows.map(r => {
   const bruto = r['Nombre del juego'];
   const emoji = (bruto.match(EMOJI) || []).join('');
@@ -101,15 +108,21 @@ const juegos = rows.map(r => {
   const jmax = +(j.split('–').pop()) || 1;
   if (jmax > 1 && !tags.includes('social')) tags.push('grupo');
   const id = sinTilde(n).replace(/&/g, 'y').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-  return { id, n, e: emoji, g, nivel: limpiar(r['Nivel']), j, jmax, dur, desc, destaca, ideal, tags, alias: ALIAS[n] || [] };
+  mapaIds[r.id] = id;
+  const medios = MEDIOS.get(r.id) || { videos: [] };
+  const img = fs.existsSync(path.join(__dirname, '..', 'assets', 'img', 'juegos', id + '.webp')) ? 1 : 0;
+  const yt = medios.videos.map(ytId).find(Boolean) || '';
+  return { id, n, e: emoji, g, nivel: limpiar(r['Nivel']), j, jmax, dur, desc, destaca, ideal, tags, alias: ALIAS[n] || [], img, yt };
 });
 
 const orden = { Principiante: 0, Intermedio: 1, Avanzado: 2 };
 juegos.sort((a, b) => orden[a.nivel] - orden[b.nivel] || a.n.localeCompare(b.n, 'es'));
 const faltan = Object.keys(ALIAS).filter(k => !juegos.some(x => x.n === k));
 if (faltan.length) console.log('ALIAS SIN JUEGO:', faltan);
+fs.writeFileSync(path.join(__dirname, 'mapa-ids.json'), JSON.stringify(mapaIds, null, 1));
 const cab = '// Catálogo de juegos de VR ZONE. GENERADO desde la base de Notion con scripts/generar-juegos.cjs: no editar a mano.\n' +
-  '// Campos: id, n (nombre), e (emoji), g (género), nivel, j (jugadores), jmax, dur, desc, destaca, ideal, tags, alias (para el chat).\n';
+  '// Campos: id, n (nombre), e (emoji), g (género), nivel, j (jugadores), jmax, dur, desc, destaca, ideal, tags, alias (para el chat),\n' +
+  '// img (1 si existe assets/img/juegos/<id>.webp, la carátula de Notion), yt (id de YouTube del tráiler).\n';
 fs.writeFileSync(out, cab + 'window.VRZ_JUEGOS = [\n' + juegos.map(x => JSON.stringify(x)).join(',\n') + '\n];\n');
 console.log('juegos', juegos.length, 'bytes', fs.statSync(out).size);
 const cuenta = {}; juegos.forEach(x => x.tags.forEach(t => (cuenta[t] = (cuenta[t] || 0) + 1)));

@@ -36,7 +36,7 @@
     "image": "https://edwincalderondev-rgb.github.io/vrzone/assets/img/og-vrzone.jpg",
     "telephone": "+57 301 335 0175",
     "foundingDate": "2018",
-    "address": { "@type": "PostalAddress", "streetAddress": "Cra. 21E #29L-20, Los Laureles", "addressLocality": "Santa Marta", "addressRegion": "Magdalena", "addressCountry": "CO" },
+    "address": { "@type": "PostalAddress", "streetAddress": "Cra. 21E #29L-24, Los Laureles", "addressLocality": "Santa Marta", "addressRegion": "Magdalena", "addressCountry": "CO" },
     "geo": { "@type": "GeoCoordinates", "latitude": 11.2209445, "longitude": -74.1883396 },
     "openingHoursSpecification": [
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "15:00", "closes": "20:30" },
@@ -47,7 +47,6 @@
   </script>
   <script src="assets/js/negocio.js" defer></script>
   <script src="assets/js/juegos.js" defer></script>
-  <script src="assets/js/fondo.js" defer></script>
   <script src="assets/js/sitio.js" defer></script>
   <script src="assets/js/zeta-kb.js" defer></script>
   <script src="assets/js/zeta-motor.js" defer></script>
@@ -91,33 +90,38 @@
 
   <a class="saltar" href="#contenido">Saltar al contenido</a>
 
-  <div class="mundo" data-modo="inicio" aria-hidden="true">
-    <canvas></canvas>
-    <div class="holograma"><svg viewBox="0 0 1200 596"><use href="#vr"/></svg></div>
-  </div>
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i><span class="aurora-rejilla"></span></div>
   <div class="grano" aria-hidden="true"></div>
 
   <header class="cabecera" id="cabecera">
     <div class="contenedor">
       <a class="marca" href="./" aria-label="VR ZONE, inicio"><svg class="marca-vr" viewBox="0 0 1200 596" aria-hidden="true"><use href="#vr"/></svg><span class="marca-zone" aria-hidden="true"><b>Z</b>ONE</span></a>
       <nav class="nav" id="nav" aria-label="Principal">
-        <a href="#sentir">Experiencias</a>
         <a href="#juegos">Juegos</a>
-        <a href="eventos.html">Eventos</a>
-        <a href="#resenas" class="opc">Reseñas</a>
+        <a href="#tarifas">Tarifas</a>
+        <a href="eventos.html" class="nav-destacado">🎉 Alquila el local</a>
+        <a href="#va-a-ti" class="opc">VR a domicilio</a>
         <a href="#ubicacion">Ubicación</a>
       </nav>
       <span class="estado" data-estado>Horario de hoy</span>
-      <a class="btn btn-primario" data-wa="¡Hola VR ZONE! 👋 Quiero vivir la experiencia de realidad virtual. ¿Qué disponibilidad tienen?" href="https://wa.me/573013350175">
-        <svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar
-      </a>
+      <div class="reservar-menu">
+        <button class="btn btn-primario" type="button" aria-expanded="false" aria-controls="menu-reservar"><svg aria-hidden="true"><use href="#i-calendario"/></svg>Reservar <span class="flechita" aria-hidden="true">▾</span></button>
+        <div class="reservar-opciones" id="menu-reservar" hidden>
+          <a data-wa="¡Hola VR ZONE! 👋 Quiero separar un turno para jugar realidad virtual. ¿Qué disponibilidad tienen?" href="https://wa.me/573013350175"><span class="ro-ic" aria-hidden="true">🎮</span><span><b>Jugar un rato</b><small>Turnos desde $8.000 · por WhatsApp</small></span></a>
+          <a href="eventos.html"><span class="ro-ic" aria-hidden="true">🎉</span><span><b>Alquilar el local completo</b><small>Cumpleaños y eventos privados · tarifas y reserva</small></span></a>
+          <a href="#va-a-ti"><span class="ro-ic" aria-hidden="true">🚚</span><span><b>Llevar la VR a tu evento</b><small>Colegios, empresas, ferias y fiestas</small></span></a>
+        </div>
+      </div>
       <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span></button>
     </div>
   </header>
 
   <main id="contenido">
     <!-- HERO -->
-    <section class="hero" aria-labelledby="titulo-hero">
+    <section class="hero hero--video" aria-labelledby="titulo-hero">
+      <div class="hero-media" aria-hidden="true">
+        <video class="hero-video" muted loop playsinline autoplay preload="auto" poster="assets/video/hero-inicio.webp"><source src="assets/video/hero-inicio.mp4" type="video/mp4"></video>
+      </div>
       <div class="contenedor">
         <div class="hero-texto">
           <span class="sobretitulo">Santa Marta · Desde 2018</span>
@@ -129,6 +133,7 @@
             </a>
             <a class="btn btn-grande" href="#juegos">Ver los 50 juegos <svg aria-hidden="true"><use href="#i-flecha"/></svg></a>
           </div>
+          <a class="hero-evento-link" href="eventos.html"><span aria-hidden="true">🎉</span> ¿Cumpleaños o evento? <b>Alquila el local completo</b> <span aria-hidden="true">→</span></a>
           <ul class="pruebas">
             <li><span class="estrellas" aria-hidden="true">★★★★★</span> 4,5 en Google</li>
             <li><svg aria-hidden="true"><use href="#i-visor"/></svg> Meta Quest 3</li>
@@ -155,6 +160,7 @@
         </div>
         <div class="sentir">
           <article class="sentir-card vidrio borde-neon c-terror revelar">
+            <img class="sentir-img" src="assets/img/sentir-gritar.webp" alt="Joven con visor de realidad virtual gritando de miedo bajo luz roja" width="768" height="512" loading="lazy" decoding="async">
             <span class="icono"><svg aria-hidden="true"><use href="#i-fantasma"/></svg></span>
             <h3>Gritar.</h3>
             <p>El zombi no está en la pantalla: está detrás de ti. Terror que se siente en la nuca.</p>
@@ -162,6 +168,7 @@
             <a class="ver" href="#juegos" data-filtro="terror">Ver juegos de terror</a>
           </article>
           <article class="sentir-card vidrio borde-neon c-volar revelar">
+            <img class="sentir-img" src="assets/img/sentir-volar.webp" alt="Joven con visor de realidad virtual con los brazos abiertos como si volara entre luces cian" width="768" height="512" loading="lazy" decoding="async">
             <span class="icono"><svg aria-hidden="true"><use href="#i-cohete"/></svg></span>
             <h3>Volar.</h3>
             <p>Despega como Iron Man, enfrenta titanes o súbete a una montaña rusa imposible.</p>
@@ -169,6 +176,7 @@
             <a class="ver" href="#juegos" data-filtro="accion">Ver juegos de acción</a>
           </article>
           <article class="sentir-card vidrio borde-neon c-reir revelar">
+            <img class="sentir-img" src="assets/img/sentir-reir.webp" alt="Dos amigos muertos de la risa mientras uno juega con visor de realidad virtual" width="768" height="512" loading="lazy" decoding="async">
             <span class="icono"><svg aria-hidden="true"><use href="#i-risa"/></svg></span>
             <h3>Reír.</h3>
             <p>Sé un gato que tumba todo, el peor empleado del mundo o un gorila que trepa paredes.</p>
@@ -176,6 +184,7 @@
             <a class="ver" href="#juegos" data-filtro="risa">Ver juegos para reír</a>
           </article>
           <article class="sentir-card vidrio borde-neon c-competir revelar">
+            <img class="sentir-img" src="assets/img/sentir-competir.webp" alt="Dos jugadores con visores de realidad virtual frente a frente en un duelo" width="768" height="512" loading="lazy" decoding="async">
             <span class="icono"><svg aria-hidden="true"><use href="#i-trofeo"/></svg></span>
             <h3>Competir.</h3>
             <p>Reta a tus amigos: hasta 3 visores al mismo tiempo, en el mismo mundo.</p>
@@ -191,7 +200,6 @@
       <figure class="banda-foto revelar">
         <img src="assets/img/amigos-vr.webp" srcset="assets/img/amigos-vr-768.webp 768w, assets/img/amigos-vr.webp 1536w" sizes="(max-width: 640px) 172vw, min(1400px, 100vw)" alt="Tres amigos en una sala de realidad virtual iluminada con neón: dos con visores gritan y estiran los brazos y el tercero se ríe mientras los graba" width="1536" height="1024" loading="lazy" decoding="async">
         <figcaption><span class="sobretitulo">Así se vive</span><strong>Gritos garantizados.<br><span class="grad-texto">Risas también.</span></strong><p>Y el video de la reacción de tu amigo, para la historia (literal).</p></figcaption>
-        <span class="ilustrativa">Foto ilustrativa</span>
       </figure>
     </section>
 
@@ -209,6 +217,44 @@
           <li class="paso vidrio borde-neon revelar"><span class="num">03</span><h3>Elige tu mundo</h3><p>Arranca suave con First Steps o lánzate de una a la tabla de Richie's Plank. Tú pones el nivel.</p></li>
           <li class="paso vidrio borde-neon revelar"><span class="num">04</span><h3>Cuéntalo (o muéstralo)</h3><p>Las reacciones en realidad virtual son el mejor video para tus redes. Avisados quedan.</p></li>
         </ol>
+      </div>
+    </section>
+
+    <!-- TARIFAS -->
+    <section class="seccion" id="tarifas" aria-labelledby="t-tarifas">
+      <div class="contenedor">
+        <div class="cabeza revelar">
+          <span class="sobretitulo">Tarifas para jugar</span>
+          <h2 id="t-tarifas">Desde $8.000 ya estás en otro mundo.</h2>
+          <p>Escoge cuánto tiempo quieres vivir la realidad virtual, elige tu juego y ponte el visor. Así de simple.</p>
+        </div>
+        <div class="turnos">
+          <article class="turno vidrio borde-neon revelar"><span class="turno-t">Experiencia inicial</span><span class="turno-p">$8.000</span><span class="turno-d">5 a 10 minutos</span><p>Para probar por primera vez: ¿te atreves con la tabla de Richie's Plank?</p></article>
+          <article class="turno vidrio borde-neon revelar"><span class="turno-t">15 minutos</span><span class="turno-p">$10.000</span><span class="turno-d">Un juego completo</span><p>Suficiente para gritar, reír o salir volando una vez.</p></article>
+          <article class="turno vidrio borde-neon revelar"><span class="turno-t">30 minutos</span><span class="turno-p">$18.000</span><span class="turno-d">Para meterte de lleno</span><p>Una aventura, un shooter o una ronda de terror de verdad.</p></article>
+          <article class="turno turno--top vidrio borde-neon revelar"><span class="cinta-tarifa">Mejor precio por minuto</span><span class="turno-t">1 hora</span><span class="turno-p">$30.000</span><span class="turno-d">Sin afán</span><p>Prueba varios mundos y vuelve al que más te gustó.</p></article>
+        </div>
+        <div class="turnos-cta revelar">
+          <a class="btn btn-primario" data-wa="¡Hola VR ZONE! 👋 Quiero separar un turno para jugar realidad virtual. ¿Qué disponibilidad tienen?" href="https://wa.me/573013350175"><svg aria-hidden="true"><use href="#i-wa"/></svg>Separar mi turno</a>
+          <a class="btn" href="eventos.html">¿Es para un cumpleaños? Alquila el local →</a>
+        </div>
+        <div class="sellos vidrio borde-neon revelar">
+          <div class="sellos-texto">
+            <span class="sobretitulo">Tarjeta de sellos</span>
+            <h3>Vuelve… y juega gratis.</h3>
+            <p>En cada visita te ganas un sello. Llena tu tarjeta de 6 sellos y reclama tiempo gratis, cada vez más:</p>
+            <ol class="premios">
+              <li><b>1.ª tarjeta llena</b><span>15 minutos gratis</span></li>
+              <li><b>2.ª tarjeta llena</b><span>30 minutos gratis</span></li>
+              <li><b>3.ª tarjeta llena</b><span>1 hora gratis</span></li>
+            </ol>
+          </div>
+          <div class="tarjeta-sellos" aria-hidden="true">
+            <div class="ts-cab"><svg viewBox="0 0 1200 596"><use href="#vr"/></svg><span><b>Z</b>ONE · Tarjeta de sellos</span></div>
+            <div class="ts-casillas"><i class="lleno"></i><i class="lleno"></i><i class="lleno"></i><i class="lleno"></i><i></i><i></i></div>
+            <div class="ts-pie">¡Te faltan 2 para jugar gratis! 🎁</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -314,6 +360,7 @@
             </div>
           </div>
           <div class="ruleta-pantalla" aria-live="polite">
+            <img id="ruleta-img" alt="" width="640" height="360" hidden>
             <div class="emoji" id="ruleta-emoji">🎲</div>
             <strong id="ruleta-nombre">¿Qué te tocará?</strong>
             <span id="ruleta-genero">50 juegos esperando</span>
@@ -395,10 +442,10 @@
         </div>
         <div class="videos">
           <div class="video revelar" data-video="w1L5PhZLrY8">
-            <button type="button" aria-label="Reproducir video: Vive la experiencia VR ZONE"><span class="play"><svg aria-hidden="true"><use href="#i-play"/></svg></span><strong>Vive la experiencia</strong><span>Ejercicio sin darte cuenta 🔥</span></button>
+            <button type="button" aria-label="Reproducir video: Vive la experiencia VR ZONE"><img class="video-poster" src="assets/img/video-experiencia.webp" alt="" width="540" height="960" loading="lazy"><span class="play"><svg aria-hidden="true"><use href="#i-play"/></svg></span><strong>Vive la experiencia</strong><span>Ejercicio sin darte cuenta 🔥</span></button>
           </div>
           <div class="video revelar" data-video="CNCGbFGX4RY">
-            <button type="button" aria-label="Reproducir video: un cumpleaños en VR ZONE"><span class="play"><svg aria-hidden="true"><use href="#i-play"/></svg></span><strong>Un cumpleaños en VR ZONE</strong><span>Torta, globos y otra realidad 🎂</span></button>
+            <button type="button" aria-label="Reproducir video: un cumpleaños en VR ZONE"><img class="video-poster" src="assets/img/video-cumple.webp" alt="" width="540" height="960" loading="lazy"><span class="play"><svg aria-hidden="true"><use href="#i-play"/></svg></span><strong>Un cumpleaños en VR ZONE</strong><span>Torta, globos y otra realidad 🎂</span></button>
           </div>
           <div class="redes-card vidrio borde-neon revelar">
             <div>
@@ -431,7 +478,30 @@
             <li>Universidades</li>
             <li>Colegios</li>
           </ul>
-          <a class="btn" data-wa="Hola VR ZONE, quiero cotizar una experiencia de realidad virtual para mi evento, empresa o colegio." href="https://wa.me/573013350175"><svg aria-hidden="true"><use href="#i-wa"/></svg>Llévanos a tu evento</a>
+          <a class="btn" href="#va-a-ti">Llévanos a tu evento →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VR ZONE VA A TI -->
+    <section class="seccion" id="va-a-ti" aria-labelledby="t-va">
+      <div class="contenedor va-a-ti">
+        <figure class="va-foto revelar"><img src="assets/img/va-empresa.webp" alt="Empleados en una pausa activa con visores de realidad virtual mientras sus compañeros ríen y aplauden" width="1536" height="1024" loading="lazy" decoding="async"><figcaption>Pausa activa en empresa</figcaption></figure>
+        <div class="revelar">
+          <span class="sobretitulo">VR ZONE va a ti</span>
+          <h2 id="t-va">¿No pueden venir? Llevamos la realidad virtual a donde estén.</h2>
+          <p>Con agendamiento previo, llegamos con los visores y nuestro equipo a tu evento:</p>
+          <ul class="va-lista">
+            <li><span aria-hidden="true">🎂</span><div><b>Cumpleaños en tu casa o salón</b><small>La fiesta con realidad virtual, sin moverte.</small></div></li>
+            <li><span aria-hidden="true">🏫</span><div><b>Colegios</b><small>Experiencias educativas y jornadas de integración.</small></div></li>
+            <li><span aria-hidden="true">🎓</span><div><b>Universidades</b><small>Semanas culturales, bienestar universitario y ferias.</small></div></li>
+            <li><span aria-hidden="true">🏪</span><div><b>Ferias y activaciones de marca</b><small>La experiencia que detiene a la gente frente a tu stand.</small></div></li>
+            <li><span aria-hidden="true">💼</span><div><b>Empresas</b><small>Pausas activas y lúdicas que recargan al equipo.</small></div></li>
+          </ul>
+          <div class="hero-cta">
+            <a class="btn btn-primario" data-wa="Hola VR ZONE 👋 Quiero cotizar realidad virtual para un evento fuera del local (colegio, universidad, empresa, feria o cumpleaños)." href="https://wa.me/573013350175"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotizar VR a domicilio</a>
+          </div>
+          <p class="aviso">Escríbenos con anticipación para agendar la fecha.</p>
         </div>
       </div>
     </section>
@@ -445,7 +515,7 @@
         </div>
         <div class="ubicacion">
           <div class="ubic-info vidrio borde-neon revelar">
-            <div class="dato-linea"><svg aria-hidden="true"><use href="#i-pin"/></svg><p><strong>Cra. 21E #29L-20, Los Laureles, Santa Marta</strong>Entrada a la Universidad del Magdalena, diagonal a donde termina la paredilla de Cootransmag.</p></div>
+            <div class="dato-linea"><svg aria-hidden="true"><use href="#i-pin"/></svg><p><strong>Cra. 21E #29L-24, Los Laureles, Santa Marta</strong>Entrada a la Universidad del Magdalena, diagonal a donde termina la paredilla de Cootransmag.</p></div>
             <div class="dato-linea"><svg aria-hidden="true"><use href="#i-reloj"/></svg>
               <table class="horario" id="horario">
                 <caption class="solo-lector">Horario de atención</caption>
@@ -478,7 +548,7 @@
           <details><summary>¿Desde qué edad se puede jugar?</summary><div class="resp"><p>Los fabricantes de los visores Meta Quest los recomiendan desde los 10 años. Si vienes con niños, escríbenos y te sugerimos las experiencias más adecuadas para su edad.</p></div></details>
           <details><summary>¿La realidad virtual marea?</summary><div class="resp"><p>A algunas personas les pasa al principio, sobre todo en juegos con mucho desplazamiento. Por eso cada juego tiene nivel: empieza por los de nivel principiante y, si sientes mareo, haz una pausa. Se pasa rápido.</p></div></details>
           <details><summary>¿Puedo jugar con gafas?</summary><div class="resp"><p>Sí. El Meta Quest 3 está diseñado para usarse con gafas: trae un separador que deja espacio para la mayoría de las monturas.</p></div></details>
-          <details><summary>¿Cuánto cuesta?</summary><div class="resp"><p>Las tarifas por tiempo de juego y las promociones del momento te las damos al instante por <a data-wa="Hola VR ZONE, ¿cuánto cuesta jugar en realidad virtual?" href="https://wa.me/573013350175">WhatsApp</a>. Si es para un evento privado, mira los <a href="eventos.html#tarifas">paquetes de alquiler del local</a>.</p></div></details>
+          <details><summary>¿Cuánto cuesta?</summary><div class="resp"><p>La experiencia inicial (5 a 10 minutos) cuesta $8.000; 15 minutos, $10.000; 30 minutos, $18.000, y 1 hora, $30.000. Si es para un evento privado, mira los <a href="eventos.html#tarifas">paquetes de alquiler del local</a>.</p></div></details>
           <details><summary>¿Podemos jugar varios al mismo tiempo?</summary><div class="resp"><p>Sí: hay 3 visores Meta Quest 3, además de Xbox Series S y la máquina arcade. Varios juegos del catálogo son multijugador, para hasta 3 personas.</p></div></details>
           <details><summary>¿Hay que reservar?</summary><div class="resp"><p>Te recomendamos escribirnos antes por WhatsApp para separar tu turno, sobre todo si vienes en grupo o en fin de semana.</p></div></details>
         </div>
@@ -520,7 +590,7 @@
           <h4>Contacto</h4>
           <ul>
             <li><a data-wa="¡Hola VR ZONE! 👋" href="https://wa.me/573013350175">WhatsApp 301 335 0175</a></li>
-            <li><a href="https://maps.app.goo.gl/PvHfKisYn3ueZZKz9" target="_blank" rel="noopener">Cra. 21E #29L-20, Los Laureles</a></li>
+            <li><a href="https://maps.app.goo.gl/PvHfKisYn3ueZZKz9" target="_blank" rel="noopener">Cra. 21E #29L-24, Los Laureles</a></li>
             <li><a href="https://www.instagram.com/vrzoneplay" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@vrzoneplay" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/VRZoneSM" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@vrzonesm" target="_blank" rel="noopener">YouTube</a></li>
           </ul>
         </div>

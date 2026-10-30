@@ -11,7 +11,7 @@
     desde: 2018,
     telefono: '573013350175',
     telefonoVisible: '301 335 0175',
-    direccion: 'Cra. 21E #29L-20, Los Laureles, Santa Marta',
+    direccion: 'Cra. 21E #29L-24, Los Laureles, Santa Marta',
     referencia: 'Entrada a la Universidad del Magdalena, diagonal a donde termina la paredilla de Cootransmag',
     mapa: 'https://maps.app.goo.gl/PvHfKisYn3ueZZKz9',
     coords: [11.2209445, -74.1883396],
@@ -24,6 +24,17 @@
     historiasEventos: 'https://www.instagram.com/stories/highlights/18089576125534505/',
     // Lunes a viernes 3:00–8:30 p. m.; sábados, domingos y festivos 3:00–9:00 p. m. (minutos desde medianoche).
     horario: { semana: [900, 1230], finde: [900, 1260] },
+    // Tarifas por turno de juego en realidad virtual (las dio Edwin el 2026-10-30).
+    turnos: [
+      { nombre: 'Experiencia inicial', tiempo: '5 a 10 minutos', precio: 8000 },
+      { nombre: '15 minutos', tiempo: '15 minutos', precio: 10000 },
+      { nombre: '30 minutos', tiempo: '30 minutos', precio: 18000 },
+      { nombre: '1 hora', tiempo: '1 hora', precio: 30000 }
+    ],
+    // Tarjeta de sellos: un sello por visita; al llenarla se reclama tiempo gratis, que sube con cada tarjeta llena.
+    sellos: { casillas: 6, premios: ['15 minutos gratis', '30 minutos gratis', '1 hora gratis'] },
+    // VR ZONE va a ti: experiencias fuera del local, siempre con contacto previo.
+    domicilio: ['Cumpleaños en tu casa o salón', 'Colegios', 'Universidades', 'Ferias y activaciones de marca', 'Empresas: pausas activas y lúdicas'],
     evento: {
       tarifas: { 1: 140000, 2: 240000, 3: 310000, 4: 400000 },
       horaAdicional: 100000,

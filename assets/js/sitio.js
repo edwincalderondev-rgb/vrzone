@@ -83,7 +83,9 @@
     const t = principal(j);
     b.style.setProperty('--h', TONOS[t]);
     b.innerHTML =
-      '<div class="juego-arte"><span class="tag"></span><span class="emoji" aria-hidden="true"></span></div>' +
+      '<div class="juego-arte' + (j.img ? ' con-img' : '') + '">' +
+      (j.img ? '<img src="assets/img/juegos/' + j.id + '.webp" alt="" width="640" height="360" loading="lazy" decoding="async">' : '') +
+      '<span class="tag"></span><span class="emoji" aria-hidden="true"></span>' + (j.yt ? '<span class="tiene-trailer" aria-hidden="true">▶ Tráiler</span>' : '') + '</div>' +
       '<div class="juego-cuerpo"><h3></h3><p class="genero"></p><div class="meta">' +
       '<span class="nivel" data-n="' + NIVEL[j.nivel] + '" title="Nivel ' + j.nivel + '"><i></i><i></i><i></i></span>' +
       '<span class="dur"></span><span class="jug"></span></div></div>';
@@ -147,7 +149,27 @@
     const j = JUEGOS.find(x => x.id === id);
     if (!j || !modal) return;
     const t = principal(j);
-    $('#modal-arte').style.setProperty('--h', TONOS[t]);
+    const arte = $('#modal-arte');
+    arte.style.setProperty('--h', TONOS[t]);
+    arte.querySelectorAll('img, iframe, .ver-trailer').forEach(e => e.remove());
+    arte.classList.toggle('con-img', !!j.img);
+    arte.classList.remove('reproduciendo');
+    if (j.img) { const im = new Image(); im.src = 'assets/img/juegos/' + j.id + '.webp'; im.alt = 'Carátula de ' + j.n; arte.prepend(im); }
+    if (j.yt) {
+      const bt = document.createElement('button');
+      bt.type = 'button';
+      bt.className = 'ver-trailer';
+      bt.innerHTML = '<svg aria-hidden="true"><use href="#i-play"/></svg>Ver tráiler';
+      bt.addEventListener('click', () => {
+        const f = document.createElement('iframe');
+        f.src = 'https://www.youtube-nocookie.com/embed/' + j.yt + '?autoplay=1&rel=0&playsinline=1';
+        f.title = 'Tráiler de ' + j.n;
+        f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+        arte.append(f);
+        arte.classList.add('reproduciendo');
+      });
+      arte.append(bt);
+    }
     $('#modal-tag').textContent = ETIQUETAS[t];
     $('#modal-emoji').textContent = j.e || '🎮';
     $('#modal-titulo').textContent = j.n;
@@ -165,7 +187,10 @@
   }
   if (modal) {
     modal.addEventListener('click', e => { if (e.target === modal || e.target.closest('[data-cerrar]')) modal.close(); });
-    modal.addEventListener('close', () => { if (location.hash.startsWith('#j=')) history.replaceState(null, '', location.pathname + location.search); });
+    modal.addEventListener('close', () => {
+      $$('#modal-arte iframe').forEach(f => f.remove()); // al cerrar se corta el tráiler
+      if (location.hash.startsWith('#j=')) history.replaceState(null, '', location.pathname + location.search);
+    });
     const desdeHash = () => { const m = location.hash.match(/^#j=([\w-]+)/); if (m) abrirJuego(m[1]); };
     addEventListener('hashchange', desdeHash);
     desdeHash();
@@ -203,7 +228,9 @@
         genero.textContent = j.g;
         if (paso++ < total) return setTimeout(tick, 40 + paso * paso * 0.9);
         pantalla.classList.remove('girando');
-        genero.textContent = j.nivel + ' · ' + j.dur + ' · ' + (paso > 1 ? '¡Te tocó!' : '');
+        genero.textContent = j.nivel + ' · ' + j.dur + (paso > 1 ? ' · ¡Te tocó!' : '');
+        const foto = $('#ruleta-img');
+        if (foto) { foto.hidden = !j.img; if (j.img) { foto.src = 'assets/img/juegos/' + j.id + '.webp'; foto.alt = 'Carátula de ' + j.n; } }
         wa.hidden = false;
         wa.href = VRZ.wa(textoWaJuego(j) + ' (me salió en la ruleta 🎲)');
         wa.target = '_blank';
@@ -230,6 +257,35 @@
       $('small', fig).textContent = '★'.repeat(r.estrellas) + ' · Reseña de Google · ' + r.anio;
       listaRes.append(fig);
     });
+  }
+
+  // ---------- Botón «Reservar» con opciones ----------
+  $$('.reservar-menu').forEach(m => {
+    const b = $('button', m), lista = $('.reservar-opciones', m);
+    const poner = abierto => { lista.hidden = !abierto; b.setAttribute('aria-expanded', String(abierto)); };
+    b.addEventListener('click', e => { e.stopPropagation(); poner(lista.hidden); if (!lista.hidden) $('a', lista).focus(); });
+    document.addEventListener('click', e => { if (!m.contains(e.target)) poner(false); });
+    m.addEventListener('keydown', e => { if (e.key === 'Escape') { poner(false); b.focus(); } });
+    $$('a', lista).forEach(a => a.addEventListener('click', () => poner(false)));
+  });
+
+  // ---------- Video de fondo del hero (sin movimiento si el visitante lo pidió) ----------
+  const quietoVideo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $$('.hero-video').forEach(v => {
+    if (quietoVideo) { v.removeAttribute('autoplay'); v.pause(); return; }
+    v.play().catch(() => { /* sin autoplay: queda el póster */ });
+    document.addEventListener('visibilitychange', () => (document.hidden ? v.pause() : v.play().catch(() => {})));
+  });
+
+  // ---------- Fondo «aurora»: la rejilla de puntos acompaña el scroll (paralaje suave) ----------
+  const rejilla = $('.aurora-rejilla');
+  if (rejilla && !quietoVideo) {
+    let pend = false;
+    addEventListener('scroll', () => {
+      if (pend) return;
+      pend = true;
+      requestAnimationFrame(() => { rejilla.style.setProperty('--sy', -(scrollY * 0.12 % 34).toFixed(1) + 'px'); pend = false; });
+    }, { passive: true });
   }
 
   // ---------- Videos: YouTube solo se carga al pulsar ----------

@@ -71,7 +71,7 @@
         el.innerHTML = '<div class="confeti" aria-hidden="true">' + confeti + '</div>' + arte() +
           '<div class="contenido"><span class="inv-arriba">¡Estás invitado!</span><span class="inv-marca">VR <span>ZONE</span></span>' +
           '<span class="inv-pill">Confirmación de reserva</span><span class="inv-nombre"></span><span class="inv-dato inv-fecha"></span>' +
-          '<span class="inv-dato inv-hora"></span><span class="inv-dir">📍 Cra. 21E #29L-20</span></div><span class="inv-lema"></span>';
+          '<span class="inv-dato inv-hora"></span><span class="inv-dir">📍 Cra. 21E #29L-24</span></div><span class="inv-lema"></span>';
         $$('.confeti i', el).forEach(i => {
           i.style.setProperty('--c', i.dataset.c);
           i.style.setProperty('--x', i.dataset.x + '%');

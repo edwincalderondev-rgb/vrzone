@@ -41,13 +41,14 @@ const CASOS = [
   ['te amo', 'amor'], ['eres una inutil', 'insulto'], ['que hora es', 'hora'], ['que dia es hoy', 'fecha'], ['que calor', 'calor'], ['pastilla roja', 'matrix'],
   ['juguemos', 'ppt-inicio'], ['cual es tu juego favorito', 'favorito'], ['gracias', 'gracias'], ['chao', 'adios'], ['me llamo Laura', 'nombre'],
   ['hola, cuanto cuesta alquilar el local 4 horas', 'precio-evento'], ['cual es el numero de whatsapp', 'contacto'], ['tienen instagram', 'redes'], ['quiero hablar con una persona', 'contacto'],
-  ['asdfgh', 'no-entendi'], ['quien gano el mundial', 'no-entendi'], ['estoy aburrido', 'aburrido'], ['guardan mis datos?', 'privacidad']
+  ['como funciona la tarjeta de sellos', 'sellos'], ['puedo jugar gratis?', 'sellos'], ['cuanto cuestan 30 minutos', 'precio-jugar'], ['hacen pausas activas en empresas', 'empresas'], ['pueden llevar la vr a una pausa activa', 'activaciones'], ['pueden venir a un cumpleanos en mi casa', 'activaciones'], ['asdfgh', 'no-entendi'], ['quien gano el mundial', 'no-entendi'], ['estoy aburrido', 'aburrido'], ['guardan mis datos?', 'privacidad']
 ];
 const CONVERSACIONES = [
   { pasos: ['quiero reservar el local', 'este sábado', '4 pm', '3 horas', 'Sofía'], fin: 'reserva-lista', contiene: ['$310.000', '$155.000', 'Sofía'] },
   { pasos: ['quiero reservar el local', '15/12', 'a las 5', 'hasta las 9', 'Daniel'], fin: 'reserva-lista', contiene: ['$400.000', '5:00 p. m.', '9:00 p. m.'] },
   { pasos: ['quiero reservar el local', 'cancelar'], fin: 'reserva-cancelada' },
   { pasos: ['quiero reservar el local', 'dónde quedan?'], fin: 'ubicacion', contiene: ['volviendo a tu reserva'] },
+  { pasos: ['cuanto cuesta jugar 30 minutos'], fin: 'precio-jugar', contiene: ['30 minutos: $18.000', '$8.000'] },
   { pasos: ['cuanto cuesta alquilar el local', 'y con 5 horas?'], fin: 'precio-evento', contiene: ['$500.000'] },
   { pasos: ['algo de terror', 'otro'], fin: 'otros' },
   { pasos: ['tienen resident evil', 'cuéntame más'], fin: 'juego-mas' },

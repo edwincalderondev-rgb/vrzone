@@ -128,3 +128,7 @@
 @media (prefers-reduced-motion: reduce) {
   .zeta-burbuja, .zeta-lanzador::before, .z-av .z-antena { animation: none; }
 }
+/* Carátulas de los juegos dentro del chat (ronda 2) */
+.z-juego .z-e { width: 64px; }
+.z-juego .z-e img { width: 64px; height: 36px; object-fit: cover; border-radius: 8px; display: block; }
+.z-ficha .z-portada { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }

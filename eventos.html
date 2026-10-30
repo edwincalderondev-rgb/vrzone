@@ -27,7 +27,6 @@
   <link rel="stylesheet" href="assets/css/zeta.css">
   <script src="assets/js/negocio.js" defer></script>
   <script src="assets/js/juegos.js" defer></script>
-  <script src="assets/js/fondo.js" defer></script>
   <script src="assets/js/sitio.js" defer></script>
   <script src="assets/js/eventos.js" defer></script>
   <script src="assets/js/zeta-kb.js" defer></script>
@@ -72,7 +71,7 @@
 
   <a class="saltar" href="#contenido">Saltar al contenido</a>
 
-  <div class="mundo" data-modo="fiesta" aria-hidden="true"><canvas></canvas></div>
+  <div class="aurora aurora--fiesta" aria-hidden="true"><i></i><i></i><i></i><span class="aurora-rejilla"></span></div>
   <div class="grano" aria-hidden="true"></div>
 
   <header class="cabecera" id="cabecera">
@@ -83,7 +82,7 @@
         <a href="#incluye">Qué incluye</a>
         <a href="#tarifas">Tarifas</a>
         <a href="#reservar">Reservar</a>
-        <a href="#preguntas" class="opc">Preguntas</a>
+        <a href="#va-a-ti" class="opc">VR a domicilio</a>
       </nav>
       <span class="estado" data-estado>Horario de hoy</span>
       <a class="btn btn-primario" href="#reservar"><svg aria-hidden="true"><use href="#i-calendario"/></svg>Separar fecha</a>
@@ -93,7 +92,10 @@
 
   <main id="contenido">
     <!-- HERO -->
-    <section class="hero hero-evento" aria-labelledby="titulo-hero">
+    <section class="hero hero-evento hero--video" aria-labelledby="titulo-hero">
+      <div class="hero-media" aria-hidden="true">
+        <video class="hero-video" muted loop playsinline autoplay preload="auto" poster="assets/video/hero-eventos.webp"><source src="assets/video/hero-eventos.mp4" type="video/mp4"></video>
+      </div>
       <div class="contenedor">
         <div class="hero-texto">
           <span class="sobretitulo">Alquiler del local · Privado · Climatizado</span>
@@ -111,6 +113,22 @@
         </div>
       </div>
       <a class="flecha-abajo" href="#incluye" aria-label="Bajar a qué incluye"><span></span>Fiesta</a>
+    </section>
+
+    <!-- VIDEO DESTACADO -->
+    <section class="seccion" id="mira" aria-labelledby="t-mira">
+      <div class="contenedor video-destacado">
+        <div class="video video--grande revelar" data-video="CNCGbFGX4RY">
+          <button type="button" aria-label="Reproducir video: así se vive un cumpleaños en VR ZONE"><img class="video-poster" src="assets/img/video-cumple.webp" alt="" width="540" height="960" loading="lazy"><span class="play"><svg aria-hidden="true"><use href="#i-play"/></svg></span><strong>Así se vive un cumpleaños en VR ZONE</strong><span>Dale play 🎂 · Video real</span></button>
+        </div>
+        <div class="revelar">
+          <span class="sobretitulo">Mira esto primero</span>
+          <h2 id="t-mira">Un cumpleaños de verdad, en VR ZONE.</h2>
+          <p>Neón, globos, torta y realidad virtual: así se ve una fiesta cuando la haces en otra realidad. Dale play y empieza a imaginar la tuya.</p>
+          <ul class="lista-mini"><li>El local completo, solo para tu grupo</li><li>3 visores Meta Quest 3 funcionando a la vez</li><li>Tu música en las TVs y el proyector</li></ul>
+          <div class="hero-cta"><a class="btn btn-primario" href="#reservar"><svg aria-hidden="true"><use href="#i-calendario"/></svg>Quiero mi fecha</a><a class="btn" href="https://www.instagram.com/stories/highlights/18089576125534505/" target="_blank" rel="noopener">Más eventos en Instagram ↗</a></div>
+        </div>
+      </div>
     </section>
 
     <!-- QUÉ INCLUYE -->
@@ -215,7 +233,6 @@
       <figure class="banda-foto revelar">
         <img src="assets/img/fiesta-vr.webp" srcset="assets/img/fiesta-vr-768.webp 768w, assets/img/fiesta-vr.webp 1536w" sizes="(max-width: 640px) 172vw, min(1400px, 100vw)" alt="Fiesta de cumpleaños en una sala de realidad virtual con globos y luces neón: la cumpleañera juega con un visor mientras sus amigos la animan" width="1536" height="1024" loading="lazy" decoding="async">
         <figcaption><span class="sobretitulo">Tu fiesta, otra realidad</span><strong>El cumpleaños del que<br><span class="grad-texto">van a hablar todo el año.</span></strong></figcaption>
-        <span class="ilustrativa">Foto ilustrativa</span>
       </figure>
     </section>
 
@@ -227,10 +244,10 @@
           <h2 id="t-ideas">No es solo para cumpleaños.</h2>
         </div>
         <div class="usos">
-          <article class="uso vidrio borde-neon revelar"><span class="emoji-grande" aria-hidden="true">🎂</span><h3>Cumpleaños</h3><p>Niños, adolescentes o adultos: el cumpleaños del que van a hablar todo el año.</p></article>
-          <article class="uso vidrio borde-neon revelar"><span class="emoji-grande" aria-hidden="true">🍕</span><h3>Reuniones con amigos</h3><p>El parche de siempre, en un lugar que no es el de siempre.</p></article>
-          <article class="uso vidrio borde-neon revelar"><span class="emoji-grande" aria-hidden="true">🎓</span><h3>Eventos académicos</h3><p>Anatomía, astronomía o idiomas en realidad virtual: la clase que nadie olvida.</p></article>
-          <article class="uso vidrio borde-neon revelar"><span class="emoji-grande" aria-hidden="true">💼</span><h3>Eventos empresariales</h3><p>Integraciones y team building con retos en equipo que sí rompen el hielo.</p></article>
+          <article class="uso vidrio borde-neon revelar"><img class="uso-img" src="assets/img/fiesta-vr-768.webp" alt="" width="768" height="512" loading="lazy" decoding="async"><span class="emoji-grande" aria-hidden="true">🎂</span><h3>Cumpleaños</h3><p>Niños, adolescentes o adultos: el cumpleaños del que van a hablar todo el año.</p></article>
+          <article class="uso vidrio borde-neon revelar"><img class="uso-img" src="assets/img/amigos-vr-768.webp" alt="" width="768" height="512" loading="lazy" decoding="async"><span class="emoji-grande" aria-hidden="true">🍕</span><h3>Reuniones con amigos</h3><p>El parche de siempre, en un lugar que no es el de siempre.</p></article>
+          <article class="uso vidrio borde-neon revelar"><img class="uso-img" src="assets/img/video-experiencia.webp" alt="" width="540" height="960" loading="lazy" decoding="async"><span class="emoji-grande" aria-hidden="true">🎓</span><h3>Eventos académicos</h3><p>Anatomía, astronomía o idiomas en realidad virtual: la clase que nadie olvida.</p></article>
+          <article class="uso vidrio borde-neon revelar"><img class="uso-img" src="assets/img/va-empresa-768.webp" alt="" width="768" height="512" loading="lazy" decoding="async"><span class="emoji-grande" aria-hidden="true">💼</span><h3>Eventos empresariales</h3><p>Integraciones y team building con retos en equipo que sí rompen el hielo.</p></article>
         </div>
       </div>
     </section>
@@ -245,10 +262,7 @@
           </div>
           <div class="nota-google"><span class="num">4,5</span><div><span class="estrellas" aria-hidden="true">★★★★½</span><small>11 opiniones en Google</small></div></div>
         </div>
-        <div class="videos">
-          <div class="video revelar" data-video="CNCGbFGX4RY">
-            <button type="button" aria-label="Reproducir video: un cumpleaños en VR ZONE"><span class="play"><svg aria-hidden="true"><use href="#i-play"/></svg></span><strong>Un cumpleaños en VR ZONE</strong><span>Torta, globos y otra realidad 🎂</span></button>
-          </div>
+        <div class="videos videos--2">
           <div class="resenas-col" id="lista-resenas" data-cuantas="2"></div>
           <div class="redes-card vidrio borde-neon revelar">
             <div>
@@ -260,6 +274,29 @@
               <a class="red" href="https://www.tiktok.com/@vrzoneplay" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tt"/></svg><span>TikTok<small>@vrzoneplay</small></span><span class="ir">↗</span></a>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VR ZONE VA A TI -->
+    <section class="seccion" id="va-a-ti" aria-labelledby="t-va">
+      <div class="contenedor va-a-ti">
+        <figure class="va-foto revelar"><img src="assets/img/va-empresa.webp" alt="Empleados en una pausa activa con visores de realidad virtual mientras sus compañeros ríen y aplauden" width="1536" height="1024" loading="lazy" decoding="async"><figcaption>Pausa activa en empresa</figcaption></figure>
+        <div class="revelar">
+          <span class="sobretitulo">VR ZONE va a ti</span>
+          <h2 id="t-va">¿No pueden venir? Llevamos la realidad virtual a donde estén.</h2>
+          <p>Con agendamiento previo, llegamos con los visores y nuestro equipo a tu evento:</p>
+          <ul class="va-lista">
+            <li><span aria-hidden="true">🎂</span><div><b>Cumpleaños en tu casa o salón</b><small>La fiesta con realidad virtual, sin moverte.</small></div></li>
+            <li><span aria-hidden="true">🏫</span><div><b>Colegios</b><small>Experiencias educativas y jornadas de integración.</small></div></li>
+            <li><span aria-hidden="true">🎓</span><div><b>Universidades</b><small>Semanas culturales, bienestar universitario y ferias.</small></div></li>
+            <li><span aria-hidden="true">🏪</span><div><b>Ferias y activaciones de marca</b><small>La experiencia que detiene a la gente frente a tu stand.</small></div></li>
+            <li><span aria-hidden="true">💼</span><div><b>Empresas</b><small>Pausas activas y lúdicas que recargan al equipo.</small></div></li>
+          </ul>
+          <div class="hero-cta">
+            <a class="btn btn-primario" data-wa="Hola VR ZONE 👋 Quiero cotizar realidad virtual para un evento fuera del local (colegio, universidad, empresa, feria o cumpleaños)." href="https://wa.me/573013350175"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotizar VR a domicilio</a>
+          </div>
+          <p class="aviso">Escríbenos con anticipación para agendar la fecha.</p>
         </div>
       </div>
     </section>
@@ -318,7 +355,7 @@
           <h4>Contacto</h4>
           <ul>
             <li><a data-wa="¡Hola VR ZONE! 👋" href="https://wa.me/573013350175">WhatsApp 301 335 0175</a></li>
-            <li><a href="https://maps.app.goo.gl/PvHfKisYn3ueZZKz9" target="_blank" rel="noopener">Cra. 21E #29L-20, Los Laureles</a></li>
+            <li><a href="https://maps.app.goo.gl/PvHfKisYn3ueZZKz9" target="_blank" rel="noopener">Cra. 21E #29L-24, Los Laureles</a></li>
             <li><a href="https://www.instagram.com/vrzoneplay" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@vrzoneplay" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/VRZoneSM" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@vrzonesm" target="_blank" rel="noopener">YouTube</a></li>
           </ul>
         </div>
