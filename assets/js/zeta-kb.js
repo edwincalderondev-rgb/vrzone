@@ -506,7 +506,7 @@
       { id: 'resenas', t: 'Reseñas', cara: 'amor',
         p: ['que opinan', 'son buenos', 'vale la pena', 'reseñas', 'resenas', 'que dicen los clientes', 'opiniones', 'calificacion', 'es bueno el lugar', 'recomiendan el lugar'],
         k: ['resena', 'opinan', 'buenos', 'pena', 'clientes', 'recomiendan'],
-        a: ['Tenemos <b>4,5 ⭐ en Google</b> con 11 opiniones. Mi favorita es la de Brayan: <i>«mis hijos no paran de decir que quieren volver, y eso haremos muy frecuentemente»</i> 🥹. Pero mejor ven y lo compruebas tú.'],
+        a: ['Tenemos <b>4,6 ⭐ en Google</b> con 13 opiniones. Mi favorita es la de Brayan: <i>«mis hijos no paran de decir que quieren volver, y eso haremos muy frecuentemente»</i> 🥹. Pero mejor ven y lo compruebas tú.'],
         acciones: [{ t: 'Ver reseñas en Google', href: V.mapa }] },
 
       { id: 'clima', t: '¿Es climatizado?', cara: 'feliz',

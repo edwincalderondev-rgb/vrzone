@@ -50,12 +50,13 @@
         'Tarjeta de invitación exclusiva para tus invitados'
       ]
     },
-    google: { nota: 4.5, opiniones: 11 },
+    google: { nota: 4.6, opiniones: 13 },
     // Reseñas reales de Google Maps, textuales (solo se normalizaron espacios). Año aproximado según Google al 2026-10-30.
     resenas: [
       { autor: 'Brayan Perez', estrellas: 4, anio: 2026, texto: 'Excelente, siempre pasaba por el lugar y pensaba en llevar a mis hijos, hoy decidí llevarlos y ellos encantados, la experiencia con la VR fue fantástica, la amabilidad y atención de los encargados fue admirable, mis hijos no paran de decir que quieren volver, y eso haremos muy frecuentemente.' },
       { autor: 'SiRHonorable Gamer 2.0', estrellas: 5, anio: 2025, texto: 'Excelente atención, la experiencia que ofrecen es inolvidable' },
       { autor: 'Victor Meza', estrellas: 5, anio: 2019, texto: 'El nuevo arcade de realidad virtual en santa Marta! Muy divertido, precios muy buenos y buena atención .. excelente !' },
+      { autor: 'Salud Mental', estrellas: 5, anio: 2026, texto: 'Un buen lugar para despejar la mente de tantos afanes diarios' },
       { autor: 'Jorge Pinson', estrellas: 5, anio: 2019, texto: 'Buenas me pareció exelente y el trato se los recomiendo Arizona sunshine' }
     ]
   };
