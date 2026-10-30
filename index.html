@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; frame-src https://www.youtube-nocookie.com https://www.google.com; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>VR ZONE · Sala de realidad virtual en Santa Marta</title>
+  <meta name="description" content="La primera y única sala de realidad virtual de Santa Marta: 50 juegos con Meta Quest 3, Xbox y arcade. Cumpleaños y eventos privados. Reserva por WhatsApp.">
+  <meta name="theme-color" content="#0a0418">
+  <link rel="canonical" href="https://edwincalderondev-rgb.github.io/vrzone/">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:site_name" content="VR ZONE">
+  <meta property="og:title" content="VR ZONE · Aquí la realidad es opcional">
+  <meta property="og:description" content="La primera y única sala de realidad virtual de Santa Marta. 50 juegos con Meta Quest 3, Xbox, arcade y el local completo para tu cumpleaños.">
+  <meta property="og:url" content="https://edwincalderondev-rgb.github.io/vrzone/">
+  <meta property="og:image" content="https://edwincalderondev-rgb.github.io/vrzone/assets/img/og-vrzone.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="assets/fonts/unbounded.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/estilos.css">
+  <link rel="stylesheet" href="assets/css/zeta.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AmusementArcade",
+    "name": "VR ZONE",
+    "alternateName": "VR Zone Realidad Virtual",
+    "description": "La primera y única sala de realidad virtual de Santa Marta: 50 juegos con Meta Quest 3, Xbox Series S y máquina arcade. Alquiler del local para cumpleaños y eventos.",
+    "url": "https://edwincalderondev-rgb.github.io/vrzone/",
+    "image": "https://edwincalderondev-rgb.github.io/vrzone/assets/img/og-vrzone.jpg",
+    "telephone": "+57 301 335 0175",
+    "foundingDate": "2018",
+    "address": { "@type": "PostalAddress", "streetAddress": "Cra. 21E #29L-20, Los Laureles", "addressLocality": "Santa Marta", "addressRegion": "Magdalena", "addressCountry": "CO" },
+    "geo": { "@type": "GeoCoordinates", "latitude": 11.2209445, "longitude": -74.1883396 },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "15:00", "closes": "20:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday", "Sunday"], "opens": "15:00", "closes": "21:00" }
+    ],
+    "sameAs": ["https://www.instagram.com/vrzoneplay", "https://www.tiktok.com/@vrzoneplay", "https://www.facebook.com/VRZoneSM", "https://www.youtube.com/@vrzonesm"]
+  }
+  </script>
+  <script src="assets/js/negocio.js" defer></script>
+  <script src="assets/js/juegos.js" defer></script>
+  <script src="assets/js/fondo.js" defer></script>
+  <script src="assets/js/sitio.js" defer></script>
+  <script src="assets/js/zeta-kb.js" defer></script>
+  <script src="assets/js/zeta-motor.js" defer></script>
+  <script src="assets/js/zeta.js" defer></script>
+</head>
+<body class="sin-js" data-pagina="inicio">
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="vr" viewBox="0 0 1200 596"><path d="M-0.2 0.0L139.0 -0.3L389.0 276.1L390.0 276.0L390.0 3.0L391.0 1.9L505.2 2.0L505.7 3.0L505.7 362.0L505.2 368.0L502.4 378.0L498.4 386.0L494.2 392.0L484.0 402.3L469.0 412.4L451.0 420.3L432.0 425.4L415.0 427.5L395.0 427.3L378.0 424.3L369.0 421.4L363.0 418.5ZM555.8 2.0L998.0 1.9L1009.0 3.8L1013.0 5.6L1017.5 9.0L1021.4 14.0L1023.3 18.0L1025.3 26.0L1025.6 31.0L1025.6 230.0L1024.4 239.0L1022.2 245.0L1017.4 252.0L1011.0 257.4L1003.0 261.3L991.0 264.3L982.0 265.1L961.9 265.0L1173.6 593.0L1172.0 593.5L1038.0 593.5L1037.3 593.0L822.4 266.0L819.0 261.2L818.0 260.8L665.6 261.0L664.9 262.0L665.1 418.0L664.0 418.6L555.0 418.6L554.0 418.0L554.0 162.0L554.9 161.0L898.0 160.9L903.0 158.3L907.4 153.0L910.4 146.0L912.0 136.0L911.3 126.0L908.0 117.0L903.0 110.8L897.0 107.9L556.0 107.9L555.3 107.0Z" fill="currentColor"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2.2a9.8 9.8 0 0 0-8.5 14.7L2.2 21.8l5-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.6 7.4c.3-.5.6-.5.9-.5h.7c.2 0 .4.1.5.4l.8 1.9c.1.3 0 .5-.2.7l-.6.7c-.1.2-.2.4 0 .6.6 1.1 1.5 2 2.6 2.6.2.1.4.1.6-.1l.7-.8c.2-.2.4-.3.7-.2l1.9.8c.3.1.4.3.4.5v.7c0 .4-.1.8-.6 1.1-.6.4-1.5.6-2.6.3-2.5-.7-4.7-2.9-5.4-5.4-.3-1.1-.1-2 .3-2.6z" fill="currentColor"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-tt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v11.5a3.8 3.8 0 1 1-3.8-3.8"/><path d="M14 3c.4 2.6 2.4 4.6 5 4.9"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14.2 8.2h2.6V4.6h-2.9c-2.6 0-4 1.6-4 4.2v2.2H7.5v3.5h2.4V21h3.6v-6.5h2.8l.5-3.5h-3.3V9.4c0-.8.3-1.2 1.2-1.2z" fill="currentColor"/></symbol>
+    <symbol id="i-yt" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10.2 9.2v5.6l4.8-2.8z" fill="currentColor"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 21.5s-7-6.3-7-12a7 7 0 0 1 14 0c0 5.7-7 12-7 12z"/><circle cx="12" cy="9.5" r="2.6"/></symbol>
+    <symbol id="i-reloj" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M5 3.5h3.5l1.7 4.3-2.1 1.4a11.5 11.5 0 0 0 6.7 6.7l1.4-2.1 4.3 1.7V19a2 2 0 0 1-2 2A17 17 0 0 1 3 5.5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-buscar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></symbol>
+    <symbol id="i-visor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 9.2A3.2 3.2 0 0 1 6.2 6h11.6A3.2 3.2 0 0 1 21 9.2v4.9a3 3 0 0 1-3 3h-3.1a2 2 0 0 1-1.7-1l-.4-.7a2 2 0 0 0-3.5 0l-.4.7a2 2 0 0 1-1.7 1H6a3 3 0 0 1-3-3z"/></symbol>
+    <symbol id="i-mando" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10a4 4 0 0 1 4 4.3l-.4 3.4a2.4 2.4 0 0 1-4.3 1.2L15 15H9l-1.3 1.9a2.4 2.4 0 0 1-4.3-1.2L3 12.3A4 4 0 0 1 7 8z"/><path d="M8 10.8v3M6.5 12.3h3"/><circle cx="15.6" cy="11.4" r=".6" fill="currentColor"/><circle cx="17.3" cy="13.1" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-arcade" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M7 2.5h10l1 4.5v14.5H6V7z"/><path d="M8.5 7h7v5.5h-7z"/><path d="M9.5 17.5v-2.5" stroke-linecap="round"/><circle cx="9.5" cy="14.6" r="1"/><circle cx="14" cy="16" r=".8" fill="currentColor"/><circle cx="16" cy="16" r=".8" fill="currentColor"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2.5 8.8a14 14 0 0 1 19 0M5.5 12.2a9.6 9.6 0 0 1 13 0M8.7 15.5a5 5 0 0 1 6.6 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-tv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="12" rx="2"/><path d="M8 20.5h8M12 16.5v4"/></symbol>
+    <symbol id="i-nevera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2"/><path d="M6 10h12M9 5.5v2M9 13v3"/></symbol>
+    <symbol id="i-globo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5a5.5 5.5 0 0 1 5.5 5.6c0 3.7-3.1 6.4-5.5 6.4s-5.5-2.7-5.5-6.4A5.5 5.5 0 0 1 12 2.5z"/><path d="m11 14.5-.6 1.6h3.2l-.6-1.6M12 16.1c0 2.2-2.4 2.6-2.4 5.4"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h15A1.5 1.5 0 0 1 21 7.5v2.3a2.2 2.2 0 0 0 0 4.4v2.3a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 16.5v-2.3a2.2 2.2 0 0 0 0-4.4z"/><path d="M14.5 6v12" stroke-dasharray="2 2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-fantasma" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M5 21V10a7 7 0 0 1 14 0v11l-2.4-1.8L14.3 21 12 19.2 9.7 21l-2.3-1.8z"/><circle cx="9.5" cy="10.5" r="1.2" fill="currentColor"/><circle cx="14.5" cy="10.5" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-cohete" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c3.2 2.2 5 6.2 5 10l-2 3H9l-2-3c0-3.8 1.8-7.8 5-10z"/><circle cx="12" cy="9.5" r="1.7"/><path d="m9 15.5-2.3 4.2 3.3-1.1M15 15.5l2.3 4.2-3.3-1.1M12 18v3.5"/></symbol>
+    <symbol id="i-risa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M7.5 13.5s1.6 3.2 4.5 3.2 4.5-3.2 4.5-3.2z" fill="currentColor"/><path d="M8 9.2 9.6 10 8 10.8M16 9.2l-1.6.8 1.6.8"/></symbol>
+    <symbol id="i-trofeo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3.5h8v5.5a4 4 0 0 1-8 0z"/><path d="M8 5.5H5a3.2 3.2 0 0 0 3.2 4.2M16 5.5h3a3.2 3.2 0 0 1-3.2 4.2M12 13v4M8.5 21h7M9.5 17h5v4h-5z"/></symbol>
+    <symbol id="i-frio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></symbol>
+    <symbol id="i-estrella" viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z" fill="currentColor"/></symbol>
+    <symbol id="i-comillas" viewBox="0 0 24 24"><path d="M4 17.5c0-4.6 2.2-8.4 6.2-10.5l1 1.6C8.8 10 7.7 12 7.6 13.6H10v5.9H4zm9.7 0c0-4.6 2.2-8.4 6.2-10.5l1 1.6c-2.4 1.4-3.5 3.4-3.6 5H20v5.9h-6.3z" fill="currentColor"/></symbol>
+    <symbol id="i-dados" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4.5"/><circle cx="8.2" cy="8.2" r="1.2" fill="currentColor"/><circle cx="15.8" cy="15.8" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/><circle cx="15.8" cy="8.2" r="1.2" fill="currentColor"/><circle cx="8.2" cy="15.8" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-calendario" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></symbol>
+    <symbol id="i-escudo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2.5 4.5 5.5v6c0 4.6 3.2 8.5 7.5 10 4.3-1.5 7.5-5.4 7.5-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <div class="mundo" data-modo="inicio" aria-hidden="true">
+    <canvas></canvas>
+    <div class="holograma"><svg viewBox="0 0 1200 596"><use href="#vr"/></svg></div>
+  </div>
+  <div class="grano" aria-hidden="true"></div>
+
+  <header class="cabecera" id="cabecera">
+    <div class="contenedor">
+      <a class="marca" href="./" aria-label="VR ZONE, inicio"><svg class="marca-vr" viewBox="0 0 1200 596" aria-hidden="true"><use href="#vr"/></svg><span class="marca-zone" aria-hidden="true"><b>Z</b>ONE</span></a>
+      <nav class="nav" id="nav" aria-label="Principal">
+        <a href="#sentir">Experiencias</a>
+        <a href="#juegos">Juegos</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="#resenas" class="opc">Reseñas</a>
+        <a href="#ubicacion">Ubicación</a>
+      </nav>
+      <span class="estado" data-estado>Horario de hoy</span>
+      <a class="btn btn-primario" data-wa="¡Hola VR ZONE! 👋 Quiero vivir la experiencia de realidad virtual. ¿Qué disponibilidad tienen?" href="https://wa.me/573013350175">
+        <svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar
+      </a>
+      <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span></button>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="titulo-hero">
+      <div class="contenedor">
+        <div class="hero-texto">
+          <span class="sobretitulo">Santa Marta · Desde 2018</span>
+          <h1 class="titulo-hero" id="titulo-hero"><span class="linea">Aquí la realidad</span> <span class="linea grad-texto">es opcional.</span></h1>
+          <p class="hero-sub">La <strong>primera y única sala de realidad virtual de Santa Marta</strong>. Ponte un Meta Quest 3 y elige entre <strong>50 mundos</strong>: sustos que se sienten en la nuca, adrenalina que te sube por las piernas y risas que no caben en una foto.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primario btn-grande" data-wa="¡Hola VR ZONE! 👋 Quiero vivir la experiencia de realidad virtual. ¿Qué disponibilidad tienen?" href="https://wa.me/573013350175">
+              <svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar mi experiencia
+            </a>
+            <a class="btn btn-grande" href="#juegos">Ver los 50 juegos <svg aria-hidden="true"><use href="#i-flecha"/></svg></a>
+          </div>
+          <ul class="pruebas">
+            <li><span class="estrellas" aria-hidden="true">★★★★★</span> 4,5 en Google</li>
+            <li><svg aria-hidden="true"><use href="#i-visor"/></svg> Meta Quest 3</li>
+            <li><svg aria-hidden="true"><use href="#i-frio"/></svg> Climatizado</li>
+          </ul>
+        </div>
+      </div>
+      <a class="flecha-abajo" href="#sentir" aria-label="Bajar a las experiencias"><span></span>Entra</a>
+    </section>
+
+    <!-- CINTA DE JUEGOS -->
+    <div class="cinta" aria-label="Algunos de los juegos del catálogo">
+      <div class="cinta-fila" data-cinta="0"></div>
+      <div class="cinta-fila" data-cinta="1"></div>
+    </div>
+
+    <!-- LO QUE VAS A SENTIR -->
+    <section class="seccion" id="sentir" aria-labelledby="t-sentir">
+      <div class="contenedor">
+        <div class="cabeza revelar">
+          <span class="sobretitulo">Lo que vas a sentir</span>
+          <h2 id="t-sentir">Tu cuerpo no sabe que es un juego.</h2>
+          <p>En realidad virtual no miras una pantalla: estás adentro. El cerebro se lo cree, y por eso cada partida se vive de verdad. ¿Qué quieres sentir hoy?</p>
+        </div>
+        <div class="sentir">
+          <article class="sentir-card vidrio borde-neon c-terror revelar">
+            <span class="icono"><svg aria-hidden="true"><use href="#i-fantasma"/></svg></span>
+            <h3>Gritar.</h3>
+            <p>El zombi no está en la pantalla: está detrás de ti. Terror que se siente en la nuca.</p>
+            <ul><li>Resident Evil 4 VR</li><li>Five Nights at Freddy's</li><li>Paranormal Activity</li><li>Madison</li></ul>
+            <a class="ver" href="#juegos" data-filtro="terror">Ver juegos de terror</a>
+          </article>
+          <article class="sentir-card vidrio borde-neon c-volar revelar">
+            <span class="icono"><svg aria-hidden="true"><use href="#i-cohete"/></svg></span>
+            <h3>Volar.</h3>
+            <p>Despega como Iron Man, enfrenta titanes o súbete a una montaña rusa imposible.</p>
+            <ul><li>Marvel's Iron Man VR</li><li>Attack On Titan VR</li><li>Epic Roller Coasters</li><li>Richie's Plank</li></ul>
+            <a class="ver" href="#juegos" data-filtro="accion">Ver juegos de acción</a>
+          </article>
+          <article class="sentir-card vidrio borde-neon c-reir revelar">
+            <span class="icono"><svg aria-hidden="true"><use href="#i-risa"/></svg></span>
+            <h3>Reír.</h3>
+            <p>Sé un gato que tumba todo, el peor empleado del mundo o un gorila que trepa paredes.</p>
+            <ul><li>I Am Cat</li><li>Job Simulator</li><li>Gorilla Tag</li><li>I Am Security</li></ul>
+            <a class="ver" href="#juegos" data-filtro="risa">Ver juegos para reír</a>
+          </article>
+          <article class="sentir-card vidrio borde-neon c-competir revelar">
+            <span class="icono"><svg aria-hidden="true"><use href="#i-trofeo"/></svg></span>
+            <h3>Competir.</h3>
+            <p>Reta a tus amigos: hasta 3 visores al mismo tiempo, en el mismo mundo.</p>
+            <ul><li>Contractors</li><li>Rec Room</li><li>All in One Sports</li><li>Arizona Sunshine 2</li></ul>
+            <a class="ver" href="#juegos" data-filtro="social">Ver multijugador</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIMERA VEZ -->
+    <section class="seccion" id="primera-vez" aria-labelledby="t-primera">
+      <div class="contenedor">
+        <div class="cabeza revelar">
+          <span class="sobretitulo">Tu primera vez</span>
+          <h2 id="t-primera">¿Nunca has probado la realidad virtual? Mejor aún.</h2>
+          <p>No necesitas experiencia ni ser gamer. Esto es lo que pasa desde que nos escribes hasta que sales contando la historia.</p>
+        </div>
+        <ol class="pasos">
+          <li class="paso vidrio borde-neon revelar"><span class="num">01</span><h3>Escríbenos</h3><p>Por WhatsApp te contamos las tarifas, las promociones del momento y separamos tu turno.</p></li>
+          <li class="paso vidrio borde-neon revelar"><span class="num">02</span><h3>Ponte el visor</h3><p>Te ayudamos a ajustarlo y te enseñamos los controles en un minuto. Así de fácil.</p></li>
+          <li class="paso vidrio borde-neon revelar"><span class="num">03</span><h3>Elige tu mundo</h3><p>Arranca suave con First Steps o lánzate de una a la tabla de Richie's Plank. Tú pones el nivel.</p></li>
+          <li class="paso vidrio borde-neon revelar"><span class="num">04</span><h3>Cuéntalo (o muéstralo)</h3><p>Las reacciones en realidad virtual son el mejor video para tus redes. Avisados quedan.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- EQUIPOS -->
+    <section class="seccion" id="equipos" aria-labelledby="t-equipos">
+      <div class="contenedor">
+        <div class="cabeza revelar">
+          <span class="sobretitulo">El arsenal</span>
+          <h2 id="t-equipos">Lo último en realidad virtual. Y los clásicos de siempre.</h2>
+        </div>
+        <div class="bento">
+          <article class="b-quest vidrio borde-neon revelar">
+            <svg class="ilus" viewBox="0 0 420 260" aria-hidden="true">
+              <defs>
+                <linearGradient id="q-cara" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#c8bfe6"/></linearGradient>
+                <linearGradient id="q-neon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff2fb4"/><stop offset=".5" stop-color="#9d1dff"/><stop offset="1" stop-color="#20d8ff"/></linearGradient>
+                <filter id="q-glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter>
+              </defs>
+              <rect x="40" y="70" width="340" height="150" rx="62" fill="url(#q-neon)" opacity=".55" filter="url(#q-glow)"/>
+              <path d="M30 120c-18 0-26 14-26 30s8 30 26 30M390 120c18 0 26 14 26 30s-8 30-26 30" stroke="#3a2a5c" stroke-width="16" fill="none" stroke-linecap="round"/>
+              <rect x="40" y="62" width="340" height="150" rx="60" fill="url(#q-cara)"/>
+              <rect x="40" y="62" width="340" height="150" rx="60" fill="none" stroke="url(#q-neon)" stroke-width="3"/>
+              <rect x="78" y="104" width="34" height="66" rx="17" fill="#1b1430"/>
+              <rect x="193" y="104" width="34" height="66" rx="17" fill="#1b1430"/>
+              <rect x="308" y="104" width="34" height="66" rx="17" fill="#1b1430"/>
+              <circle cx="95" cy="122" r="6" fill="#20d8ff" opacity=".8"/><circle cx="210" cy="152" r="6" fill="#ff2fb4" opacity=".8"/><circle cx="325" cy="122" r="6" fill="#20d8ff" opacity=".8"/>
+              <path d="M110 225c30 18 170 18 200 0" stroke="url(#q-neon)" stroke-width="3" fill="none" opacity=".7"/>
+            </svg>
+            <span class="etiqueta">Realidad virtual</span>
+            <span class="dato">3×</span>
+            <h3>Visores Meta Quest 3</h3>
+            <p>Realidad mixta a todo color, imagen nítida y controles que siguen cada movimiento de tus manos. Hasta tres jugadores al mismo tiempo.</p>
+          </article>
+          <article class="b-xbox vidrio borde-neon revelar">
+            <svg class="ilus" aria-hidden="true"><use href="#i-mando"/></svg>
+            <span class="etiqueta">Consola</span>
+            <h3>Xbox Series S</h3>
+            <p>Con los mejores juegos, para la revancha entre amigos.</p>
+          </article>
+          <article class="b-arcade vidrio borde-neon revelar">
+            <svg class="ilus" aria-hidden="true"><use href="#i-arcade"/></svg>
+            <span class="etiqueta">Retro</span>
+            <h3>Arcade clásica</h3>
+            <p>Una máquina arcade de las de antes. La nostalgia también se juega.</p>
+          </article>
+          <article class="b-extra vidrio borde-neon revelar">
+            <span class="etiqueta">Y además</span>
+            <ul class="lista-mini">
+              <li>Espacio cómodo y climatizado</li>
+              <li>TVs y proyector</li>
+              <li>Zona WiFi</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section class="seccion oscura" id="juegos" aria-labelledby="t-juegos">
+      <div class="contenedor">
+        <div class="cabeza revelar">
+          <span class="sobretitulo">Catálogo</span>
+          <h2 id="t-juegos">50 mundos. ¿Cuál vas a vivir primero?</h2>
+          <p>Filtra por lo que quieres sentir y por tu nivel. Toca cualquier juego para ver de qué se trata, cuánto dura y para quién es ideal.</p>
+        </div>
+        <div class="catalogo-barra">
+          <label class="buscador">
+            <span class="solo-lector">Buscar un juego</span>
+            <svg aria-hidden="true"><use href="#i-buscar"/></svg>
+            <input type="search" id="buscar-juego" placeholder="Busca: zombis, Batman, carreras…" autocomplete="off">
+          </label>
+          <div class="segmento" role="group" aria-label="Nivel">
+            <button type="button" data-nivel="" aria-pressed="true">Todos</button>
+            <button type="button" data-nivel="Principiante" aria-pressed="false">Principiante</button>
+            <button type="button" data-nivel="Intermedio" aria-pressed="false">Intermedio</button>
+            <button type="button" data-nivel="Avanzado" aria-pressed="false">Avanzado</button>
+          </div>
+        </div>
+        <div class="chips" role="group" aria-label="Qué quieres sentir">
+          <button class="chip" type="button" data-tag="terror" aria-pressed="false">👻 Terror</button>
+          <button class="chip" type="button" data-tag="accion" aria-pressed="false">💥 Acción</button>
+          <button class="chip" type="button" data-tag="aventura" aria-pressed="false">🗺️ Aventura</button>
+          <button class="chip" type="button" data-tag="risa" aria-pressed="false">😂 Para reír</button>
+          <button class="chip" type="button" data-tag="social" aria-pressed="false">👥 Multijugador</button>
+          <button class="chip" type="button" data-tag="deportes" aria-pressed="false">🏀 Deportes y movimiento</button>
+          <button class="chip" type="button" data-tag="carreras" aria-pressed="false">🏁 Carreras</button>
+          <button class="chip" type="button" data-tag="relax" aria-pressed="false">🌿 Relax</button>
+          <button class="chip" type="button" data-tag="aprender" aria-pressed="false">🎓 Aprender</button>
+          <button class="chip" type="button" data-tag="espacio" aria-pressed="false">🚀 Espacio</button>
+        </div>
+        <p class="contador" aria-live="polite" id="contador-juegos">Mostrando <b>50</b> juegos</p>
+        <div class="grid-juegos" id="grid-juegos"></div>
+        <div class="mas-juegos"><button class="btn" type="button" id="ver-todos" hidden>Ver los 50 juegos</button></div>
+
+        <div class="ruleta vidrio borde-neon revelar" id="ruleta">
+          <div>
+            <span class="sobretitulo">¿No te decides?</span>
+            <h3>Que decida el destino.</h3>
+            <p>Gira la ruleta y atrévete a jugar lo que te toque. Si te sale terror… pues te tocó, valiente.</p>
+            <div class="ruleta-acciones">
+              <button class="btn btn-primario" type="button" id="girar"><svg aria-hidden="true"><use href="#i-dados"/></svg>Girar la ruleta</button>
+              <a class="btn" id="ruleta-wa" href="https://wa.me/573013350175" hidden><svg aria-hidden="true"><use href="#i-wa"/></svg>¡Quiero jugar este!</a>
+            </div>
+          </div>
+          <div class="ruleta-pantalla" aria-live="polite">
+            <div class="emoji" id="ruleta-emoji">🎲</div>
+            <strong id="ruleta-nombre">¿Qué te tocará?</strong>
+            <span id="ruleta-genero">50 juegos esperando</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANES -->
+    <section class="seccion" id="planes" aria-labelledby="t-planes">
+      <div class="contenedor">
+        <div class="cabeza revelar">
+          <span class="sobretitulo">Planes</span>
+          <h2 id="t-planes">Un plan distinto para cada ocasión.</h2>
+        </div>
+        <div class="planes">
+          <article class="plan destacado vidrio borde-neon revelar">
+            <span class="emoji-grande" aria-hidden="true">🎂</span>
+            <h3>Cumpleaños y eventos privados</h3>
+            <p>El local completo solo para ti y tus invitados: 3 visores Meta Quest 3, Xbox, arcade, TVs, proyector y tu propia decoración. Desde <strong>$140.000</strong>, todo incluido.</p>
+            <a href="eventos.html">Ver paquetes para eventos →</a>
+          </article>
+          <article class="plan vidrio revelar">
+            <span class="emoji-grande" aria-hidden="true">🤜🤛</span>
+            <h3>Con los amigos</h3>
+            <p>Retos, sustos y risas en grupo. La salida de la que van a hablar toda la semana.</p>
+          </article>
+          <article class="plan vidrio revelar">
+            <span class="emoji-grande" aria-hidden="true">👨‍👩‍👧‍👦</span>
+            <h3>En familia</h3>
+            <p>Los niños salen pidiendo volver (lo dicen las reseñas). Y los papás también juegan, que no se hagan.</p>
+          </article>
+          <article class="plan vidrio revelar">
+            <span class="emoji-grande" aria-hidden="true">💘</span>
+            <h3>Una cita distinta</h3>
+            <p>¿Cine otra vez? Mejor sobrevivan juntos a un apocalipsis zombi. Eso sí es química.</p>
+          </article>
+          <article class="plan vidrio revelar">
+            <span class="emoji-grande" aria-hidden="true">🎓</span>
+            <h3>Colegios y universidades</h3>
+            <p>Anatomía, astronomía, idiomas y simulación: aprender se vuelve una experiencia.</p>
+          </article>
+          <article class="plan vidrio revelar">
+            <span class="emoji-grande" aria-hidden="true">🏢</span>
+            <h3>Empresas</h3>
+            <p>Integraciones y team building que de verdad unen al equipo. Nada une más que huir juntos de un monstruo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEÑAS -->
+    <section class="seccion" id="resenas" aria-labelledby="t-resenas">
+      <div class="contenedor">
+        <div class="resenas-top revelar">
+          <div class="cabeza">
+            <span class="sobretitulo">Reseñas reales</span>
+            <h2 id="t-resenas">Lo dicen ellos, no nosotros.</h2>
+          </div>
+          <div class="nota-google">
+            <span class="num">4,5</span>
+            <div><span class="estrellas" aria-hidden="true">★★★★½</span><small>11 opiniones en Google</small></div>
+          </div>
+        </div>
+        <div class="resenas" id="lista-resenas"></div>
+        <div class="hero-cta revelar">
+          <a class="btn" href="https://maps.app.goo.gl/PvHfKisYn3ueZZKz9" target="_blank" rel="noopener">Leer las reseñas en Google</a>
+          <a class="btn" href="https://maps.app.goo.gl/PvHfKisYn3ueZZKz9" target="_blank" rel="noopener">¿Ya viniste? Déjanos la tuya ⭐</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section class="seccion" id="videos" aria-labelledby="t-videos">
+      <div class="contenedor">
+        <div class="cabeza revelar">
+          <span class="sobretitulo">Así se vive</span>
+          <h2 id="t-videos">Mira lo que pasa cuando alguien se pone el visor.</h2>
+        </div>
+        <div class="videos">
+          <div class="video revelar" data-video="w1L5PhZLrY8">
+            <button type="button" aria-label="Reproducir video: Vive la experiencia VR ZONE"><span class="play"><svg aria-hidden="true"><use href="#i-play"/></svg></span><strong>Vive la experiencia</strong><span>Ejercicio sin darte cuenta 🔥</span></button>
+          </div>
+          <div class="video revelar" data-video="CNCGbFGX4RY">
+            <button type="button" aria-label="Reproducir video: un cumpleaños en VR ZONE"><span class="play"><svg aria-hidden="true"><use href="#i-play"/></svg></span><strong>Un cumpleaños en VR ZONE</strong><span>Torta, globos y otra realidad 🎂</span></button>
+          </div>
+          <div class="redes-card vidrio borde-neon revelar">
+            <div>
+              <h3>Síguenos: @vrzoneplay</h3>
+              <p>Reacciones, sustos, promos y lo nuevo del catálogo, primero en redes.</p>
+            </div>
+            <div class="redes">
+              <a class="red" href="https://www.instagram.com/vrzoneplay" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg><span>Instagram<small>@vrzoneplay</small></span><span class="ir">↗</span></a>
+              <a class="red" href="https://www.tiktok.com/@vrzoneplay" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tt"/></svg><span>TikTok<small>@vrzoneplay</small></span><span class="ir">↗</span></a>
+              <a class="red" href="https://www.facebook.com/VRZoneSM" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg><span>Facebook<small>VR Zone Santa Marta</small></span><span class="ir">↗</span></a>
+              <a class="red" href="https://www.youtube.com/@vrzonesm" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-yt"/></svg><span>YouTube<small>@vrzonesm</small></span><span class="ir">↗</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTORIA -->
+    <section class="seccion" id="historia" aria-labelledby="t-historia">
+      <div class="contenedor historia">
+        <div class="anio revelar"><small>Desde</small>2018</div>
+        <div class="revelar">
+          <span class="sobretitulo">Nuestra historia</span>
+          <h2 id="t-historia">Pioneros de la realidad virtual en Santa Marta.</h2>
+          <p>En 2018 casi nadie en la ciudad había probado la realidad virtual. Abrimos la primera sala de Santa Marta y desde entonces le hemos puesto el visor a niños, familias, estudiantes y empresas.</p>
+          <p>Y cuando la gente no puede venir, llevamos la experiencia a donde está:</p>
+          <ul class="lugares">
+            <li>Centro Comercial Buenavista</li>
+            <li>Ferias empresariales</li>
+            <li>Universidades</li>
+            <li>Colegios</li>
+          </ul>
+          <a class="btn" data-wa="Hola VR ZONE, quiero cotizar una experiencia de realidad virtual para mi evento, empresa o colegio." href="https://wa.me/573013350175"><svg aria-hidden="true"><use href="#i-wa"/></svg>Llévanos a tu evento</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section class="seccion" id="ubicacion" aria-labelledby="t-ubicacion">
+      <div class="contenedor">
+        <div class="cabeza revelar">
+          <span class="sobretitulo">Visítanos</span>
+          <h2 id="t-ubicacion">Te esperamos en Los Laureles.</h2>
+        </div>
+        <div class="ubicacion">
+          <div class="ubic-info vidrio borde-neon revelar">
+            <div class="dato-linea"><svg aria-hidden="true"><use href="#i-pin"/></svg><p><strong>Cra. 21E #29L-20, Los Laureles, Santa Marta</strong>Entrada a la Universidad del Magdalena, diagonal a donde termina la paredilla de Cootransmag.</p></div>
+            <div class="dato-linea"><svg aria-hidden="true"><use href="#i-reloj"/></svg>
+              <table class="horario" id="horario">
+                <caption class="solo-lector">Horario de atención</caption>
+                <tr data-dias="1,2,3,4,5"><th scope="row">Lunes a viernes</th><td>3:00 p. m. – 8:30 p. m.</td></tr>
+                <tr data-dias="0,6,festivo"><th scope="row">Sábados, domingos y festivos</th><td>3:00 p. m. – 9:00 p. m.</td></tr>
+              </table>
+            </div>
+            <div class="dato-linea"><svg aria-hidden="true"><use href="#i-tel"/></svg><p><strong>WhatsApp 301 335 0175</strong>Reservas, tarifas y promociones.</p></div>
+            <div class="hero-cta">
+              <a class="btn btn-primario" href="https://maps.app.goo.gl/PvHfKisYn3ueZZKz9" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar</a>
+              <a class="btn" data-wa="¡Hola VR ZONE! 👋" href="https://wa.me/573013350175"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escribir</a>
+            </div>
+          </div>
+          <div class="mapa revelar">
+            <iframe title="Mapa: VR ZONE en Los Laureles, Santa Marta" src="https://www.google.com/maps?q=11.2209445,-74.1883396&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREGUNTAS -->
+    <section class="seccion" id="preguntas" aria-labelledby="t-preguntas">
+      <div class="contenedor">
+        <div class="cabeza centro revelar">
+          <span class="sobretitulo">Preguntas frecuentes</span>
+          <h2 id="t-preguntas">Lo que todos preguntan antes de venir.</h2>
+        </div>
+        <div class="faq revelar">
+          <details><summary>¿Necesito experiencia o ser gamer?</summary><div class="resp"><p>Para nada. El catálogo tiene juegos de nivel principiante pensados para la primera vez, y te ayudamos con el visor y los controles desde el primer minuto.</p></div></details>
+          <details><summary>¿Desde qué edad se puede jugar?</summary><div class="resp"><p>Los fabricantes de los visores Meta Quest los recomiendan desde los 10 años. Si vienes con niños, escríbenos y te sugerimos las experiencias más adecuadas para su edad.</p></div></details>
+          <details><summary>¿La realidad virtual marea?</summary><div class="resp"><p>A algunas personas les pasa al principio, sobre todo en juegos con mucho desplazamiento. Por eso cada juego tiene nivel: empieza por los de nivel principiante y, si sientes mareo, haz una pausa. Se pasa rápido.</p></div></details>
+          <details><summary>¿Puedo jugar con gafas?</summary><div class="resp"><p>Sí. El Meta Quest 3 está diseñado para usarse con gafas: trae un separador que deja espacio para la mayoría de las monturas.</p></div></details>
+          <details><summary>¿Cuánto cuesta?</summary><div class="resp"><p>Las tarifas por tiempo de juego y las promociones del momento te las damos al instante por <a data-wa="Hola VR ZONE, ¿cuánto cuesta jugar en realidad virtual?" href="https://wa.me/573013350175">WhatsApp</a>. Si es para un evento privado, mira los <a href="eventos.html#tarifas">paquetes de alquiler del local</a>.</p></div></details>
+          <details><summary>¿Podemos jugar varios al mismo tiempo?</summary><div class="resp"><p>Sí: hay 3 visores Meta Quest 3, además de Xbox Series S y la máquina arcade. Varios juegos del catálogo son multijugador, para hasta 3 personas.</p></div></details>
+          <details><summary>¿Hay que reservar?</summary><div class="resp"><p>Te recomendamos escribirnos antes por WhatsApp para separar tu turno, sobre todo si vienes en grupo o en fin de semana.</p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="seccion" aria-labelledby="t-final">
+      <div class="contenedor">
+        <div class="cta-final revelar">
+          <span class="sobretitulo">Tu turno</span>
+          <h2 id="t-final">Tu próxima historia empieza con un visor.</h2>
+          <p>Escríbenos y te contamos todo: disponibilidad, tarifas, promociones y qué juego te va a volar la cabeza.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primario btn-grande" data-wa="¡Hola VR ZONE! 👋 Quiero vivir la experiencia de realidad virtual. ¿Qué disponibilidad tienen?" href="https://wa.me/573013350175"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar por WhatsApp</a>
+            <a class="btn btn-grande" href="eventos.html">Alquilar el local 🎉</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie-grid">
+        <div>
+          <a class="marca marca--grande" href="./" aria-label="VR ZONE, inicio"><svg class="marca-vr" viewBox="0 0 1200 596" aria-hidden="true"><use href="#vr"/></svg><span class="marca-zone" aria-hidden="true"><b>Z</b>ONE</span></a>
+          <p>La primera y única sala de realidad virtual de Santa Marta. Aquí la realidad es opcional.</p>
+        </div>
+        <div>
+          <h4>Explora</h4>
+          <ul><li><a href="#juegos">Catálogo de juegos</a></li><li><a href="eventos.html">Alquiler para eventos</a></li><li><a href="#resenas">Reseñas</a></li><li><a href="#preguntas">Preguntas frecuentes</a></li></ul>
+        </div>
+        <div>
+          <h4>Horario</h4>
+          <ul><li><p>Lunes a viernes<br>3:00 p. m. – 8:30 p. m.</p></li><li><p>Sábados, domingos y festivos<br>3:00 p. m. – 9:00 p. m.</p></li></ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li><a data-wa="¡Hola VR ZONE! 👋" href="https://wa.me/573013350175">WhatsApp 301 335 0175</a></li>
+            <li><a href="https://maps.app.goo.gl/PvHfKisYn3ueZZKz9" target="_blank" rel="noopener">Cra. 21E #29L-20, Los Laureles</a></li>
+            <li><a href="https://www.instagram.com/vrzoneplay" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@vrzoneplay" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/VRZoneSM" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@vrzonesm" target="_blank" rel="noopener">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pie-legal"><span>© <span data-anio>2026</span> VR ZONE · Santa Marta, Colombia</span><span>Meta Quest y Xbox son marcas de sus respectivos dueños.</span></div>
+    </div>
+  </footer>
+
+  <a class="fab-wa" data-wa="¡Hola VR ZONE! 👋 Quiero información." href="https://wa.me/573013350175" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+
+  <dialog class="modal" id="modal-juego" aria-labelledby="modal-titulo">
+    <div class="modal-caja">
+      <button class="cerrar" type="button" data-cerrar aria-label="Cerrar"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
+      <div class="juego-arte" id="modal-arte"><span class="tag" id="modal-tag"></span><span class="emoji" id="modal-emoji"></span></div>
+      <div class="modal-cuerpo">
+        <h3 id="modal-titulo"></h3>
+        <p class="genero" id="modal-genero"></p>
+        <dl class="fichas">
+          <div><dt>Nivel</dt><dd id="modal-nivel"></dd></div>
+          <div><dt>Jugadores</dt><dd id="modal-jugadores"></dd></div>
+          <div><dt>Duración</dt><dd id="modal-duracion"></dd></div>
+        </dl>
+        <h4>De qué se trata</h4><p id="modal-desc"></p>
+        <h4>Por qué destaca</h4><p id="modal-destaca"></p>
+        <h4>Ideal para</h4><p id="modal-ideal"></p>
+        <div class="modal-acciones">
+          <a class="btn btn-primario" id="modal-wa" href="https://wa.me/573013350175"><svg aria-hidden="true"><use href="#i-wa"/></svg>Quiero jugar este</a>
+          <button class="btn" type="button" data-cerrar>Seguir explorando</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
