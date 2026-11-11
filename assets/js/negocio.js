@@ -22,8 +22,8 @@
       youtube: 'https://www.youtube.com/@vrzonesm'
     },
     historiasEventos: 'https://www.instagram.com/stories/highlights/18089576125534505/',
-    // Lunes a viernes 3:00–8:30 p. m.; sábados, domingos y festivos 3:00–9:00 p. m. (minutos desde medianoche).
-    horario: { semana: [900, 1230], finde: [900, 1260] },
+    // Lunes a viernes 12:00 m.–8:30 p. m.; sábados, domingos y festivos 12:00 m.–9:00 p. m. (minutos desde medianoche).
+    horario: { semana: [720, 1230], finde: [720, 1260] },
     // Tarifas por turno de juego en realidad virtual (las dio Edwin el 2026-10-30).
     turnos: [
       { nombre: 'Experiencia inicial', tiempo: '5 a 10 minutos', precio: 8000 },

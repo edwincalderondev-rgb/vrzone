@@ -175,7 +175,7 @@
         a: (e, H) => { const t = H.VRZ.ahora(); const est = H.estado(); return 'En Santa Marta son las <b>' + H.VRZ.hora12(t.getUTCHours() * 60 + t.getUTCMinutes()) + '</b> ⏰. Y para que sepas: <b>' + est.texto + '</b>.'; },
         chips: ['¿Dónde quedan?', 'Quiero reservar'] },
       { id: 'fecha', re: '\\b(que dia es hoy|que fecha es hoy|que fecha es|en que fecha estamos)\\b', fuerte: true, cara: 'feliz',
-        a: (e, H) => { const t = H.VRZ.ahora(); return 'Hoy es <b>' + H.VRZ.fechaLarga(t) + '</b>' + (H.VRZ.esFestivo(t) ? ', ¡y es festivo! 🎉 Abrimos de 3:00 p. m. a 9:00 p. m.' : '.') + ' ' + H.estado().texto + '.'; } },
+        a: (e, H) => { const t = H.VRZ.ahora(); return 'Hoy es <b>' + H.VRZ.fechaLarga(t) + '</b>' + (H.VRZ.esFestivo(t) ? ', ¡y es festivo! 🎉 Abrimos de 12:00 m. a 9:00 p. m.' : '.') + ' ' + H.estado().texto + '.'; } },
       { id: 'calor', re: '\\b(que calor|hace calor|mucho calor|hace frio|el clima|esta haciendo calor|el sol)\\b', fuerte: true, cara: 'feliz',
         a: ['¿Calor en Santa Marta? Noooo, qué raro 🥵😂. Tranqui: VR ZONE es un lugar <b>cómodo y climatizado</b>. Afuera el sol, adentro otra realidad (y fresquita).'],
         chips: ['¿Abren hoy?', '¿Dónde quedan?'] },
@@ -210,14 +210,14 @@
         k: ['horario', 'abrir', 'hora', 'horas', 'hoy', 'manana', 'domingo', 'sabado', 'lunes', 'festivo', 'dias', 'cuando', 'semana', 'noche'],
         a(e, H) {
           const V = H.VRZ;
-          const tabla = H.lista(['<b>Lunes a viernes:</b> 3:00 p. m. – 8:30 p. m.', '<b>Sábados, domingos y festivos:</b> 3:00 p. m. – 9:00 p. m.']);
+          const tabla = H.lista(['<b>Lunes a viernes:</b> 12:00 m. – 8:30 p. m.', '<b>Sábados, domingos y festivos:</b> 12:00 m. – 9:00 p. m.']);
           if (e.dia) {
             const d = V.horarioDe(e.dia.fecha);
             let s = H.mayus(e.dia.txt) + (d.festivo ? ' (¡que es festivo! 🎉)' : '') + ' abrimos de <b>' + V.hora12(d.abre) + ' a ' + V.hora12(d.cierra) + '</b>.';
             if (e.dia.txt.startsWith('hoy')) s += ' Ahora mismo: <b>' + H.estado().texto + '</b>.';
             return { html: s + tabla, chips: ['¿Dónde quedan?', 'Quiero reservar', 'Recomiéndame un juego'] };
           }
-          if (e.festivo) return { html: 'Los <b>festivos</b> abrimos de <b>3:00 p. m. a 9:00 p. m.</b>, igual que sábados y domingos 🎉.' + tabla };
+          if (e.festivo) return { html: 'Los <b>festivos</b> abrimos de <b>12:00 m. a 9:00 p. m.</b>, igual que sábados y domingos 🎉.' + tabla };
           const est = H.estado();
           return { html: (est.abierto ? '¡Sí! 🟢 ' : '') + '<b>' + est.texto + '</b>.' + tabla + 'Y si es para un evento privado, el horario lo cuadras con nosotros.', chips: ['¿Dónde quedan?', 'Quiero reservar', 'Alquilar el local 🎉'] };
         } },
