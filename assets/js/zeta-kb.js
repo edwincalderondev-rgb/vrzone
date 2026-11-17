@@ -352,7 +352,12 @@
       { id: 'capacidad', t: '¿Cuántas personas caben?', cara: 'pensando',
         p: ['cuantas personas caben', 'cuantos invitados', 'capacidad del local', 'cuantas personas pueden ir', 'cuantos podemos ir', 'maximo de personas', 'cuanta gente cabe', 'para cuantas personas', 'cuantos ninos', 'es grande el local', 'que tan grande es'],
         k: ['capacidad', 'personas', 'gente', 'cuantos', 'cuantas', 'grande', 'espacio'],
-        a: (e) => ({ html: (e.personas ? 'Para <b>' + e.personas + ' personas</b>, ' : '') + 'lo mejor es que se lo cuentes al equipo por WhatsApp y te asesoran para que todos la pasen increíble 🙌. Ten en cuenta que hay <b>3 visores Meta Quest 3</b>, Xbox y arcade funcionando al tiempo, así que mientras unos juegan, los otros gritan… digo, animan 😂.', acciones: [preguntar((e.personas ? 'Somos ' + e.personas + ' personas. ' : '') + '¿Cuántas personas caben en un evento privado?')] }) },
+        a: (e) => {
+          const n = Number(e.personas) || 0;
+          const base = 'En un evento privado el local es cómodo para <b>hasta 15 personas</b>. <b>Juegan 9 a la vez</b>: 3 en realidad virtual (Meta Quest 3), 4 en Xbox y 2 en arcade. Los demás tienen sillas para animar mientras les llega el turno… o para gritar desde la barrera 😂.';
+          if (n > 15) return { html: 'Para <b>' + n + ' personas</b> ya queda apretado. ' + base + ' Cuéntaselo al equipo por WhatsApp y miran cómo acomodarlos 🙌.', acciones: [preguntar('Somos ' + n + ' personas. ¿Cómo podríamos acomodarnos en un evento privado?')] };
+          return { html: (n ? '¡Para <b>' + n + ' personas</b> van perfecto! 🙌 ' : '') + base, chips: ['Quiero reservar el local', 'Precios para eventos'] };
+        } },
 
       { id: 'equipos', t: '¿Con qué equipos juegan?', cara: 'feliz',
         p: ['que equipos tienen', 'que consolas tienen', 'con que juegan', 'que visores usan', 'que tecnologia tienen', 'que maquinas tienen', 'que hay alla', 'que tienen alla', 'solo realidad virtual', 'que mas tienen'],
