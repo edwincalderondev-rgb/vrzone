@@ -33,7 +33,7 @@ const CASOS = [
   ['me voy a marear?', 'mareo'], ['da mareo?', 'mareo'], ['puedo jugar con gafas', 'gafas'], ['estoy embarazada puedo jugar', 'salud'], ['es seguro?', 'seguro'], ['limpian los visores?', 'higiene'],
   ['cuanto dura cada juego', 'duracion'], ['podemos jugar varios al tiempo', 'multijugador'], ['cuantos visores tienen', 'multijugador'],
   ['plan para una cita con mi novia', 'pareja'], ['tienen promociones', 'promo'], ['es gratis?', 'gratis'], ['desde cuando existen', 'historia'],
-  ['hacen eventos para empresas', 'empresas'], ['salida pedagogica del colegio', 'colegios'], ['pueden llevar los visores a mi evento', 'activaciones'],
+  ['hacen eventos para empresas', 'empresas'], ['salida pedagogica del colegio', 'colegios'], ['pueden llevar los visores a mi evento', 'activaciones'], ['cuanto cuesta llevar los visores a domicilio', 'activaciones'], ['hacen pausas activas', 'activaciones'], ['hay dos por uno', 'promo'],
   ['que opinan los clientes', 'resenas'], ['tiene aire acondicionado', 'clima'], ['hay wifi', 'wifi'], ['hay parqueadero', 'parqueadero'],
   ['necesito cancelar la reserva', 'cancelar'], ['puedo grabar videos', 'grabar'], ['que ropa llevo', 'ropa'], ['estan contratando?', 'empleo'], ['tienen sede en barranquilla', 'otra-sede'],
   ['do you speak english?', 'english'], ['what time do you open', 'english'],

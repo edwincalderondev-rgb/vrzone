@@ -35,6 +35,36 @@
     sellos: { casillas: 6, premios: ['15 minutos gratis', '30 minutos gratis', '1 hora gratis'] },
     // VR ZONE va a ti: experiencias fuera del local, siempre con contacto previo.
     domicilio: ['Cumpleaños en tu casa o salón', 'Colegios', 'Universidades', 'Ferias y activaciones de marca', 'Empresas: pausas activas y lúdicas'],
+    // Xbox y arcade (tarifas de la respuesta rápida «precio» de WhatsApp, 2026-11-10).
+    extras: [
+      { nombre: 'Xbox Series S', detalle: '2 controles', precios: [['30 minutos', 5000], ['1 hora', 8000]] },
+      { nombre: 'Arcade clásica', detalle: 'Créditos', precios: [['1 crédito', 2000], ['3 créditos', 5000]] }
+    ],
+    // VR a domicilio (respuesta rápida «eventos» de WhatsApp): por número de visores → 1 hora, 2 horas y hora adicional.
+    domicilioTarifas: { 1: [140000, 200000, 50000], 2: [240000, 350000, 90000], 3: [300000, 450000, 120000] },
+    // En un evento privado: se comunica «hasta 15 personas»; juegan 9 a la vez (3 VR + 4 Xbox + 2 arcade).
+    capacidad: { personas: 15, jugando: 9 },
+    // Promociones con fecha: al pasar la fecha («hasta», inclusive, hora de Santa Marta) la página las oculta sola.
+    promos: {
+      preventa: { hasta: '2026-11-30', bono: '+30 minutos gratis', texto: 'Reserva tu cumpleaños antes del 30 de noviembre y te regalamos 30 minutos más de fiesta.' },
+      // Minijuego «Reto del vértigo»: cupón 2x1 por jugar y retar a un amigo. Para apagarlo: activa: false.
+      reto: {
+        activa: true, hasta: '2026-12-31', diasCupon: 7,
+        premios: {
+          cruzo: { letra: 'C', titulo: '2x1 en 15 minutos', detalle: 'Juegan dos por $10.000' },
+          cayo: { letra: 'T', titulo: '2x1 en la experiencia inicial', detalle: 'Juegan dos por $8.000' }
+        },
+        condiciones: 'Un cupón por persona. Válido 7 días, en turnos de realidad virtual dentro del horario normal. No se acumula con otras promociones ni aplica a alquileres privados. Sujeto a disponibilidad: escríbenos antes de venir.'
+      },
+      // 2x1 de entre semana (publicado en el catálogo y en la respuesta «precio» de WhatsApp). Para apagarlo: activa: false.
+      dosXuno: { activa: true, hastaMin: 960, texto: '2x1 antes de las 4:00 p. m.', dias: 'Lunes a viernes, no festivos', nota: 'En turnos de realidad virtual. No aplica a alquileres privados.' },
+      // Ofertas de temporada (las mismas del catálogo de WhatsApp).
+      temporada: [
+        { id: 'regalo', emoji: '🎁', titulo: 'Tarjeta de regalo', precio: '$30.000 · $50.000 · $100.000', texto: 'Para realidad virtual, Xbox y arcade. Válida hasta el 31 de marzo de 2027.', wa: 'Hola VR ZONE 🎁 Quiero una tarjeta de regalo. ¿Cómo la compro?' },
+        { id: 'pase', emoji: '🏖️', titulo: 'Pase de vacaciones', precio: '$60.000', texto: '4 turnos de 30 minutos. Sueltos valen $72.000: te ahorras $12.000.', wa: 'Hola VR ZONE 🏖️ Quiero el pase de vacaciones (4 turnos de 30 minutos por $60.000).' },
+        { id: 'despedida', emoji: '🎓', titulo: 'Despedida de curso', precio: '$16.000 por estudiante', texto: 'El local privado 2 horas para el salón. Grupos desde 15 estudiantes, con reserva previa.', wa: 'Hola VR ZONE 🎓 Quiero cotizar una despedida de curso. Somos ___ estudiantes y la fecha sería ___.' }
+      ]
+    },
     evento: {
       tarifas: { 1: 140000, 2: 240000, 3: 310000, 4: 400000 },
       horaAdicional: 100000,
@@ -50,7 +80,7 @@
         'Tarjeta de invitación exclusiva para tus invitados'
       ]
     },
-    google: { nota: 4.6, opiniones: 13 },
+    google: { nota: 4.6, opiniones: 14 }, // 14.ª reseña (5 ★) el 2026-11-17
     // Reseñas reales de Google Maps, textuales (solo se normalizaron espacios). Año aproximado según Google al 2026-10-30.
     resenas: [
       { autor: 'Brayan Perez', estrellas: 4, anio: 2026, texto: 'Excelente, siempre pasaba por el lugar y pensaba en llevar a mis hijos, hoy decidí llevarlos y ellos encantados, la experiencia con la VR fue fantástica, la amabilidad y atención de los encargados fue admirable, mis hijos no paran de decir que quieren volver, y eso haremos muy frecuentemente.' },
@@ -112,6 +142,48 @@
   VRZ.precioEvento = function (horas) {
     const h = Math.max(1, Math.round(horas));
     return VRZ.evento.tarifas[h] || VRZ.evento.tarifas[4] + (h - 4) * VRZ.evento.horaAdicional;
+  };
+
+  // VR a domicilio: precio según visores (1 a 3) y horas (desde 1).
+  VRZ.precioDomicilio = function (visores, horas) {
+    const t = VRZ.domicilioTarifas[Math.min(3, Math.max(1, Math.round(visores)))];
+    const h = Math.max(1, Math.round(horas));
+    return h === 1 ? t[0] : t[1] + (h - 2) * t[2];
+  };
+
+  // ¿Sigue vigente una promoción? Devuelve los días que faltan (0 = último día) o -1 si ya pasó.
+  VRZ.diasPromo = function (hasta, fecha) {
+    const t = fecha || VRZ.ahora();
+    const hoy = Date.UTC(t.getUTCFullYear(), t.getUTCMonth(), t.getUTCDate());
+    const [y, m, d] = hasta.split('-').map(Number);
+    const dias = Math.round((Date.UTC(y, m - 1, d) - hoy) / DIA);
+    return dias < 0 ? -1 : dias;
+  };
+
+  // ¿Hay 2x1 en este momento? (lunes a viernes no festivos, desde que abre hasta las 4:00 p. m.)
+  VRZ.dosXunoAhora = function (fecha) {
+    const p = VRZ.promos.dosXuno, t = fecha || VRZ.ahora();
+    if (!p.activa) return { hoy: false, ahora: false };
+    const h = VRZ.horarioDe(t), min = t.getUTCHours() * 60 + t.getUTCMinutes();
+    const hoy = !h.finde && min < p.hastaMin;
+    return { hoy, ahora: hoy && min >= h.abre };
+  };
+
+  // Cupones del minijuego: VRZ-<letra><día><mes de vencimiento>-<3 caracteres><verificador>.
+  // En caja se comprueba con VRZ.validarCupon('VRZ-…') en la consola del navegador (o simplemente mirando la fecha).
+  const ALFA = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  const verificador = s => { let h = 7; for (const c of s) h = (h * 31 + c.charCodeAt(0)) % 9973; return ALFA[h % ALFA.length]; };
+  VRZ.crearCupon = function (letra, vence) {
+    const dd = String(vence.getUTCDate()).padStart(2, '0'), mm = String(vence.getUTCMonth() + 1).padStart(2, '0');
+    let r = ''; for (let i = 0; i < 3; i++) r += ALFA[Math.floor(Math.random() * ALFA.length)];
+    const base = letra + dd + mm + r;
+    return 'VRZ-' + letra + dd + mm + '-' + r + verificador(base);
+  };
+  VRZ.validarCupon = function (codigo) {
+    const m = String(codigo).toUpperCase().trim().match(/^VRZ-([A-Z])(\d\d)(\d\d)-([A-Z2-9]{3})([A-Z2-9])$/);
+    if (!m || verificador(m[1] + m[2] + m[3] + m[4]) !== m[5]) return { valido: false };
+    const premio = Object.values(VRZ.promos.reto.premios).find(p => p.letra === m[1]);
+    return { valido: !!premio, premio: premio && premio.titulo, vence: m[2] + '/' + m[3] };
   };
 
   VRZ.cop = n => '$' + Math.round(n).toLocaleString('es-CO').replace(/,/g, '.');

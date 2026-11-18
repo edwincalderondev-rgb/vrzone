@@ -9,7 +9,9 @@
   // ---------- Tarifas ----------
   const lista = $('#lista-tarifas');
   const base = VRZ.evento.tarifas[1];
-  const ETIQUETA = { 3: 'Ideal para cumpleaños', 4: 'Mejor precio por hora' };
+  const ETIQUETA = { 3: '⭐ El más elegido', 4: 'Mejor precio por hora' };
+  const cupo = VRZ.capacidad.personas;
+  const preventa = VRZ.diasPromo(VRZ.promos.preventa.hasta) >= 0;
   if (lista) {
     lista.innerHTML = [1, 2, 3, 4].map(h => {
       const p = VRZ.evento.tarifas[h], ahorro = base * h - p;
@@ -17,10 +19,10 @@
         (ETIQUETA[h] ? '<span class="cinta-tarifa">' + ETIQUETA[h] + '</span>' : '') +
         '<span class="horas">' + h + '<small>' + (h === 1 ? 'hora' : 'horas') + '</small></span>' +
         '<span class="precio">' + VRZ.cop(p) + '</span>' +
-        '<span class="por-hora">' + VRZ.cop(p / h) + ' por hora</span>' +
+        '<span class="por-hora">' + VRZ.cop(p / h) + ' por hora · ' + VRZ.cop(Math.ceil(p / cupo / 100) * 100) + ' por invitado*</span>' +
         '<span class="ahorro">' + (ahorro > 0 ? 'Ahorras ' + VRZ.cop(ahorro) : '') + '</span>' +
         '<button class="btn' + (h === 3 ? ' btn-primario' : '') + '" type="button" data-reservar="' + h + '">Reservar ' + h + ' h</button></article>';
-    }).join('');
+    }).join('') + '<p class="nota-tarifas">* Con ' + cupo + ' invitados. El precio es por el local, no por persona.</p>';
   }
 
   // ---------- Invitación ----------
@@ -91,7 +93,8 @@
   // ---------- Formulario ----------
   const form = $('#form-reserva');
   if (form) {
-    const dia = $('#r-dia'), inicio = $('#r-inicio'), nombre = $('#r-nombre'), tipo = $('#r-tipo'), notas = $('#r-notas'), error = $('#r-error');
+    const dia = $('#r-dia'), inicio = $('#r-inicio'), nombre = $('#r-nombre'), tipo = $('#r-tipo'), notas = $('#r-notas'), error = $('#r-error'), invitados = $('#r-invitados'), bono = $('#r-bono');
+    if (bono) bono.hidden = !preventa;
     const hoy = VRZ.ahora();
     dia.min = hoy.toISOString().slice(0, 10);
     for (let m = 8 * 60; m <= 20 * 60; m += 30) {
@@ -115,7 +118,8 @@
       $('#r-paquete').textContent = datos.horas + (datos.horas === 1 ? ' hora' : ' horas') + (datos.horas > 4 ? ' (4 + ' + (datos.horas - 4) + ' adicional' + (datos.horas > 5 ? 'es' : '') + ')' : '');
       $('#r-total').textContent = VRZ.cop(total);
       $('#r-anticipo').textContent = VRZ.cop(total * VRZ.evento.anticipo);
-      $('#r-fin-txt').textContent = 'Hora de fin: ' + VRZ.hora12((datos.inicio + datos.horas * 60) % 1440);
+      $('#r-fin-txt').textContent = 'Hora de fin: ' + VRZ.hora12((datos.inicio + datos.horas * 60) % 1440) + (preventa ? ' · con la preventa, 30 minutos más 🎁' : '');
+      if (invitados) $('#r-invitados-txt').textContent = invitados.value === 'Más de 15' ? 'El local es cómodo para hasta ' + cupo + ' personas. Cuéntanos cuántos son y lo revisamos contigo.' : 'El local es cómodo para hasta ' + cupo + ' personas.';
       pintarInvitaciones();
     }
     const elegirHoras = h => {
@@ -129,7 +133,7 @@
       $('#reservar').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
       setTimeout(() => dia.focus({ preventScroll: true }), 600);
     }));
-    [dia, inicio, nombre, tipo, notas].forEach(el => el.addEventListener('input', () => { el.removeAttribute('aria-invalid'); error.textContent = ''; actualizar(); }));
+    [dia, inicio, nombre, tipo, notas, invitados].filter(Boolean).forEach(el => el.addEventListener('input', () => { el.removeAttribute('aria-invalid'); error.textContent = ''; actualizar(); }));
 
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -149,6 +153,8 @@
         '🎈 Tipo de evento: ' + tipo.value,
         '⏱ Paquete: ' + datos.horas + (datos.horas === 1 ? ' hora' : ' horas') + ' — ' + VRZ.cop(total) + ' (anticipo del 50 %: ' + VRZ.cop(total * VRZ.evento.anticipo) + ')'
       ];
+      if (invitados && invitados.value) lineas.push('👥 Invitados: ' + invitados.value);
+      if (preventa) lineas.push('🎁 Preventa: reservo antes del 30 de noviembre, con los 30 minutos de regalo.');
       if (notas.value.trim()) lineas.push('💬 Comentarios: ' + notas.value.trim());
       lineas.push('', 'Quedo atento(a) a los datos para pagar el 50 % y les envío la captura. ¡Gracias!');
       window.open(VRZ.wa(lineas.join('\n')), '_blank', 'noopener');

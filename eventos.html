@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; frame-src https://www.youtube-nocookie.com https://www.google.com; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Alquiler para cumpleaños y eventos · VR ZONE Santa Marta</title>
-  <meta name="description" content="Alquila VR ZONE completo para tu cumpleaños o evento en Santa Marta: 3 visores Meta Quest 3, Xbox, arcade, TVs y proyector. Desde $140.000, todo incluido.">
+  <meta name="description" content="Alquila VR ZONE completo y privado para tu cumpleaños en Santa Marta: hasta 15 personas, 3 visores Meta Quest 3, Xbox, arcade, TVs y proyector. 3 horas por $310.000; desde $140.000.">
   <meta name="theme-color" content="#0a0418">
   <link rel="canonical" href="https://edwincalderondev-rgb.github.io/vrzone/eventos.html">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -24,11 +24,13 @@
   <link rel="preload" href="assets/fonts/unbounded.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/estilos.css">
+  <link rel="stylesheet" href="assets/css/ronda3.css">
   <link rel="stylesheet" href="assets/css/zeta.css">
   <script src="assets/js/negocio.js" defer></script>
   <script src="assets/js/juegos.js" defer></script>
   <script src="assets/js/sitio.js" defer></script>
   <script src="assets/js/eventos.js" defer></script>
+  <script src="assets/js/promo.js" defer></script>
   <script src="assets/js/zeta-kb.js" defer></script>
   <script src="assets/js/zeta-motor.js" defer></script>
   <script src="assets/js/zeta.js" defer></script>
@@ -82,7 +84,7 @@
         <a href="#incluye">Qué incluye</a>
         <a href="#tarifas">Tarifas</a>
         <a href="#reservar">Reservar</a>
-        <a href="#va-a-ti" class="opc">VR a domicilio</a>
+        <a href="a-domicilio.html">Empresas y U</a>
       </nav>
       <span class="estado" data-estado>Horario de hoy</span>
       <a class="btn btn-primario" href="#reservar"><svg aria-hidden="true"><use href="#i-calendario"/></svg>Separar fecha</a>
@@ -98,14 +100,15 @@
       </div>
       <div class="contenedor">
         <div class="hero-texto">
+          <a class="promo-pill" href="#reservar" data-promo="preventa" hidden><span aria-hidden="true">🎁</span> <b>Preventa:</b> reserva ya y llévate +30 min gratis <i data-promo-dias></i> <span aria-hidden="true">→</span></a>
           <span class="sobretitulo">Alquiler del local · Privado · Climatizado</span>
           <h1 class="titulo-hero" id="titulo-hero"><span class="linea">Ven a vivir tu cumpleaños</span> <span class="linea grad-texto">en otra realidad.</span></h1>
-          <p class="hero-sub">Todo VR ZONE <strong>solo para ti y tus invitados</strong>: 3 visores Meta Quest 3, Xbox Series S, arcade clásica, TVs y proyector para tu música. <strong>Sin costos ocultos</strong>, y con tarjeta de invitación exclusiva para tus invitados.</p>
+          <p class="hero-sub">Todo VR ZONE <strong>cerrado para ti y hasta 15 invitados</strong>: 3 visores Meta Quest 3, Xbox Series S, arcade clásica, TVs y proyector para tu música. <strong>Sin costos ocultos</strong>, y con invitación digital a nombre del cumpleañero.</p>
           <div class="hero-cta">
             <a class="btn btn-primario btn-grande" href="#reservar"><svg aria-hidden="true"><use href="#i-calendario"/></svg>Separar mi fecha</a>
             <a class="btn btn-grande" href="#tarifas">Ver tarifas</a>
           </div>
-          <p class="precio-desde">Desde <b>$140.000</b> la hora · todo incluido</p>
+          <p class="precio-desde"><b>$310.000</b> las 3 horas ⭐ · menos de $21.000 por invitado · paquetes desde $140.000</p>
         </div>
         <div class="invitacion-zona">
           <div class="invitacion" data-invitacion></div>
@@ -118,14 +121,14 @@
     <!-- VIDEO DESTACADO -->
     <section class="seccion" id="mira" aria-labelledby="t-mira">
       <div class="contenedor video-destacado">
-        <div class="video video--grande revelar" data-video="CNCGbFGX4RY">
-          <button type="button" aria-label="Reproducir video: así se vive un cumpleaños en VR ZONE"><img class="video-poster" src="assets/img/video-cumple.webp" alt="" width="540" height="960" loading="lazy"><span class="play"><svg aria-hidden="true"><use href="#i-play"/></svg></span><strong>Así se vive un cumpleaños en VR ZONE</strong><span>Dale play 🎂 · Video real</span></button>
+        <div class="video video--grande revelar" data-video="PLcEh8Q4CEc">
+          <button type="button" aria-label="Reproducir video: así se vive un cumpleaños en VR ZONE"><img class="video-poster" src="assets/img/video-cumple-2.webp" alt="" width="540" height="960" loading="lazy"><span class="play"><svg aria-hidden="true"><use href="#i-play"/></svg></span><strong>Así se vive un cumpleaños en VR ZONE</strong><span>Dale play 🎂 · 23 segundos</span></button>
         </div>
         <div class="revelar">
           <span class="sobretitulo">Mira esto primero</span>
           <h2 id="t-mira">Un cumpleaños de verdad, en VR ZONE.</h2>
           <p>Neón, globos, torta y realidad virtual: así se ve una fiesta cuando la haces en otra realidad. Dale play y empieza a imaginar la tuya.</p>
-          <ul class="lista-mini"><li>El local completo, solo para tu grupo</li><li>3 visores Meta Quest 3 funcionando a la vez</li><li>Tu música en las TVs y el proyector</li></ul>
+          <ul class="lista-mini"><li>El local completo, solo para tu grupo: hasta 15 personas</li><li>9 jugando a la vez: 3 en realidad virtual, 4 en Xbox y 2 en arcade</li><li>Tu música en las TVs y el proyector</li></ul>
           <div class="hero-cta"><a class="btn btn-primario" href="#reservar"><svg aria-hidden="true"><use href="#i-calendario"/></svg>Quiero mi fecha</a><a class="btn" href="https://www.instagram.com/stories/highlights/18089576125534505/" target="_blank" rel="noopener">Más eventos en Instagram ↗</a></div>
         </div>
       </div>
@@ -159,9 +162,10 @@
         <div class="cabeza revelar">
           <span class="sobretitulo">Tarifas especiales</span>
           <h2 id="t-tarifas">Más horas, mejor precio por hora.</h2>
-          <p>El precio es por el local completo, no por persona. Escoge cuánto quieres que dure la fiesta.</p>
+          <p>El precio es por el local completo, no por persona: hasta 15 invitados por la misma tarifa. Escoge cuánto quieres que dure la fiesta.</p>
         </div>
         <div class="tarifas" id="lista-tarifas"></div>
+        <p class="cumple-promo revelar" data-promo="preventa" hidden><span aria-hidden="true">🎁</span> <span><b>Preventa de cumpleaños:</b> si separas tu fecha antes del 30 de noviembre, te regalamos <b>30 minutos más</b> de fiesta. <i data-promo-dias></i></span></p>
         <div class="adicional vidrio revelar"><span>¿Se puso buena la fiesta? <strong>Hora adicional: $100.000</strong></span><a class="btn btn-chico" href="#reservar">Armar mi reserva →</a></div>
       </div>
     </section>
@@ -208,6 +212,7 @@
               <small id="r-fin-txt">Hora de fin: —</small>
             </div>
             <div class="campo"><label for="r-nombre">A nombre de</label><input id="r-nombre" name="nombre" type="text" maxlength="40" autocomplete="off" placeholder="Ej.: Sofía" required><small>Preferiblemente el nombre del cumpleañero.</small></div>
+            <div class="campo"><label for="r-invitados">¿Cuántos invitados? <small>(aprox.)</small></label><select id="r-invitados" name="invitados"><option value="">Aún no sé</option><option>Hasta 8</option><option>De 9 a 12</option><option>De 13 a 15</option><option>Más de 15</option></select><small id="r-invitados-txt">El local es cómodo para hasta 15 personas.</small></div>
             <div class="campo"><label for="r-tipo">Tipo de evento</label>
               <select id="r-tipo" name="tipo"><option>Cumpleaños</option><option>Reunión con amigos</option><option>Evento académico</option><option>Evento empresarial</option><option>Otro</option></select></div>
             <div class="campo"><label for="r-notas">Comentarios <small>(opcional)</small></label><textarea id="r-notas" name="notas" maxlength="300" placeholder="Edad del cumpleañero, número de invitados, ideas de decoración…"></textarea></div>
@@ -215,10 +220,11 @@
               <div><span>Paquete</span><b id="r-paquete">3 horas</b></div>
               <div class="total"><span>Total</span><b id="r-total">$310.000</b></div>
               <div class="anticipo"><span>Anticipo del 50 % para separar</span><b id="r-anticipo">$155.000</b></div>
+              <div class="bono" id="r-bono" hidden><span>🎁 Preventa</span><b>+30 minutos gratis</b></div>
             </div>
             <p class="error-form" id="r-error" role="alert"></p>
             <button class="btn btn-primario btn-grande" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar reserva por WhatsApp</button>
-            <p class="aviso">Sujeto a disponibilidad. Después de enviar el mensaje te pasamos los datos de pago; la reserva queda confirmada al recibir la captura del pago del 50 %.</p>
+            <p class="aviso">Hacemos un solo evento a la vez: la fecha queda para quien la separe primero. Después de enviar el mensaje te pasamos los datos de pago; la reserva queda confirmada al recibir la captura del pago del 50 %.</p>
           </form>
           <div class="invitacion-zona">
             <div class="invitacion" data-invitacion></div>
@@ -260,7 +266,7 @@
             <span class="sobretitulo">Reseñas reales</span>
             <h2 id="t-resenas">“Mis hijos no paran de decir que quieren volver”.</h2>
           </div>
-          <div class="nota-google"><span class="num">4,6</span><div><span class="estrellas" aria-hidden="true">★★★★½</span><small>13 opiniones en Google</small></div></div>
+          <div class="nota-google"><span class="num">4,6</span><div><span class="estrellas" aria-hidden="true">★★★★½</span><small><span data-google-opiniones>14</span> opiniones en Google</small></div></div>
         </div>
         <div class="videos videos--2">
           <div class="resenas-col" id="lista-resenas" data-cuantas="2"></div>
@@ -294,9 +300,10 @@
             <li><span aria-hidden="true">💼</span><div><b>Empresas</b><small>Pausas activas y lúdicas que recargan al equipo.</small></div></li>
           </ul>
           <div class="hero-cta">
-            <a class="btn btn-primario" data-wa="Hola VR ZONE 👋 Quiero cotizar realidad virtual para un evento fuera del local (colegio, universidad, empresa, feria o cumpleaños)." href="https://wa.me/573013350175"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotizar VR a domicilio</a>
+            <a class="btn btn-primario" href="a-domicilio.html"><span aria-hidden="true">🚀</span> Ver tarifas y cotizar</a>
+            <a class="btn" data-wa="Hola VR ZONE 👋 Quiero cotizar realidad virtual para un evento fuera del local (colegio, universidad, empresa, feria o cumpleaños)." href="https://wa.me/573013350175"><svg aria-hidden="true"><use href="#i-wa"/></svg>Preguntar</a>
           </div>
-          <p class="aviso">Escríbenos con anticipación para agendar la fecha.</p>
+          <p class="aviso">Desde $140.000 (1 visor, 1 hora). Se agenda con anticipación.</p>
         </div>
       </div>
     </section>
@@ -314,7 +321,7 @@
           <details><summary>¿Puedo llevar torta, bebidas y decoración?</summary><div class="resp"><p>Claro. Tienes acceso a la nevera para la torta y las bebidas, y puedes personalizar el lugar a tu estilo: decoración, playlist y lo que se te ocurra.</p></div></details>
           <details><summary>¿Cómo separo la fecha?</summary><div class="resp"><p>Envíanos por WhatsApp el día, la hora de inicio, la hora de fin y a nombre de quién va la reserva (preferiblemente el cumpleañero), junto con la captura del pago del 50 % del costo. <a href="#reservar">El formulario</a> arma el mensaje por ti.</p></div></details>
           <details><summary>¿Cómo pago el anticipo?</summary><div class="resp"><p>Cuando nos escribas te enviamos los datos de pago. Con la captura del 50 % queda separada tu fecha; el resto se paga según lo que acuerdes con nosotros.</p></div></details>
-          <details><summary>¿Cuántas personas pueden venir?</summary><div class="resp"><p>Cuéntanos por WhatsApp cuántos invitados esperas y te asesoramos para que todos la pasen increíble. Recuerda que hay 3 visores, Xbox y arcade funcionando al tiempo.</p></div></details>
+          <details><summary>¿Cuántas personas pueden venir?</summary><div class="resp"><p>El local es cómodo para <b>hasta 15 personas</b>. Juegan 9 a la vez (3 en realidad virtual, 4 en Xbox y 2 en arcade) y los demás tienen sillas para animar mientras les llega el turno. Si tu grupo es más grande, cuéntanos por WhatsApp y lo revisamos.</p></div></details>
           <details><summary>¿Qué juegos pueden jugar mis invitados?</summary><div class="resp"><p>Los 50 del catálogo, de principiante a avanzado: terror, acción, deportes, carreras, multijugador y más. <a href="./#juegos">Míralos aquí</a>.</p></div></details>
         </div>
       </div>
@@ -345,7 +352,7 @@
         </div>
         <div>
           <h4>Explora</h4>
-          <ul><li><a href="./#juegos">Catálogo de juegos</a></li><li><a href="#tarifas">Tarifas para eventos</a></li><li><a href="#reservar">Armar mi reserva</a></li><li><a href="#preguntas">Preguntas frecuentes</a></li></ul>
+          <ul><li><a href="./#juegos">Catálogo de juegos</a></li><li><a href="#tarifas">Tarifas para eventos</a></li><li><a href="#reservar">Armar mi reserva</a></li><li><a href="a-domicilio.html">VR a domicilio</a></li><li><a href="#preguntas">Preguntas frecuentes</a></li></ul>
         </div>
         <div>
           <h4>Horario</h4>
@@ -363,6 +370,8 @@
       <div class="pie-legal"><span>© <span data-anio>2026</span> VR ZONE · Santa Marta, Colombia</span><span>Meta Quest y Xbox son marcas de sus respectivos dueños.</span></div>
     </div>
   </footer>
+
+  <div class="barra-movil" data-barra><a class="bm-fiesta" href="#reservar"><span aria-hidden="true">📅</span><span><b>Separar mi fecha</b><small>3 h · $310.000</small></span></a><a class="bm-wa" data-wa="¡Hola VR ZONE! 🎉 Quiero información para celebrar un cumpleaños en el local." href="https://wa.me/573013350175"><svg aria-hidden="true"><use href="#i-wa"/></svg><span><b>Preguntar</b><small>por WhatsApp</small></span></a></div>
 
   <a class="fab-wa" data-wa="¡Hola VR ZONE! 🎉 Quiero información para alquilar el local." href="https://wa.me/573013350175" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
 </body>

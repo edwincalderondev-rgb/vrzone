@@ -10,6 +10,7 @@
   const mapa = { t: 'Abrir en Google Maps', href: V.mapa };
   const eventos = { t: 'Ver alquiler para eventos', href: 'eventos.html' };
   const formulario = { t: 'Armar mi reserva', href: 'eventos.html#reservar' };
+  const domicilio = { t: 'Ver tarifas y cotizar', href: 'a-domicilio.html#cotizar' };
   const catalogo = { t: 'Ver los 50 juegos', href: './#juegos' };
   const preguntar = (texto, t) => ({ t: t || 'Preguntarle al equipo', wa: WA_TXT + texto });
   const lista = items => '<ul>' + items.map(i => '<li>' + i + '</li>').join('') + '</ul>';
@@ -248,7 +249,7 @@
           const min = (String(texto).match(/(\d{1,2})\s*min/) || [])[1];
           const elegido = min ? (+min <= 10 ? T[0] : +min <= 15 ? T[1] : +min <= 30 ? T[2] : T[3]) : (e.horas === 1 ? T[3] : null);
           let s = elegido ? '<b>' + elegido.nombre + (elegido === T[0] ? ' (' + elegido.tiempo + ')' : '') + ': ' + H.cop(elegido.precio) + '</b> 🎮. Todas las tarifas:' : '¡Claro! Estas son las tarifas para jugar 🎮';
-          s += H.lista(T.map(t => '<b>' + t.nombre + (t === T[0] ? ' (' + t.tiempo + ')' : '') + ':</b> ' + H.cop(t.precio))) + 'Y con la <b>tarjeta de sellos</b> vuelves a jugar gratis 😉.';
+          s += H.lista(T.map(t => '<b>' + t.nombre + (t === T[0] ? ' (' + t.tiempo + ')' : '') + ':</b> ' + H.cop(t.precio))) + (H.VRZ.promos.dosXuno.activa ? '🔥 <b>Entre semana hay ' + H.VRZ.promos.dosXuno.texto + '</b> (no festivos). ' : '') + 'Y con la <b>tarjeta de sellos</b> vuelves a jugar gratis 😉.';
           if (e.horas && e.horas > 1) s += '<p class="z-nota">Si lo que quieres es <b>alquilar el local completo</b> por ' + e.horas + ' horas: <b>' + H.cop(H.VRZ.precioEvento(e.horas)) + '</b>.</p>';
           else s += '<p class="z-nota">¿Es para un cumpleaños? El <b>local completo</b> se alquila desde <b>$140.000</b> la hora.</p>';
           return { html: s, acciones: [preguntar('Quiero separar un turno para jugar realidad virtual. ¿Qué disponibilidad tienen?', 'Separar mi turno')], chips: ['¿Cómo funciona la tarjeta de sellos?', 'Recomiéndame un juego', 'Precios para eventos'] };
@@ -374,13 +375,13 @@
       { id: 'xbox', t: '¿Tienen Xbox?', cara: 'feliz',
         p: ['tienen xbox', 'juegos de xbox', 'que juegos de xbox', 'tienen playstation', 'tienen play', 'tienen fifa', 'tienen fortnite', 'tienen consola', 'tienen nintendo', 'tienen ps5'],
         k: ['xbox', 'fifa', 'fortnite', 'minecraft'],
-        a: ['Tenemos <b>Xbox Series S</b> con los mejores juegos 🎮, para la revancha entre amigos. Qué títulos tiene instalados hoy te lo confirma el equipo por WhatsApp.'],
+        a: ['Tenemos <b>Xbox Series S</b> con los mejores juegos 🎮, para la revancha entre amigos: <b>30 minutos $5.000</b> o <b>1 hora $8.000</b>, con 2 controles. Qué títulos tiene instalados hoy te lo confirma el equipo por WhatsApp.'],
         acciones: [preguntar('¿Qué juegos tienen en la Xbox?')], chips: ['¿Tienen arcade?', 'Juegos de realidad virtual'] },
 
       { id: 'arcade', t: '¿Tienen arcade?', cara: 'feliz',
         p: ['tienen arcade', 'maquina arcade', 'maquinitas', 'juegos retro', 'juegos clasicos', 'tienen maquinita', 'arcade retro'],
         k: ['arcade', 'retro', 'nostalgia'],
-        a: ['¡Sí! 🕹️ Hay una <b>máquina arcade clásica</b>, de las de antes. Porque la nostalgia también se juega. Qué clásicos tiene cargados te lo cuenta el equipo.'],
+        a: ['¡Sí! 🕹️ Hay una <b>máquina arcade clásica</b>, de las de antes: <b>1 crédito $2.000</b> o <b>3 créditos $5.000</b>. Porque la nostalgia también se juega. Qué clásicos tiene cargados te lo cuenta el equipo.'],
         chips: ['¿Tienen Xbox?', '¿Qué juegos tienen?'] },
 
       { id: 'catalogo', t: '¿Qué juegos tienen?', cara: 'feliz',
@@ -476,8 +477,17 @@
       { id: 'promo', t: '¿Hay promociones?', cara: 'guino',
         p: ['tienen promociones', 'hay promociones', 'tienen descuentos', 'hay descuento', 'alguna promo', 'tienen ofertas', 'dos por uno', 'promocion de cumpleanos', 'descuento para estudiantes'],
         k: ['promo', 'descuento', 'oferta', 'combo'],
-        a: ['¡Casi siempre hay alguna! 🤑 Las promociones del momento te las cuenta el equipo por WhatsApp. Y hay una que es fija: la <b>tarjeta de sellos</b> → llénala y juegas gratis (15 min, luego 30 min y luego 1 hora). Síguenos en <b>@vrzoneplay</b> para no perderte nada.'],
-        acciones: [preguntar('¿Qué promociones tienen ahora?', 'Preguntar promociones')], chips: ['¿Cómo funciona la tarjeta de sellos?', '¿Cuánto cuesta jugar?'] },
+        a(e, H) {
+          const P = H.VRZ.promos, items = [];
+          const dPre = H.VRZ.diasPromo(P.preventa.hasta), dReto = P.reto.activa ? H.VRZ.diasPromo(P.reto.hasta) : -1;
+          if (P.dosXuno.activa) items.push('🔥 <b>' + P.dosXuno.texto + '</b> (' + P.dosXuno.dias.toLowerCase() + ', en turnos de realidad virtual)');
+          if (dPre >= 0) items.push('🎂 <b>Preventa de cumpleaños:</b> ' + P.preventa.bono + ' si separas antes del 30 de noviembre' + (dPre === 0 ? ' (¡termina hoy!)' : dPre === 1 ? ' (termina mañana)' : ' (quedan ' + dPre + ' días)'));
+          if (dReto >= 0) items.push('🎟️ <b>Cupón 2x1</b> jugando el <a href="./#reto">Reto del vértigo</a> aquí en la página');
+          P.temporada.forEach(o => items.push(o.emoji + ' <b>' + o.titulo + ':</b> ' + o.precio));
+          items.push('💜 <b>Tarjeta de sellos:</b> llénala y juegas gratis (15 min, luego 30 min y luego 1 hora)');
+          return { html: '¡Claro que hay! 🤑 Estas son las de ahora:' + H.lista(items) + 'Para reservar o comprar cualquiera, escríbele al equipo.' };
+        },
+        acciones: [preguntar('Quiero aprovechar una promoción. ¿Me cuentan cómo?', 'Quiero una promo')], chips: ['¿Cómo funciona la tarjeta de sellos?', '¿Cuánto cuesta jugar?'] },
 
       { id: 'gratis', t: '¿Es gratis?', cara: 'guino',
         p: ['es gratis', 'es gratuito', 'cuesta algo', 'hay que pagar', 'se paga'],
@@ -494,24 +504,24 @@
       { id: 'empresas', t: 'Para empresas', cara: 'feliz',
         p: ['para empresas', 'evento empresarial', 'team building', 'integracion de la empresa', 'actividad para la empresa', 'fiesta de la empresa', 'evento corporativo', 'integracion de trabajo', 'para mis empleados', 'con mis companeros de trabajo'],
         k: ['empresa', 'corporativo', 'integracion', 'trabajo'],
-        a: ['¡Claro! 💼 Hacemos <b>eventos empresariales</b>: integraciones y team building con retos en equipo que sí rompen el hielo (nada une más que huir juntos de un monstruo 😂). Puedes alquilar todo el local o, con agendamiento previo, <b>llevamos la VR a tu empresa</b> para una pausa activa o lúdica.'],
-        acciones: [eventos, preguntar('Quiero cotizar un evento empresarial de realidad virtual.', 'Cotizar evento empresarial')] },
+        a: ['¡Claro! 💼 Hacemos <b>eventos empresariales</b>: integraciones y team building con retos en equipo que sí rompen el hielo (nada une más que huir juntos de un monstruo 😂). Puedes alquilar todo el local o, con agendamiento previo, <b>llevamos la VR a tu empresa</b>: integraciones, pausas activas y hasta jornadas de seguridad vial con simulador de conducción. A domicilio va desde <b>$140.000</b>.'],
+        acciones: [domicilio, eventos, preguntar('Quiero cotizar un evento empresarial de realidad virtual.', 'Cotizar evento empresarial')] },
 
       { id: 'colegios', t: 'Para colegios', cara: 'feliz',
         p: ['para colegios', 'evento academico', 'salida pedagogica', 'para estudiantes', 'para la universidad', 'excursion', 'para el colegio', 'clase en realidad virtual', 'actividad educativa'],
         k: ['colegio', 'academico', 'educativo', 'clase', 'pedagogica'],
-        a: (e, H) => ({ html: '¡Nos encanta! 🎓 Recibimos <b>eventos académicos</b>, y el catálogo tiene experiencias educativas como estas 👇' + H.tarjetas(['high-school-anatomy', 'star-chart', 'mondly'].map(porId).filter(Boolean)) + 'Pueden venir a la sala o, con agendamiento previo, <b>vamos nosotros al colegio o la universidad</b>.', acciones: [preguntar('Quiero cotizar una actividad de realidad virtual para un colegio o universidad.', 'Cotizar actividad educativa')] }) },
+        a: (e, H) => ({ html: '¡Nos encanta! 🎓 Recibimos <b>eventos académicos</b>, y el catálogo tiene experiencias educativas como estas 👇' + H.tarjetas(['high-school-anatomy', 'star-chart', 'mondly'].map(porId).filter(Boolean)) + 'Pueden venir a la sala o, con agendamiento previo, <b>vamos nosotros al colegio o la universidad</b> (desde $140.000). Ya lo hicimos en una clase universitaria de Biología Humana: los testimonios están en la página de VR a domicilio.', acciones: [domicilio, preguntar('Quiero cotizar una actividad de realidad virtual para un colegio o universidad.', 'Cotizar actividad educativa')] }) },
 
       { id: 'activaciones', t: 'Llevar VR a mi evento', cara: 'sorpresa',
         p: ['pueden ir a mi evento', 'a mi evento', 'vr a domicilio', 'a domicilio', 'pausa activa', 'pausas activas', 'cumpleanos en mi casa', 'pueden venir a mi casa', 'van a la casa', 'actividad ludica', 'llevar los visores', 'pueden llevar los visores', 'llevar los equipos', 'llevan los equipos', 'hacen activaciones', 'van a domicilio', 'llevar la realidad virtual', 'en un centro comercial', 'en una feria', 'alquilan los visores', 'alquilar los visores', 'van a empresas', 'van a colegios', 'servicio a domicilio'],
         k: ['activacion', 'feria', 'domicilio', 'llevar', 'stand', 'afuera'],
-        a: (e, H) => ({ html: '¡Sí, vamos a donde estés! 🚚🥽 Con <b>agendamiento previo</b> llevamos los visores y nuestro equipo a:' + H.lista(H.VRZ.domicilio) + 'Ya lo hemos hecho en el Centro Comercial Buenavista, ferias, universidades y colegios. Escríbenos con anticipación y te cotizamos.' }),
-        acciones: [preguntar('Quiero cotizar realidad virtual para un evento fuera del local (colegio, universidad, empresa, feria o cumpleaños).', 'Cotizar VR a domicilio')] },
+        a: (e, H) => { const T = H.VRZ.domicilioTarifas; return { html: '¡Sí, vamos a donde estés! 🚀🥽 Con <b>agendamiento previo</b> llevamos los visores y nuestro equipo a empresas, universidades, colegios, ferias y cumpleaños. <b>Tarifas:</b>' + H.lista([1, 2, 3].map(v => '<b>' + v + (v === 1 ? ' visor' : ' visores') + ':</b> ' + H.cop(T[v][0]) + ' la hora · ' + H.cop(T[v][1]) + ' las 2 horas · hora adicional ' + H.cop(T[v][2]))) + 'Incluye montaje y operador, y se separa con el <b>50 %</b>. Ya lo hemos hecho en el Centro Comercial Buenavista, ferias, universidades, colegios y empresas.' }; },
+        acciones: [domicilio, preguntar('Quiero cotizar realidad virtual para un evento fuera del local (colegio, universidad, empresa, feria o cumpleaños).', 'Cotizar VR a domicilio')] },
 
       { id: 'resenas', t: 'Reseñas', cara: 'amor',
         p: ['que opinan', 'son buenos', 'vale la pena', 'reseñas', 'resenas', 'que dicen los clientes', 'opiniones', 'calificacion', 'es bueno el lugar', 'recomiendan el lugar'],
         k: ['resena', 'opinan', 'buenos', 'pena', 'clientes', 'recomiendan'],
-        a: ['Tenemos <b>4,6 ⭐ en Google</b> con 13 opiniones. Mi favorita es la de Brayan: <i>«mis hijos no paran de decir que quieren volver, y eso haremos muy frecuentemente»</i> 🥹. Pero mejor ven y lo compruebas tú.'],
+        a: ['Tenemos <b>4,6 ⭐ en Google</b> con 14 opiniones. Mi favorita es la de Brayan: <i>«mis hijos no paran de decir que quieren volver, y eso haremos muy frecuentemente»</i> 🥹. Pero mejor ven y lo compruebas tú.'],
         acciones: [{ t: 'Ver reseñas en Google', href: V.mapa }] },
 
       { id: 'clima', t: '¿Es climatizado?', cara: 'feliz',
