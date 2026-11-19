@@ -24,7 +24,7 @@ const CASOS = [
   ['cuanto es el anticipo', 'anticipo'], ['como es el pago', 'anticipo'], ['reciben nequi?', 'pago'], ['aceptan tarjeta', 'pago'],
   ['puedo llevar torta?', 'comida'], ['se puede llevar comida', 'comida'], ['puedo llevar cerveza', 'licor'], ['puedo decorar el local', 'decorar'], ['puedo poner mi musica', 'decorar'],
   ['cuantas personas caben', 'capacidad'], ['para cuantas personas es', 'capacidad'],
-  ['que equipos tienen', 'equipos'], ['que es el meta quest 3', 'quest'], ['como funciona la realidad virtual', 'quest'], ['tienen xbox?', 'xbox'], ['tienen play 5', 'xbox'], ['tienen arcade', 'arcade'],
+  ['que equipos tienen', 'equipos'], ['que es el meta quest 3', 'quest'], ['como funciona la realidad virtual', 'quest'], ['tienen xbox?', 'xbox'], ['tienen play 5', 'xbox'], ['tienen gta 6?', 'gta'], ['cuanto vale jugar gta', 'gta'], ['grand theft auto vi', 'gta'], ['quiero jugar gta vi', 'gta'], ['tienen arcade', 'arcade'],
   ['que juegos tienen', 'catalogo'], ['cuantos juegos hay', 'catalogo'],
   ['que me recomiendas', 'recomendar'], ['algo de terror', 'recomendar'], ['juegos de miedo', 'recomendar'], ['quiero algo de zombies', 'recomendar'], ['algo para reir con mis amigos', 'recomendar'], ['juegos de carros', 'recomendar'],
   ['juegos para niños', 'edad'], ['mi hijo de 7 años puede jugar?', 'edad'], ['desde que edad pueden jugar', 'edad'],

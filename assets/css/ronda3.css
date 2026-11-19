@@ -120,6 +120,8 @@
 .extra svg { width: 38px; height: 38px; flex: none; color: var(--cian); filter: drop-shadow(0 0 10px rgba(32, 216, 255, .6)); }
 .extra p { display: grid; gap: 2px; }
 .extra p > b { font: 780 1.08rem/1.2 var(--f-titulo); }
+.extra--ancho { grid-column: 1 / -1; border-color: rgba(255, 47, 180, .55); box-shadow: 0 0 26px rgba(255, 47, 180, .22); }
+.extra--ancho svg { color: var(--magenta, #ff2fb4); filter: drop-shadow(0 0 10px rgba(255, 47, 180, .6)); }
 .extra p span { color: var(--texto-2); font-size: .95rem; }
 .extra p span b { color: #fff; }
 .temporada { margin: 10px 0 46px; }

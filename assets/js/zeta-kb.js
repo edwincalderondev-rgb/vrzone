@@ -243,7 +243,7 @@
       { id: 'precio-jugar', t: '¿Cuánto cuesta jugar?', cara: 'guino',
         p: ['cuanto cuesta', 'cuanto vale', 'cuanto cobran', 'que precio tiene', 'precio por hora', 'cuanto cuesta jugar', 'cuanto vale jugar', 'cuanto cuesta la hora', 'cuanto cuesta una partida', 'cuanto cuesta entrar', 'cuanto es', 'que valor tiene', 'precios', 'cuanto me sale', 'cuanto por persona', 'cuanto cuesta el turno', 'tarifas'],
         k: ['precio', 'cuanto', 'juego', 'turno', 'persona', 'minutos', 'hora'],
-        neg: ['alquilar', 'evento', 'local', 'privado', 'anticipo'],
+        neg: ['alquilar', 'evento', 'local', 'privado', 'anticipo', 'gta'],
         a(e, H, texto) {
           const T = H.VRZ.turnos;
           const min = (String(texto).match(/(\d{1,2})\s*min/) || [])[1];
@@ -376,7 +376,13 @@
         p: ['tienen xbox', 'juegos de xbox', 'que juegos de xbox', 'tienen playstation', 'tienen play', 'tienen fifa', 'tienen fortnite', 'tienen consola', 'tienen nintendo', 'tienen ps5'],
         k: ['xbox', 'fifa', 'fortnite', 'minecraft'],
         a: ['Tenemos <b>Xbox Series S</b> con los mejores juegos 🎮, para la revancha entre amigos: <b>30 minutos $5.000</b> o <b>1 hora $8.000</b>, con 2 controles. Qué títulos tiene instalados hoy te lo confirma el equipo por WhatsApp.'],
-        acciones: [preguntar('¿Qué juegos tienen en la Xbox?')], chips: ['¿Tienen arcade?', 'Juegos de realidad virtual'] },
+        acciones: [preguntar('¿Qué juegos tienen en la Xbox?')], chips: ['¿Tienen GTA VI?', '¿Tienen arcade?', 'Juegos de realidad virtual'] },
+
+      { id: 'gta', t: '¿Tienen GTA VI?', cara: 'feliz',
+        p: ['tienen gta', 'tienen gta 6', 'tienen gta vi', 'gta 6', 'gta vi', 'gta 5', 'grand theft auto', 'cuanto vale jugar gta', 'precio de gta', 'quiero jugar gta', 'se puede jugar gta'],
+        k: ['gta', 'grand', 'theft', 'rockstar', 'vice'],
+        a: ['¡Sí! 🔥 <b>GTA VI ya está en VR ZONE</b>, en la Xbox Series S: <b>30 minutos $7.000</b> o <b>1 hora $12.000</b>. Juegas sin comprar consola ni el juego. Es <b>solo para mayores de 18 años, con documento</b> (la ley lo exige para juegos violentos), y es de un jugador: los amigos se turnan el control. Aparta tu turno por WhatsApp y pregunta por el pase de varias horas.'],
+        acciones: [preguntar('¡Hola VR ZONE! 🎮 Quiero apartar un turno para jugar GTA VI. ¿Qué disponibilidad tienen?')], chips: ['¿Tienen Xbox?', '¿Dónde quedan?'] },
 
       { id: 'arcade', t: '¿Tienen arcade?', cara: 'feliz',
         p: ['tienen arcade', 'maquina arcade', 'maquinitas', 'juegos retro', 'juegos clasicos', 'tienen maquinita', 'arcade retro'],

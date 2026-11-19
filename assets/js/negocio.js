@@ -38,6 +38,7 @@
     // Xbox y arcade (tarifas de la respuesta rápida «precio» de WhatsApp, 2026-11-10).
     extras: [
       { nombre: 'Xbox Series S', detalle: '2 controles', precios: [['30 minutos', 5000], ['1 hora', 8000]] },
+      { nombre: 'GTA VI (Xbox)', detalle: 'Solo mayores de 18 años, con documento', precios: [['30 minutos', 7000], ['1 hora', 12000]] },
       { nombre: 'Arcade clásica', detalle: 'Créditos', precios: [['1 crédito', 2000], ['3 créditos', 5000]] }
     ],
     // VR a domicilio (respuesta rápida «eventos» de WhatsApp): por número de visores → 1 hora, 2 horas y hora adicional.
