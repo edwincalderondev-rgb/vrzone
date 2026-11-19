@@ -16,6 +16,10 @@
     $$('[data-promo-dias]', el).forEach(d => (d.textContent = diasPre === 0 ? '· termina hoy' : diasPre === 1 ? '· termina mañana' : '· quedan ' + diasPre + ' días'));
   });
 
+  // ---------- Pase GTA VI (se oculta solo al vencer) ----------
+  const gp = VRZ.promos.gtapase;
+  $$('[data-promo="gtapase"]').forEach(el => (el.hidden = !gp || VRZ.diasPromo(gp.hasta) < 0));
+
   // ---------- 2x1 de entre semana ----------
   const dx = VRZ.promos.dosXuno;
   function pintar2x1() {

@@ -357,3 +357,30 @@
   .cupon-paso p { font-size: .88rem; margin-bottom: 8px; }
   .reto-final-acciones { margin-top: 10px; }
 }
+
+/* ---------- GTA VI (19-nov-2026): sección #gta del inicio ---------- */
+.promo-pill--gta { color: #ffe0f2; background: rgba(255, 47, 180, .16); border-color: rgba(255, 47, 180, .6); }
+.promo-pill--gta:hover { background: rgba(255, 47, 180, .26); }
+.promo-pill--gta + .promo-pill { margin-top: -12px; }
+.gta { display: grid; grid-template-columns: minmax(240px, 340px) 1fr; grid-template-areas: "media cabeza" "media cuerpo"; column-gap: 44px; row-gap: 0; align-items: start; }
+.gta-cabeza { grid-area: cabeza; align-self: end; }
+.gta-media { grid-area: media; align-self: center; }
+.gta-cuerpo { grid-area: cuerpo; }
+.gta-media .real { max-width: 340px; }
+.gta-cabeza h2 { margin: .25em 0 .4em; }
+.gta-cabeza > p { color: var(--texto-2); max-width: 62ch; }
+.turnos--gta { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); align-items: start; margin-top: 24px; }
+.turnos--gta .turno { position: relative; }
+.turnos--gta .turno-p { font-size: clamp(1.9rem, 2.5vw, 2.35rem); }
+.turnos--gta .turno p { font-size: .88rem; }
+.turnos--gta .cinta-tarifa { position: static; align-self: flex-start; margin-bottom: 8px; }
+.gta .aviso { margin-top: 16px; font-size: .9rem; color: var(--texto-3); }
+.gta-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.gta-donde { margin-top: 16px; font-weight: 700; color: var(--texto-2); }
+.gta-donde a { color: var(--cian); text-decoration: underline; text-underline-offset: 3px; }
+a.extra { color: inherit; text-decoration: none; }
+a.extra:hover { border-color: rgba(255, 47, 180, .85); }
+@media (max-width: 900px) {
+  .gta { grid-template-columns: 1fr; grid-template-areas: "cabeza" "media" "cuerpo"; row-gap: 22px; }
+  .gta-media .real { max-width: 270px; margin: 0 auto; }
+}

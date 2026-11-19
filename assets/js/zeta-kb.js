@@ -379,10 +379,10 @@
         acciones: [preguntar('¿Qué juegos tienen en la Xbox?')], chips: ['¿Tienen GTA VI?', '¿Tienen arcade?', 'Juegos de realidad virtual'] },
 
       { id: 'gta', t: '¿Tienen GTA VI?', cara: 'feliz',
-        p: ['tienen gta', 'tienen gta 6', 'tienen gta vi', 'gta 6', 'gta vi', 'gta 5', 'grand theft auto', 'cuanto vale jugar gta', 'precio de gta', 'quiero jugar gta', 'se puede jugar gta'],
+        p: ['tienen gta', 'tienen gta 6', 'tienen gta vi', 'gta 6', 'gta vi', 'gta 5', 'grand theft auto', 'cuanto vale jugar gta', 'precio de gta', 'quiero jugar gta', 'se puede jugar gta', 'pase gta', 'pase de gta', 'pase de 5 horas'],
         k: ['gta', 'grand', 'theft', 'rockstar', 'vice'],
-        a: ['¡Sí! 🔥 <b>GTA VI ya está en VR ZONE</b>, en la Xbox Series S: <b>30 minutos $7.000</b> o <b>1 hora $12.000</b>. Juegas sin comprar consola ni el juego. Es <b>solo para mayores de 18 años, con documento</b> (la ley lo exige para juegos violentos), y es de un jugador: los amigos se turnan el control. Aparta tu turno por WhatsApp y pregunta por el pase de varias horas.'],
-        acciones: [preguntar('¡Hola VR ZONE! 🎮 Quiero apartar un turno para jugar GTA VI. ¿Qué disponibilidad tienen?')], chips: ['¿Tienen Xbox?', '¿Dónde quedan?'] },
+        a: ['¡Sí! 🔥 <b>GTA VI recién salió y ya está en VR ZONE</b>, en <b>pantalla gigante</b>: <b>30 minutos $7.000</b> o <b>1 hora $12.000</b>, sin comprar consola ni el juego. También está el <b>Pase GTA VI: 5 horas por $50.000</b> (preventa, solo 20): lo usas en varias visitas hasta el 31 de enero, tu partida queda guardada y te regalamos 15 minutos de realidad virtual. Es <b>solo para mayores de 18 años, con documento</b> (la ley lo exige para juegos violentos), y es de un jugador: los amigos se turnan el control.'],
+        acciones: [preguntar('¡Hola VR ZONE! 🎮 Quiero apartar un turno para jugar GTA VI. ¿Qué disponibilidad tienen?'), { t: 'Ver GTA VI en la página', href: 'index.html#gta' }], chips: ['¿Tienen Xbox?', '¿Dónde quedan?'] },
 
       { id: 'arcade', t: '¿Tienen arcade?', cara: 'feliz',
         p: ['tienen arcade', 'maquina arcade', 'maquinitas', 'juegos retro', 'juegos clasicos', 'tienen maquinita', 'arcade retro'],

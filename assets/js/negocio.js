@@ -48,6 +48,9 @@
     // Promociones con fecha: al pasar la fecha («hasta», inclusive, hora de Santa Marta) la página las oculta sola.
     promos: {
       preventa: { hasta: '2026-11-30', bono: '+30 minutos gratis', texto: 'Reserva tu cumpleaños antes del 30 de noviembre y te regalamos 30 minutos más de fiesta.' },
+      // Pase GTA VI (preventa aprobada por Edwin el 19-nov): 5 horas por $50.000, solo 20, se usan hasta el 31 de enero.
+      // Se vende hasta esa fecha; después la tarjeta y el botón de index.html#gta (data-promo="gtapase") se ocultan solos.
+      gtapase: { hasta: '2027-01-31', precio: 50000, antes: 60000, horas: 5, cupos: 20 },
       // Minijuego «Reto del vértigo»: cupón 2x1 por jugar y retar a un amigo. Para apagarlo: activa: false.
       reto: {
         activa: true, hasta: '2026-12-31', diasCupon: 7,
