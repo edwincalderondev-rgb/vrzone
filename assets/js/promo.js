@@ -28,7 +28,7 @@
       const soloHoy = el.classList.contains('vivo-2x1'); // en el hero solo aparece los días que aplica
       el.hidden = !dx.activa || (soloHoy && !e.hoy);
       el.classList.toggle('ahora', e.ahora);
-      $$('[data-2x1-texto]', el).forEach(t => (t.textContent = e.ahora ? 'Ahora mismo hay 2x1 · hasta las 4:00 p. m.' : e.hoy ? 'Hoy hay 2x1 · de 12:00 m. a 4:00 p. m.' : 'Entre semana: ' + dx.texto));
+      $$('[data-2x1-texto]', el).forEach(t => (t.textContent = e.ahora ? 'Ahora mismo hay 2x1 · hasta las 4:00 p. m.' : e.hoy ? 'Hoy hay 2x1 · de ' + VRZ.hora12(VRZ.horarioDe(VRZ.ahora()).abre) + ' a 4:00 p. m.' : 'Entre semana: ' + dx.texto));
       $$('[data-2x1-nota]', el).forEach(t => (t.textContent = dx.dias + '. ' + dx.nota));
     });
   }
