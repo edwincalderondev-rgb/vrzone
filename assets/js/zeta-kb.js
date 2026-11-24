@@ -513,6 +513,12 @@
         a: ['¡Claro! 💼 Hacemos <b>eventos empresariales</b>: integraciones y team building con retos en equipo que sí rompen el hielo (nada une más que huir juntos de un monstruo 😂). Puedes alquilar todo el local o, con agendamiento previo, <b>llevamos la VR a tu empresa</b>: integraciones, pausas activas y hasta jornadas de seguridad vial con simulador de conducción. A domicilio va desde <b>$140.000</b>.'],
         acciones: [domicilio, eventos, preguntar('Quiero cotizar un evento empresarial de realidad virtual.', 'Cotizar evento empresarial')] },
 
+      { id: 'capacitacion', t: 'Capacitación y SST', cara: 'feliz',
+        p: ['capacitacion', 'capacitaciones', 'seguridad vial', 'seguridad y salud en el trabajo', 'salud ocupacional', 'seguridad industrial', 'trabajo en alturas', 'trabajo en altura', 'trabajos en alturas', 'curso de alturas', 'sensibilizacion en alturas', 'sg sst', 'riesgos laborales', 'semana de la salud', 'semana de la seguridad', 'jornada de seguridad', 'movilidad segura', 'capacitar a mis empleados', 'capacitar al personal', 'entrenamiento del personal'],
+        k: ['capacitacion', 'capacitaciones', 'sst', 'vial', 'ocupacional', 'riesgos', 'capacitar', 'entrenamiento'],
+        a: ['¡Sí! 🦺 Apoyamos los programas de <b>seguridad y salud en el trabajo (SST)</b> con simulación en realidad virtual: <b>seguridad vial</b> con simulador de conducción y <b>sensibilización en trabajo en alturas</b> (la persona siente el vértigo de caminar una tabla a 80 pisos… con los pies en el piso). Lo llevamos a tu empresa con agendamiento previo, o lo hacen en nuestra sala. Es un <b>complemento</b> de la formación de tu empresa: no reemplaza los cursos certificados. Lo más reciente: una jornada de movilidad segura para el personal de una empresa de Santa Marta.'],
+        acciones: [domicilio, preguntar('Quiero cotizar una jornada de realidad virtual para capacitación en SST (seguridad vial o trabajo en alturas).', 'Cotizar jornada de SST')] },
+
       { id: 'colegios', t: 'Para colegios', cara: 'feliz',
         p: ['para colegios', 'evento academico', 'salida pedagogica', 'para estudiantes', 'para la universidad', 'excursion', 'para el colegio', 'clase en realidad virtual', 'actividad educativa'],
         k: ['colegio', 'academico', 'educativo', 'clase', 'pedagogica'],
