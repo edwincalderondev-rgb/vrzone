@@ -59,7 +59,7 @@
       pago: ['pagar', 'pagos', 'nequi', 'daviplata', 'transferencia', 'efectivo', 'tarjeta', 'bancolombia', 'consignar', 'consignacion', 'datafono', 'transferir'],
       anticipo: ['abono', 'adelanto', 'deposito', 'mitad', 'abonar'],
       whatsapp: ['telefono', 'celular', 'cel', 'numero', 'llamar', 'contactar', 'contacto', 'escribir'],
-      redes: ['instagram', 'tiktok', 'facebook', 'youtube'],
+      redes: ['instagram', 'tiktok', 'facebook', 'youtube', 'linkedin'],
       xbox: ['consola', 'consolas', 'playstation', 'play', 'ps5', 'ps4', 'nintendo', 'switch'],
       arcade: ['maquinita', 'maquina', 'maquinitas', 'retro', 'clasica', 'clasicas'],
       promo: ['promos', 'promocion', 'promociones', 'descuento', 'descuentos', 'oferta', 'ofertas', 'combo', 'combos'],
@@ -236,9 +236,9 @@
         acciones: [preguntar('Quiero información.', 'Abrir WhatsApp')], chips: ['¿Dónde quedan?', 'Redes sociales'] },
 
       { id: 'redes', t: 'Redes sociales', cara: 'guino',
-        p: ['redes sociales', 'tienen instagram', 'tienen tiktok', 'tienen facebook', 'como los encuentro en instagram', 'cual es su instagram', 'canal de youtube'],
-        k: ['redes', 'instagram', 'tiktok', 'facebook', 'youtube', 'seguir', 'arroba'],
-        a: ['Búscanos como <b>@vrzoneplay</b> 💜' + lista(['<a href="https://www.instagram.com/vrzoneplay" target="_blank" rel="noopener">Instagram @vrzoneplay</a>', '<a href="https://www.tiktok.com/@vrzoneplay" target="_blank" rel="noopener">TikTok @vrzoneplay</a>', '<a href="https://www.facebook.com/VRZoneSM" target="_blank" rel="noopener">Facebook VR Zone Santa Marta</a>', '<a href="https://www.youtube.com/@vrzonesm" target="_blank" rel="noopener">YouTube @vrzonesm</a>']) + 'Ahí salen reacciones, sustos y novedades del catálogo 😄'] },
+        p: ['redes sociales', 'tienen instagram', 'tienen tiktok', 'tienen facebook', 'como los encuentro en instagram', 'cual es su instagram', 'canal de youtube', 'tienen linkedin', 'pagina de linkedin'],
+        k: ['redes', 'instagram', 'tiktok', 'facebook', 'youtube', 'linkedin', 'seguir', 'arroba'],
+        a: ['Búscanos como <b>@vrzoneplay</b> 💜' + lista(['<a href="https://www.instagram.com/vrzoneplay" target="_blank" rel="noopener">Instagram @vrzoneplay</a>', '<a href="https://www.tiktok.com/@vrzoneplay" target="_blank" rel="noopener">TikTok @vrzoneplay</a>', '<a href="https://www.facebook.com/VRZoneSM" target="_blank" rel="noopener">Facebook VR Zone Santa Marta</a>', '<a href="https://www.youtube.com/@vrzonesm" target="_blank" rel="noopener">YouTube @vrzonesm</a>', '<a href="https://www.linkedin.com/company/vrzoneplay" target="_blank" rel="noopener">LinkedIn VR Zone Realidad Virtual</a> (para empresas)']) + 'Ahí salen reacciones, sustos y novedades del catálogo 😄'] },
 
       { id: 'precio-jugar', t: '¿Cuánto cuesta jugar?', cara: 'guino',
         p: ['cuanto cuesta', 'cuanto vale', 'cuanto cobran', 'que precio tiene', 'precio por hora', 'cuanto cuesta jugar', 'cuanto vale jugar', 'cuanto cuesta la hora', 'cuanto cuesta una partida', 'cuanto cuesta entrar', 'cuanto es', 'que valor tiene', 'precios', 'cuanto me sale', 'cuanto por persona', 'cuanto cuesta el turno', 'tarifas'],

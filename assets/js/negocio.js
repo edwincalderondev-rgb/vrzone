@@ -19,7 +19,8 @@
       instagram: 'https://www.instagram.com/vrzoneplay',
       tiktok: 'https://www.tiktok.com/@vrzoneplay',
       facebook: 'https://www.facebook.com/VRZoneSM',
-      youtube: 'https://www.youtube.com/@vrzonesm'
+      youtube: 'https://www.youtube.com/@vrzonesm',
+      linkedin: 'https://www.linkedin.com/company/vrzoneplay'
     },
     historiasEventos: 'https://www.instagram.com/stories/highlights/18089576125534505/',
     // Lunes a viernes 10:00 a. m.–8:30 p. m.; sábados, domingos y festivos 10:00 a. m.–9:00 p. m. (minutos desde medianoche; abre a las 10 desde el 2026-11-23).

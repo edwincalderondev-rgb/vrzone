@@ -41,7 +41,7 @@ const CASOS = [
   ['cuentame un chiste', 'chiste'], ['dato curioso', 'dato'], ['quien eres', 'quien'], ['eres un robot?', 'quien'], ['por que te llamas zeta', 'por-que-zeta'],
   ['te amo', 'amor'], ['eres una inutil', 'insulto'], ['que hora es', 'hora'], ['que dia es hoy', 'fecha'], ['que calor', 'calor'], ['pastilla roja', 'matrix'],
   ['juguemos', 'ppt-inicio'], ['cual es tu juego favorito', 'favorito'], ['gracias', 'gracias'], ['chao', 'adios'], ['me llamo Laura', 'nombre'],
-  ['hola, cuanto cuesta alquilar el local 4 horas', 'precio-evento'], ['cual es el numero de whatsapp', 'contacto'], ['tienen instagram', 'redes'], ['quiero hablar con una persona', 'contacto'],
+  ['hola, cuanto cuesta alquilar el local 4 horas', 'precio-evento'], ['cual es el numero de whatsapp', 'contacto'], ['tienen instagram', 'redes'], ['¿Tienen LinkedIn?', 'redes'], ['quiero hablar con una persona', 'contacto'],
   ['como funciona la tarjeta de sellos', 'sellos'], ['puedo jugar gratis?', 'sellos'], ['cuanto cuestan 30 minutos', 'precio-jugar'], ['hacen pausas activas en empresas', 'empresas'], ['pueden llevar la vr a una pausa activa', 'activaciones'], ['pueden venir a un cumpleanos en mi casa', 'activaciones'], ['asdfgh', 'no-entendi'], ['quien gano el mundial', 'no-entendi'], ['estoy aburrido', 'aburrido'], ['guardan mis datos?', 'privacidad']
 ];
 const CONVERSACIONES = [
