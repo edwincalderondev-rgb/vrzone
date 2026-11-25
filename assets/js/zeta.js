@@ -223,7 +223,9 @@
   let avisado = false;
   try { avisado = sessionStorage.getItem(CLAVE + '-aviso') === '1'; } catch (e) { /* nada */ }
   if (!avisado && !historial.length) {
-    const aviso = enEventos ? ['¿Armamos tu reserva en un minuto? 🎉', 'Quiero reservar el local'] : ['¿No sabes qué jugar? Te recomiendo uno 👾', 'Recomiéndame un juego'];
+    const aviso = enEventos ? ['¿Armamos tu reserva en un minuto? 🎉', 'Quiero reservar el local'] :
+      document.body.dataset.pagina === 'terminos' ? ['¿Dudas con un cambio de fecha o una cancelación? Pregúntame 👾', '¿Y si tengo que cancelar?'] :
+        ['¿No sabes qué jugar? Te recomiendo uno 👾', 'Recomiéndame un juego'];
     setTimeout(() => {
       if (abierto) return;
       teaser.textContent = aviso[0];

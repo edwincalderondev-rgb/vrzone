@@ -16,6 +16,26 @@
     $$('[data-promo-dias]', el).forEach(d => (d.textContent = diasPre === 0 ? '· termina hoy' : diasPre === 1 ? '· termina mañana' : '· quedan ' + diasPre + ' días'));
   });
 
+  // ---------- Regalo «antes de las 4» (aparece solo entre «desde» y «hasta») ----------
+  const tem = VRZ.promos.temprano;
+  if (tem) {
+    const activo = VRZ.promoVigente(tem), diasTem = VRZ.diasPromo(tem.hasta);
+    $$('[data-promo="temprano"]').forEach(el => {
+      el.hidden = !activo;
+      if (activo) $$('[data-promo-dias]', el).forEach(d => (d.textContent = diasTem === 0 ? '· termina hoy' : diasTem === 1 ? '· termina mañana' : diasTem <= 7 ? '· quedan ' + diasTem + ' días' : '· hasta el ' + VRZ.diaMes(tem.hasta)));
+    });
+  }
+
+  // ---------- Reserva de visores: precio por visor y ejemplos calculados con negocio.js ----------
+  const rv = VRZ.reservaVisores;
+  if (rv) {
+    $$('[data-visor-hora]').forEach(el => (el.textContent = VRZ.cop(rv.precioHora)));
+    $$('[data-visores]').forEach(el => {
+      const [v, h] = el.dataset.visores.split(',').map(Number), total = VRZ.precioVisores(v, h);
+      el.textContent = VRZ.cop(el.hasAttribute('data-anticipo') ? total * rv.anticipo : total);
+    });
+  }
+
   // ---------- Pase GTA VI (se oculta solo al vencer) ----------
   const gp = VRZ.promos.gtapase;
   $$('[data-promo="gtapase"]').forEach(el => (el.hidden = !gp || VRZ.diasPromo(gp.hasta) < 0));

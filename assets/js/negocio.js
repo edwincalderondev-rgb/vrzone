@@ -46,9 +46,17 @@
     domicilioTarifas: { 1: [140000, 200000, 50000], 2: [240000, 350000, 90000], 3: [300000, 450000, 120000] },
     // En un evento privado: se comunica «hasta 15 personas»; juegan 9 a la vez (3 VR + 4 Xbox + 2 arcade).
     capacidad: { personas: 15, jugando: 9 },
+    // Reserva de visores (decisión de Edwin del 2026-11-25): apartar 1, 2 o 3 visores por horas, sin cerrar el local.
+    // Precio normal: $30.000 por visor y por hora (la tarifa de 1 hora de «turnos»), mínimo 1 hora. Se separa con el 50 %.
+    // No aplica el 2x1 ni otras promociones. Se muestra en index.html#visores y en Zeta («reserva-visores»).
+    reservaVisores: { maxVisores: 3, precioHora: 30000, anticipo: 0.5 },
     // Promociones con fecha: al pasar la fecha («hasta», inclusive, hora de Santa Marta) la página las oculta sola.
     promos: {
       preventa: { hasta: '2026-11-30', bono: '+30 minutos gratis', texto: 'Reserva tu cumpleaños antes del 30 de noviembre y te regalamos 30 minutos más de fiesta.' },
+      // Regalo «antes de las 4» (decidido el 23-nov): del 1-dic-2026 al 31-ene-2027, 30 minutos más si la fiesta (alquiler del local)
+      // termina a las 4:00 p. m. (hastaMin) o antes. No se suma con la preventa. Las páginas lo muestran solo entre «desde» y «hasta»
+      // (data-promo="temprano") y el formulario de eventos.html lo aplica con VRZ.bonoEvento.
+      temprano: { desde: '2026-12-01', hasta: '2027-01-31', hastaMin: 960, bono: '+30 minutos gratis', texto: 'Si tu fiesta termina a las 4:00 p. m. o antes, te regalamos 30 minutos más.' },
       // Pase GTA VI (preventa aprobada por Edwin el 19-nov): 5 horas por $50.000, solo 20, se usan hasta el 31 de enero.
       // Se vende hasta esa fecha; después la tarjeta y el botón de index.html#gta (data-promo="gtapase") se ocultan solos.
       gtapase: { hasta: '2027-01-31', precio: 50000, antes: 60000, horas: 5, cupos: 20 },
@@ -155,6 +163,12 @@
     return h === 1 ? t[0] : t[1] + (h - 2) * t[2];
   };
 
+  // Reserva de visores: precio según visores (1 a 3) y horas (desde 1).
+  VRZ.precioVisores = function (visores, horas) {
+    const r = VRZ.reservaVisores;
+    return Math.min(r.maxVisores, Math.max(1, Math.round(visores))) * Math.max(1, Math.round(horas)) * r.precioHora;
+  };
+
   // ¿Sigue vigente una promoción? Devuelve los días que faltan (0 = último día) o -1 si ya pasó.
   VRZ.diasPromo = function (hasta, fecha) {
     const t = fecha || VRZ.ahora();
@@ -162,6 +176,38 @@
     const [y, m, d] = hasta.split('-').map(Number);
     const dias = Math.round((Date.UTC(y, m - 1, d) - hoy) / DIA);
     return dias < 0 ? -1 : dias;
+  };
+
+  // Fecha 'AAAA-MM-DD' de un Date «local» de Santa Marta expresado en UTC (como los que devuelve VRZ.ahora).
+  const isoDia = f => f.toISOString().slice(0, 10);
+
+  // ¿Está vigente hoy una promoción con «desde» (opcional) y «hasta», ambos inclusive y en hora de Santa Marta?
+  VRZ.promoVigente = function (p, fecha) {
+    if (!p || p.activa === false) return false;
+    const hoy = isoDia(fecha || VRZ.ahora());
+    return (!p.desde || hoy >= p.desde) && (!p.hasta || hoy <= p.hasta);
+  };
+
+  // Regalo «antes de las 4»: vigente hoy y, si ya se eligió el día de la fiesta, que ese día no pase del último de la promoción.
+  VRZ.tempranoVigente = function (dia, fecha) {
+    const p = VRZ.promos.temprano;
+    return VRZ.promoVigente(p, fecha) && (!dia || isoDia(dia) <= p.hasta);
+  };
+
+  // Tiempo de regalo en el alquiler del local (formulario de eventos.html y reserva con Zeta). No se suman: mientras dure
+  // la preventa aplica ella, a cualquier hora; después, el regalo «antes de las 4» si la fiesta termina a esa hora o antes.
+  // fin: minuto del día en que termina la fiesta · dia: Date UTC del día de la fiesta (o null) · fecha: «hoy» (para pruebas).
+  VRZ.bonoEvento = function (fin, dia, fecha) {
+    const P = VRZ.promos;
+    if (P.preventa && VRZ.diasPromo(P.preventa.hasta, fecha) >= 0) {
+      return { id: 'preventa', titulo: 'Preventa', bono: P.preventa.bono, nota: 'con la preventa, 30 minutos más 🎁',
+        linea: '🎁 Preventa: reservo antes del ' + VRZ.diaMes(P.preventa.hasta) + ', con los 30 minutos de regalo.' };
+    }
+    if (P.temprano && VRZ.tempranoVigente(dia, fecha) && fin <= P.temprano.hastaMin) {
+      return { id: 'temprano', titulo: 'Regalo', bono: P.temprano.bono, nota: 'con el regalo de antes de las 4, 30 minutos más 🎁',
+        linea: '🎁 Regalo: mi fiesta termina a las ' + VRZ.hora12(P.temprano.hastaMin) + ' o antes, con los 30 minutos de regalo.' };
+    }
+    return null;
   };
 
   // ¿Hay 2x1 en este momento? (lunes a viernes no festivos, desde que abre hasta las 4:00 p. m.)
@@ -199,6 +245,8 @@
   VRZ.DIAS = DIAS;
   VRZ.MESES = MESES;
   VRZ.fechaLarga = f => DIAS[f.getUTCDay()] + ' ' + f.getUTCDate() + ' de ' + MESES[f.getUTCMonth()] + (f.getUTCFullYear() !== VRZ.ahora().getUTCFullYear() ? ' de ' + f.getUTCFullYear() : '');
+  // '2027-01-31' → '31 de enero' (para «hasta el 31 de enero»).
+  VRZ.diaMes = iso => { const [, m, d] = String(iso).split('-').map(Number); return d + ' de ' + MESES[m - 1]; };
 
   window.VRZ = VRZ;
 })();

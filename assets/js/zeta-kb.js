@@ -15,6 +15,15 @@
   const preguntar = (texto, t) => ({ t: t || 'Preguntarle al equipo', wa: WA_TXT + texto });
   const lista = items => '<ul>' + items.map(i => '<li>' + i + '</li>').join('') + '</ul>';
   const porId = id => (window.VRZ_JUEGOS || []).find(j => j.id === id);
+  const minuscula = s => s.charAt(0).toLowerCase() + s.slice(1);
+  const terminos = (ancla, t) => ({ t: t || 'Ver los términos', href: 'terminos.html' + (ancla ? '#' + ancla : '') });
+  // Regalo de tiempo vigente para una fiesta en el local (respeta las fechas de negocio.js; no se suman).
+  function regaloFiesta(VZ) {
+    const P = VZ.promos;
+    if (VZ.diasPromo(P.preventa.hasta) >= 0) return '<p class="z-nota">🎁 <b>Preventa:</b> si separas tu fecha antes del ' + VZ.diaMes(P.preventa.hasta) + ', te regalamos 30 minutos más de fiesta.</p>';
+    if (P.temprano && VZ.promoVigente(P.temprano)) return '<p class="z-nota">🎁 <b>Regalo antes de las 4</b> (hasta el ' + VZ.diaMes(P.temprano.hasta) + '): ' + minuscula(P.temprano.texto) + '</p>';
+    return '';
+  }
 
   window.ZETA_KB = {
     version: '1.0 (2026-10-30)',
@@ -80,7 +89,9 @@
       multijugador: ['multiplayer', 'juntos', 'varios', 'competir'],
       gratis: ['gratuito', 'gratuita', 'free', 'regalo', 'cortesia'],
       pareja: ['novia', 'novio', 'cita', 'esposa', 'esposo'],
-      cancelar: ['cancelacion', 'reprogramar', 'aplazar', 'reembolso', 'devolucion'],
+      cancelar: ['cancelacion', 'reprogramar', 'aplazar', 'reembolso', 'devolucion', 'cancelo', 'cancelamos', 'reembolsos', 'reembolsan', 'devuelven', 'devolver', 'devuelvan', 'reagendar', 'posponer'],
+      retracto: ['retractarme', 'retractar', 'retractarse', 'retractacion', 'arrepentir', 'arrepentirme', 'arrepentirse', 'arrepiento', 'arrepenti', 'arrepentimiento'],
+      dano: ['danos', 'dana', 'danan', 'dane', 'danado', 'danada', 'danados', 'danar', 'romper', 'rompe', 'rompen', 'rompo', 'rompi', 'rompio', 'roto', 'rota', 'quebrar', 'quiebra', 'quiebro', 'averia', 'averiado'],
       resena: ['resenas', 'opiniones', 'calificacion', 'estrellas', 'google'],
       grabar: ['grabo', 'videos', 'fotos', 'filmar', 'grabacion'],
       ropa: ['vestir', 'vestimenta', 'zapatos', 'tenis']
@@ -266,7 +277,7 @@
         a: (e, H) => ({
           html: '¡Uff, aquí es donde la cosa se pone buena! 🎉 Te alquilamos <b>todo el local</b>, privado y climatizado, solo para ti y tus invitados:' +
             H.lista(H.VRZ.evento.incluye.slice(0, 5)) + '…y además decoración a tu estilo, acceso a la nevera y <b>tarjeta de invitación exclusiva</b>. <b>Tarifas:</b>' + H.tarifas() +
-            '<p class="z-nota">Todo incluido dentro del tiempo de reserva, sin costos adicionales.</p>',
+            '<p class="z-nota">Todo incluido dentro del tiempo de reserva, sin costos adicionales.</p>' + regaloFiesta(H.VRZ),
           chips: ['Quiero reservar el local', '¿Cómo es el pago?', '¿Puedo llevar torta?', '¿Cuántas personas caben?']
         }),
         acciones: [formulario, eventos] },
@@ -296,9 +307,9 @@
       { id: 'reservar', t: 'Quiero reservar', cara: 'feliz',
         p: ['quiero reservar', 'como reservo', 'hacer una reserva', 'como hago una reserva', 'reservar', 'reservacion', 'quiero hacer una reservacion', 'como separo', 'quisiera reservar'],
         k: ['reservar'],
-        neg: ['evento', 'alquilar', 'local', 'turno', 'jugar'],
-        a: ['¡De una! 🙌 ¿La reserva es para <b>jugar un rato</b> o para <b>alquilar todo el local</b> para un evento?'],
-        chips: ['Quiero reservar el local', 'Reservar un turno para jugar'] },
+        neg: ['evento', 'alquilar', 'local', 'turno', 'jugar', 'visor'],
+        a: ['¡De una! 🙌 ¿La reserva es para <b>jugar un rato</b>, para <b>apartar visores</b> por horas o para <b>alquilar todo el local</b> para un evento?'],
+        chips: ['Quiero reservar el local', 'Reservar un turno para jugar', '¿Puedo reservar un visor?'] },
 
       { id: 'reservar-evento', t: 'Quiero reservar el local', cara: 'fiesta', sigue: ['evento', 'precio-evento', 'incluye', 'reservar'],
         p: ['reservar el local', 'quiero reservar el local', 'reservar para un cumpleanos', 'separar la fecha', 'apartar el local', 'reservar para una fiesta', 'reservar para un evento', 'reservar evento', 'como reservo el local', 'que necesito para reservar', 'pasos para reservar', 'empezar de nuevo la reserva', 'quiero separar el local'],
@@ -312,18 +323,18 @@
         k: ['turno', 'reservar', 'jugar', 'llegar', 'visita', 'ir'],
         neg: ['evento', 'alquilar', 'local'],
         a: ['Para jugar un rato te recomendamos escribirnos antes por WhatsApp y separar tu turno, sobre todo si vienen en grupo o en fin de semana 📲. Así llegas y de una te pones el visor 🥽. Los turnos van desde <b>$8.000</b> (experiencia inicial de 5 a 10 minutos) hasta <b>$30.000</b> la hora.'],
-        acciones: [preguntar('Quiero separar un turno para jugar realidad virtual. ¿Qué disponibilidad tienen?', 'Separar mi turno')], chips: ['¿Cuánto cuesta jugar?', '¿Abren hoy?', 'Recomiéndame un juego'] },
+        acciones: [preguntar('Quiero separar un turno para jugar realidad virtual. ¿Qué disponibilidad tienen?', 'Separar mi turno')], chips: ['¿Cuánto cuesta jugar?', '¿Puedo reservar un visor?', '¿Abren hoy?'] },
 
       { id: 'anticipo', t: '¿Cómo es el pago?', cara: 'feliz', sigue: ['evento', 'precio-evento', 'reservar-evento-inicio'],
         p: ['cuanto hay que pagar para reservar', 'cuanto es el anticipo', 'hay que abonar', 'cuanto debo abonar', 'el 50', 'la mitad', 'pagar por adelantado', 'como es el pago', 'como se paga la reserva', 'se paga por adelantado', 'cuanto se abona', 'hay que pagar antes'],
         k: ['anticipo', 'pago', 'reservar', 'separar', 'adelantado', 'antes', '50'],
-        a: (e, H) => ({ html: 'Para separar el local se paga el <b>50 %</b> del costo de la reserva 💳. Al escribirnos te pasamos los datos de pago, y con la <b>captura del pago</b> tu fecha queda separada.' + (e.horas ? '<p class="z-nota">Para ' + e.horas + ' horas serían <b>' + H.cop(H.VRZ.precioEvento(e.horas) / 2) + '</b> de anticipo.</p>' : ''), chips: ['Quiero reservar el local', '¿Qué medios de pago reciben?'] }) },
+        a: (e, H) => ({ html: 'Para separar el local se paga el <b>50 %</b> del costo de la reserva 💳. Al escribirnos te pasamos los datos de pago, y con la <b>captura del pago</b> tu fecha queda separada.' + (e.horas ? '<p class="z-nota">Para ' + e.horas + ' horas serían <b>' + H.cop(H.VRZ.precioEvento(e.horas) / 2) + '</b> de anticipo.</p>' : ''), chips: ['Quiero reservar el local', '¿Qué medios de pago reciben?', '¿Y si tengo que cancelar?'] }) },
 
       { id: 'pago', t: '¿Qué medios de pago reciben?', cara: 'pensando',
         p: ['medios de pago', 'como puedo pagar', 'reciben nequi', 'reciben tarjeta', 'aceptan tarjeta', 'pagar con tarjeta', 'pagar en efectivo', 'reciben daviplata', 'hacen transferencia', 'tienen datafono', 'formas de pago', 'metodos de pago'],
         k: ['pago', 'medios', 'formas', 'metodos', 'aceptan', 'reciben'],
-        a: ['Los datos y medios de pago te los da el equipo directamente por WhatsApp 📲. No te los escribo aquí para no darte un dato desactualizado 😉.'],
-        acciones: [preguntar('¿Qué medios de pago reciben?', 'Preguntar medios de pago')] },
+        a: ['El <b>anticipo</b> para separar una reserva se paga por <b>Nequi</b>, a los datos que te damos por WhatsApp (nos envías la captura del pago). El <b>saldo</b> se paga el día del servicio, como te lo confirmemos por WhatsApp 📲. Si quieres pagar con otro medio, pregúntale al equipo.'],
+        acciones: [preguntar('¿Qué medios de pago reciben?', 'Preguntar medios de pago'), terminos('reserva')] },
 
       { id: 'invitacion', t: 'La invitación exclusiva', cara: 'fiesta',
         p: ['tarjeta de invitacion', 'invitacion', 'invitaciones', 'dan invitaciones', 'la tarjeta para los invitados', 'como es la invitacion'],
@@ -488,6 +499,7 @@
           const dPre = H.VRZ.diasPromo(P.preventa.hasta), dReto = P.reto.activa ? H.VRZ.diasPromo(P.reto.hasta) : -1;
           if (P.dosXuno.activa) items.push('🔥 <b>' + P.dosXuno.texto + '</b> (' + P.dosXuno.dias.toLowerCase() + ', en turnos de realidad virtual)');
           if (dPre >= 0) items.push('🎂 <b>Preventa de cumpleaños:</b> ' + P.preventa.bono + ' si separas antes del 30 de noviembre' + (dPre === 0 ? ' (¡termina hoy!)' : dPre === 1 ? ' (termina mañana)' : ' (quedan ' + dPre + ' días)'));
+          else if (P.temprano && H.VRZ.promoVigente(P.temprano)) items.push('🎂 <b>Regalo antes de las 4:</b> ' + minuscula(P.temprano.texto).replace(/\.$/, '') + ' (en el alquiler del local, hasta el ' + H.VRZ.diaMes(P.temprano.hasta) + ')');
           if (dReto >= 0) items.push('🎟️ <b>Cupón 2x1</b> jugando el <a href="./#reto">Reto del vértigo</a> aquí en la página');
           P.temporada.forEach(o => items.push(o.emoji + ' <b>' + o.titulo + ':</b> ' + o.precio));
           items.push('💜 <b>Tarjeta de sellos:</b> llénala y juegas gratis (15 min, luego 30 min y luego 1 hora)');
@@ -552,11 +564,82 @@
         a: ['Eso prefiero que te lo confirme el equipo, para no mandarte a buscar puesto donde no hay 😅.'],
         acciones: [preguntar('¿Hay parqueadero cerca del local?')] },
 
-      { id: 'cancelar', t: 'Cambiar o cancelar una reserva', cara: 'pensando',
-        p: ['cancelar la reserva', 'cambiar la fecha', 'mover la reserva', 'reprogramar', 'si no puedo ir', 'devuelven el dinero', 'devuelven el anticipo', 'aplazar la reserva'],
-        k: ['cancelar', 'reprogramar', 'cambiar', 'devuelven'],
-        a: ['Para cambiar o cancelar una reserva, escríbele directamente al equipo por WhatsApp: ellos te explican cómo funciona en tu caso 🙏.'],
-        acciones: [preguntar('Necesito cambiar o cancelar una reserva.')] },
+      // ---------- Términos y condiciones de reservas (terminos.html, vigentes desde el 2026-11-25) ----------
+      { id: 'cancelar', t: '¿Y si tengo que cancelar?', cara: 'pensando', sigue: ['terminos', 'retracto', 'anticipo'],
+        p: ['cancelar la reserva', 'cambiar la fecha', 'cambio de fecha', 'cambiar de fecha', 'mover la reserva', 'reprogramar', 'si no puedo ir', 'no podemos ir', 'devuelven el dinero', 'devuelven el anticipo', 'devuelven la plata', 'me devuelven', 'aplazar la reserva', 'si cancelo', 'si tengo que cancelar', 'politica de cancelacion', 'reembolso', 'pierdo el anticipo', 'pierdo la plata', 'si me enfermo', 'me enferme', 'se enfermo', 'enfermedad', 'calamidad', 'calamidad familiar', 'incapacidad medica'],
+        k: ['cancelar', 'reprogramar', 'cambiar', 'calamidad', 'incapacidad', 'pierdo'],
+        a(e, H) {
+          const V = H.VRZ;
+          let s = 'Así funciona si tienes que <b>cambiar la fecha o cancelar</b> 👇' + H.lista([
+            '🔁 <b>Cambio de fecha:</b> gratis una vez, si avisas con <b>48 horas o más</b> (según disponibilidad). El anticipo pasa completo a la nueva fecha.',
+            '↩️ <b>Si cancelas:</b> con 7 días o más te devolvemos el <b>80 %</b> del anticipo; entre 6 días y 48 horas, el <b>50 %</b>; con menos de 48 horas no hay devolución.',
+            '⚖️ <b>Derecho de retracto:</b> si reservaste por WhatsApp o internet, tienes <b>5 días hábiles</b> para arrepentirte y te devolvemos el <b>100 %</b>.',
+            '🤒 <b>Enfermedad o calamidad:</b> avísanos lo antes posible y cambias la fecha sin costo dentro de los 60 días siguientes.'
+          ]) + 'Las devoluciones se hacen por Nequi en máximo 15 días calendario.';
+          if (e.horas) {
+            const h = Math.min(Math.max(1, e.horas), 12), ant = V.precioEvento(h) * V.evento.anticipo;
+            s += '<p class="z-nota">Con un alquiler de ' + h + (h === 1 ? ' hora' : ' horas') + ' (anticipo de ' + H.cop(ant) + '): si cancelas con 7 días o más te devolvemos <b>' + H.cop(ant * 0.8) + '</b>; entre 6 días y 48 horas, <b>' + H.cop(ant * 0.5) + '</b>.</p>';
+          }
+          s += '<p>El detalle completo está en los <a href="terminos.html#cancelacion">términos y condiciones</a>.</p>';
+          return { html: s, acciones: [terminos('cancelacion'), preguntar('Necesito cambiar o cancelar una reserva.')], chips: ['Derecho de retracto', '¿Y si se daña un control?', 'Quiero reservar el local'] };
+        } },
+
+      { id: 'retracto', t: 'Derecho de retracto', cara: 'pensando', sigue: ['cancelar', 'terminos'],
+        p: ['derecho de retracto', 'retracto', 'me puedo retractar', 'puedo retractarme', 'me puedo arrepentir', 'puedo arrepentirme', 'si me arrepiento', 'me arrepenti', 'estatuto del consumidor', 'ley 1480', 'ley del consumidor'],
+        k: ['retracto', 'consumidor'],
+        a: ['⚖️ Es un derecho que te da la ley: si reservaste por <b>WhatsApp o por internet</b> y tu fecha es dentro de <b>más de 5 días</b>, puedes retractarte dentro de los <b>5 días hábiles</b> siguientes al pago del anticipo y te devolvemos el <b>100 %</b>, sin descuentos, en máximo 15 días calendario (artículo 47 de la Ley 1480 de 2011, Estatuto del Consumidor). No aplica cuando el servicio empieza antes de 5 días ni cuando ya se empezó a prestar.<p>Lo tienes completo en los <a href="terminos.html#retracto">términos y condiciones</a>.</p>'],
+        acciones: [terminos('retracto'), preguntar('Quiero usar el derecho de retracto de mi reserva.')], chips: ['¿Y si cancelo después?', 'Términos y condiciones'] },
+
+      { id: 'danos', t: '¿Y si se daña un control?', cara: 'pensando',
+        p: ['si se dana', 'se dana un control', 'si se dana un control', 'si dano', 'si dano algo', 'si rompo', 'si rompo un visor', 'si se rompe', 'se rompe un control', 'se me cae el control', 'quien paga los danos', 'danos a los equipos', 'danos al local', 'romper un control', 'mal uso', 'cobran los danos', 'pagar los danos', 'correa de muneca'],
+        k: ['dano', 'control', 'controles', 'reparacion', 'reposicion', 'golpear', 'derramar', 'correa'],
+        a: ['Tranqui 🙌: el <b>desgaste normal</b> y las fallas propias de los equipos corren por nuestra cuenta. Lo que sí se cobra son los daños por <b>mal uso</b> —golpear, lanzar o pisar los controles, jugar sin la correa de muñeca, derramar líquidos, forzar o desarmar piezas—, al <b>costo real de reparación o de reposición</b>, con la factura o la cotización como soporte.' +
+          lista(['En eventos privados responde el adulto que hizo la reserva.', 'En turnos de juego, el jugador o el adulto a cargo del menor.']) +
+          'Antes de empezar te explicamos cómo usar los equipos y al terminar los revisamos contigo 😉.<p>Detalles en los <a href="terminos.html#danos">términos y condiciones</a>.</p>'],
+        acciones: [terminos('danos')], chips: ['¿Y si tengo que cancelar?', '¿Es seguro?'] },
+
+      { id: 'terminos', t: 'Términos y condiciones', cara: 'feliz',
+        p: ['terminos y condiciones', 'terminos', 'los terminos', 'condiciones de la reserva', 'condiciones de reserva', 'condiciones para reservar', 'condiciones del alquiler', 'politicas', 'politicas de reserva', 'reglamento', 'reglas del local', 'normas del local', 'letra pequena', 'letra menuda', 'contrato de alquiler'],
+        k: ['terminos', 'condiciones', 'politicas', 'politica', 'reglamento', 'reglas', 'normas', 'contrato'],
+        a: ['Aquí están, con letra clara 📄: <a href="terminos.html">términos y condiciones de reservas</a>. Lo más importante 👇' + lista([
+          '📅 <b>Separas con el 50 %</b> y el resto lo pagas el día del servicio.',
+          '🔁 <b>¿Cambio de fecha?</b> Gratis una vez, si avisas con 48 horas o más.',
+          '↩️ <b>¿Cancelas?</b> Con 7 días o más te devolvemos el 80 % del anticipo; entre 6 días y 48 horas, el 50 %; con menos de 48 horas no hay devolución.',
+          '⚖️ <b>Derecho de retracto:</b> si reservaste por WhatsApp o internet, tienes 5 días hábiles para arrepentirte y te devolvemos el 100 %.',
+          '🛠️ <b>Daños:</b> el desgaste normal es nuestro; los daños por mal uso se pagan al costo real de reparación.'])],
+        acciones: [terminos('', 'Leer los términos')], chips: ['¿Y si tengo que cancelar?', '¿Y si se daña un control?', 'Derecho de retracto'] },
+
+      { id: 'reserva-visores', t: '¿Puedo reservar un visor?', cara: 'feliz',
+        p: ['reservar un visor', 'reservar visores', 'reservar los visores', 'reservar 2 visores', 'reservar 3 visores', 'reservar dos visores', 'reservar tres visores', 'apartar un visor', 'apartar visores', 'apartar los visores', 'apartar 2 visores', 'apartar 3 visores', 'apartar dos visores', 'apartar tres visores', 'separar un visor', 'separar visores', 'reserva de visores', 'puedo reservar un visor', 'alquilar un visor', 'visores por horas', 'visor por hora', 'precio por visor'],
+        k: ['visor', 'reservar'],
+        neg: ['domicilio', 'feria', 'colegio', 'empresa'],
+        a(e, H, texto) {
+          const V = H.VRZ, R = V.reservaVisores, c = H.ctx();
+          const t = String(texto || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+          const NUMS = { un: 1, uno: 1, una: 1, dos: 2, tres: 3, cuatro: 4, cinco: 5, seis: 6 };
+          const m = t.match(/\b(\d{1,2}|un|uno|una|dos|tres|cuatro|cinco|seis)\s*(visor|visores|cascos?)\b/);
+          const generico = m && /^(un|una|uno)$/.test(m[1]) && !e.horas; // «¿puedo reservar un visor?» pregunta en general, no por uno solo
+          let v = m && !generico ? (NUMS[m[1]] || parseInt(m[1], 10)) : (!m && c.ultimo === 'reserva-visores' ? c.visores : null);
+          const h = e.horas ? Math.min(Math.max(1, e.horas), 12) : null;
+          const plural = (n, uno, varios) => n + ' ' + (n === 1 ? uno : varios);
+          let s;
+          const tope = v > R.maxVisores;
+          if (tope) v = R.maxVisores;
+          const quien = tope ? 'Tenemos <b>' + v + ' visores</b>, así que se pueden reservar hasta ' + v + ' a la vez 🥽. Los ' + v : '¡Claro! 🥽 ' + (v ? plural(v, 'visor', 'visores') : '');
+          if (v && h) {
+            const total = V.precioVisores(v, h);
+            s = quien + ' por ' + plural(h, 'hora', 'horas') + ': <b>' + H.cop(total) + '</b> (para separar, el 50 %: <b>' + H.cop(total * R.anticipo) + '</b>).';
+          } else if (v) {
+            s = quien + ' cuesta' + (v === 1 ? '' : 'n') + ' <b>' + H.cop(V.precioVisores(v, 1)) + ' por hora</b>. Por ejemplo, 2 horas: ' + H.cop(V.precioVisores(v, 2)) + '.';
+          } else {
+            s = '¡Sí! 🥽 Puedes apartar <b>1, 2 o 3 visores</b> por horas: <b>' + H.cop(R.precioHora) + ' por visor, por hora</b> (mínimo 1 hora). Algunos ejemplos:' +
+              H.lista([[1, 1], [1, 2], [2, 2], [3, 1]].map(([a, b]) => plural(a, 'visor', 'visores') + ' · ' + plural(b, 'hora', 'horas') + ': <b>' + H.cop(V.precioVisores(a, b)) + '</b>'));
+          }
+          if (v) c.visores = v;
+          s += '<p class="z-nota">Se separa con el <b>50 %</b> y es a precio normal: no aplica el 2x1 ni otras promociones. <b>No cierra el local</b>: los visores son de ustedes durante ese tiempo, se los turnan como quieran y el resto de la sala sigue abierta. ¿Quieren todo el local solo para ustedes (con Xbox, arcade, decoración y música)? Alquiler privado desde ' + H.cop(V.evento.tarifas[1]) + ' la hora.</p>';
+          const msg = 'Hola VR ZONE 🥽 Quiero reservar ' + (v ? plural(v, 'visor', 'visores') : '___ visor(es)') + ' por ' + (h ? plural(h, 'hora', 'horas') : '___ hora(s)') + ' el día ___ a las ___.';
+          return { html: s, acciones: [{ t: 'Reservar por WhatsApp', wa: msg }, { t: 'Ver en la página', href: './#visores' }], chips: ['¿Y el alquiler del local?', 'Términos y condiciones', '¿Cuánto cuesta jugar?'] };
+        } },
 
       { id: 'grabar', t: '¿Puedo grabar?', cara: 'fiesta',
         p: ['puedo grabar', 'se puede grabar', 'puedo tomar fotos', 'se pueden tomar fotos', 'grabar la reaccion', 'grabar videos'],

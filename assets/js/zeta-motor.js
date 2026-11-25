@@ -327,13 +327,15 @@
   function resumenReserva(d) {
     const total = VRZ.precioEvento(d.horas), fin = d.inicio + d.horas * 60;
     const fecha = mayus(VRZ.fechaLarga(d.fecha));
+    const bono = VRZ.bonoEvento ? VRZ.bonoEvento(fin, d.fecha) : null; // preventa o regalo «antes de las 4» (negocio.js)
     const msg = ['¡Hola VR ZONE! 🎉 Quiero reservar el local para un evento.', '',
       '📅 Día: ' + fecha, '🟢 Hora de inicio: ' + VRZ.hora12(d.inicio), '🟢 Hora de fin: ' + VRZ.hora12(fin % 1440) + (fin >= 1440 ? ' (del día siguiente)' : ''),
-      '🟢 A nombre de: ' + d.nombre, '⏱ Paquete: ' + d.horas + (d.horas === 1 ? ' hora' : ' horas') + ' — ' + VRZ.cop(total) + ' (anticipo del 50 %: ' + VRZ.cop(total / 2) + ')', '',
-      'Quedo atento(a) a los datos para pagar el 50 % y les envío la captura. ¡Gracias!'].join('\n');
+      '🟢 A nombre de: ' + d.nombre, '⏱ Paquete: ' + d.horas + (d.horas === 1 ? ' hora' : ' horas') + ' — ' + VRZ.cop(total) + ' (anticipo del 50 %: ' + VRZ.cop(total / 2) + ')']
+      .concat(bono ? [bono.linea] : [], ['', 'Quedo atento(a) a los datos para pagar el 50 % y les envío la captura. ¡Gracias!']).join('\n');
     return {
       html: '¡Quedó así! 🎉<div class="z-resumen"><div><span>Día</span><b>' + esc(fecha) + '</b></div><div><span>Horario</span><b>' + VRZ.hora12(d.inicio) + ' – ' + VRZ.hora12(fin % 1440) + '</b></div>' +
-        '<div><span>A nombre de</span><b>' + esc(d.nombre) + '</b></div><div><span>Total</span><b>' + VRZ.cop(total) + '</b></div><div><span>Anticipo 50 %</span><b>' + VRZ.cop(total / 2) + '</b></div></div>' +
+        '<div><span>A nombre de</span><b>' + esc(d.nombre) + '</b></div><div><span>Total</span><b>' + VRZ.cop(total) + '</b></div><div><span>Anticipo 50 %</span><b>' + VRZ.cop(total / 2) + '</b></div>' +
+        (bono ? '<div><span>🎁 ' + esc(bono.titulo) + '</span><b>' + esc(bono.bono) + '</b></div>' : '') + '</div>' +
         'Toca el botón y te dejo el mensaje listo en WhatsApp. Allá te pasan los datos de pago y, con la <b>captura del 50 %</b>, tu fecha queda separada 🙌. <small>(Sujeto a disponibilidad.)</small>',
       acciones: [H.wa(msg, 'Enviar reserva por WhatsApp')], chips: ['Empezar de nuevo la reserva', '¿Qué incluye el alquiler?'], cara: 'fiesta', id: 'reserva-lista'
     };
@@ -365,6 +367,9 @@
         const mas = H.otros();
         if (mas.length) return { html: H.vez('otro', ['Va, aquí van otros 👇', 'Tengo más, mira 👇', 'Otra ronda de mundos 🎲']) + H.tarjetas(mas), chips: ['Otro', 'Algo más suave', 'Quiero reservar'], cara: 'guino', id: 'otros', score: 90 };
         return { html: 'Ya te mostré todos los que encajan con eso 😅. ¿Probamos con otro gusto? Terror, acción, deportes, carreras…', chips: ['Algo de terror', 'Algo de acción', 'Para reír'], cara: 'pensando', id: 'otros-fin', score: 90 };
+      }
+      if (e.horas && !e.juego && ctx.ultimo === 'reserva-visores' && !/\b(alquil|local|fiesta|evento)/.test(c)) { // «¿y por 3 horas?» después de preguntar por visores
+        return Object.assign(construir(ENTRADAS.find(x => x.id === 'reserva-visores'), e, raw), { score: 90 });
       }
       if (e.horas && !e.juego && (['evento', 'precio-evento', 'incluye', 'reservar-evento', 'anticipo'].includes(ctx.ultimo) || /\b(alquil|local|fiesta|evento)/.test(c))) {
         return Object.assign(construir(ENTRADAS.find(x => x.id === 'precio-evento'), e, raw), { score: 90 });

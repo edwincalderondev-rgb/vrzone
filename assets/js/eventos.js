@@ -11,7 +11,6 @@
   const base = VRZ.evento.tarifas[1];
   const ETIQUETA = { 3: '⭐ El más elegido', 4: 'Mejor precio por hora' };
   const cupo = VRZ.capacidad.personas;
-  const preventa = VRZ.diasPromo(VRZ.promos.preventa.hasta) >= 0;
   if (lista) {
     lista.innerHTML = [1, 2, 3, 4].map(h => {
       const p = VRZ.evento.tarifas[h], ahorro = base * h - p;
@@ -94,7 +93,6 @@
   const form = $('#form-reserva');
   if (form) {
     const dia = $('#r-dia'), inicio = $('#r-inicio'), nombre = $('#r-nombre'), tipo = $('#r-tipo'), notas = $('#r-notas'), error = $('#r-error'), invitados = $('#r-invitados'), bono = $('#r-bono');
-    if (bono) bono.hidden = !preventa;
     const hoy = VRZ.ahora();
     dia.min = hoy.toISOString().slice(0, 10);
     for (let m = 8 * 60; m <= 20 * 60; m += 30) {
@@ -114,11 +112,18 @@
       datos.fecha = leerFecha();
       datos.inicio = +inicio.value;
       datos.tipo = tipo.value;
-      const total = VRZ.precioEvento(datos.horas);
+      const total = VRZ.precioEvento(datos.horas), fin = datos.inicio + datos.horas * 60;
       $('#r-paquete').textContent = datos.horas + (datos.horas === 1 ? ' hora' : ' horas') + (datos.horas > 4 ? ' (4 + ' + (datos.horas - 4) + ' adicional' + (datos.horas > 5 ? 'es' : '') + ')' : '');
       $('#r-total').textContent = VRZ.cop(total);
       $('#r-anticipo').textContent = VRZ.cop(total * VRZ.evento.anticipo);
-      $('#r-fin-txt').textContent = 'Hora de fin: ' + VRZ.hora12((datos.inicio + datos.horas * 60) % 1440) + (preventa ? ' · con la preventa, 30 minutos más 🎁' : '');
+      // Regalo de tiempo: la preventa (hasta el 30-nov) o, desde el 1-dic, el de «antes de las 4» si la fiesta termina a esa hora o antes.
+      const b = VRZ.bonoEvento(fin, datos.fecha);
+      if (bono) {
+        bono.hidden = !b;
+        if (b) { bono.firstElementChild.textContent = '🎁 ' + b.titulo; bono.lastElementChild.textContent = b.bono; }
+      }
+      const pista = !b && VRZ.tempranoVigente(datos.fecha) ? ' · si termina a las ' + VRZ.hora12(VRZ.promos.temprano.hastaMin) + ' o antes, te regalamos 30 minutos 🎁' : '';
+      $('#r-fin-txt').textContent = 'Hora de fin: ' + VRZ.hora12(fin % 1440) + (b ? ' · ' + b.nota : pista);
       if (invitados) $('#r-invitados-txt').textContent = invitados.value === 'Más de 15' ? 'El local es cómodo para hasta ' + cupo + ' personas. Cuéntanos cuántos son y lo revisamos contigo.' : 'El local es cómodo para hasta ' + cupo + ' personas.';
       pintarInvitaciones();
     }
@@ -154,7 +159,8 @@
         '⏱ Paquete: ' + datos.horas + (datos.horas === 1 ? ' hora' : ' horas') + ' — ' + VRZ.cop(total) + ' (anticipo del 50 %: ' + VRZ.cop(total * VRZ.evento.anticipo) + ')'
       ];
       if (invitados && invitados.value) lineas.push('👥 Invitados: ' + invitados.value);
-      if (preventa) lineas.push('🎁 Preventa: reservo antes del 30 de noviembre, con los 30 minutos de regalo.');
+      const b = VRZ.bonoEvento(fin, f);
+      if (b) lineas.push(b.linea);
       if (notas.value.trim()) lineas.push('💬 Comentarios: ' + notas.value.trim());
       lineas.push('', 'Quedo atento(a) a los datos para pagar el 50 % y les envío la captura. ¡Gracias!');
       window.open(VRZ.wa(lineas.join('\n')), '_blank', 'noopener');
