@@ -666,7 +666,7 @@
       { id: 'english', t: 'English', cara: 'feliz',
         p: ['do you speak english', 'english please', 'in english', 'what time do you open', 'where are you located', 'how much does it cost', 'how much is it', 'can i book', 'birthday party', 'opening hours', 'hello do you speak'],
         k: ['english', 'speak', 'open', 'price', 'cost', 'located', 'where', 'book', 'booking', 'party', 'how', 'much', 'tourist', 'hours'],
-        a: ['Hi! 👋 I\'m Zeta, VR ZONE\'s guide. I mostly speak Spanish, but here\'s the key info:' + lista(['<b>What:</b> Santa Marta\'s first VR arcade: 50 games on Meta Quest 3, plus Xbox Series S and a classic arcade machine.', '<b>Hours:</b> Mon–Fri 3:00–8:30 pm · Sat, Sun & holidays 3:00–9:00 pm.', '<b>Where:</b> Cra. 21E #29L-24, Los Laureles (near Universidad del Magdalena).', '<b>Private parties:</b> the whole venue from COP 140,000 per hour.']) + 'For prices and bookings, message us on WhatsApp and the team will help you 🙌'],
+        a: ['Hi! 👋 I\'m Zeta, VR ZONE\'s guide. I mostly speak Spanish, but here\'s the key info:' + lista(['<b>What:</b> Santa Marta\'s first VR arcade: 50 games on Meta Quest 3, plus Xbox Series S and a classic arcade machine.', '<b>Hours:</b> open every day from 10:00 am · Mon–Fri until 8:30 pm · Sat, Sun & holidays until 9:00 pm.', '<b>Where:</b> Cra. 21E #29L-24, Los Laureles (near Universidad del Magdalena).', '<b>Private parties:</b> the whole venue from COP 140,000 per hour.']) + 'For prices and bookings, message us on WhatsApp and the team will help you 🙌'],
         acciones: [{ t: 'Message us on WhatsApp', wa: 'Hi VR ZONE! I would like information about playing virtual reality.' }, mapa] }
     ]
   };
